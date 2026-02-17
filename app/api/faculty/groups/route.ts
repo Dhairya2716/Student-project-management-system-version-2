@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
+
         const decoded = verify(token, JWT_SECRET) as { id: number; role: string };
 
         if (decoded.role !== 'FACULTY') {

@@ -276,6 +276,23 @@ export type Enumuser_roleNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumuser_roleNullableFilter<$PrismaModel>
 }
 
+export type Enumuser_roleFilter<$PrismaModel = never> = {
+  equals?: $Enums.user_role | Prisma.Enumuser_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumuser_roleFilter<$PrismaModel> | $Enums.user_role
+}
+
+export type Enumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.user_role | Prisma.Enumuser_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumuser_roleWithAggregatesFilter<$PrismaModel> | $Enums.user_role
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
+}
+
 export type NestedIntFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
@@ -538,6 +555,23 @@ export type NestedEnumuser_roleNullableWithAggregatesFilter<$PrismaModel = never
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumuser_roleNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumuser_roleNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumuser_roleFilter<$PrismaModel = never> = {
+  equals?: $Enums.user_role | Prisma.Enumuser_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumuser_roleFilter<$PrismaModel> | $Enums.user_role
+}
+
+export type NestedEnumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.user_role | Prisma.Enumuser_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.user_role[] | Prisma.ListEnumuser_roleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumuser_roleWithAggregatesFilter<$PrismaModel> | $Enums.user_role
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
 }
 
 

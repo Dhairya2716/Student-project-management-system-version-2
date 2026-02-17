@@ -30,12 +30,14 @@ export type Project_meetingAvgAggregateOutputType = {
   id: number | null
   group_id: number | null
   guide_id: number | null
+  duration: number | null
 }
 
 export type Project_meetingSumAggregateOutputType = {
   id: number | null
   group_id: number | null
   guide_id: number | null
+  duration: number | null
 }
 
 export type Project_meetingMinAggregateOutputType = {
@@ -43,8 +45,11 @@ export type Project_meetingMinAggregateOutputType = {
   group_id: number | null
   guide_id: number | null
   meeting_datetime: Date | null
+  duration: number | null
   purpose: string | null
   location: string | null
+  meeting_link: string | null
+  agenda: string | null
   notes: string | null
   status: $Enums.meeting_status | null
   status_note: string | null
@@ -57,8 +62,11 @@ export type Project_meetingMaxAggregateOutputType = {
   group_id: number | null
   guide_id: number | null
   meeting_datetime: Date | null
+  duration: number | null
   purpose: string | null
   location: string | null
+  meeting_link: string | null
+  agenda: string | null
   notes: string | null
   status: $Enums.meeting_status | null
   status_note: string | null
@@ -71,8 +79,11 @@ export type Project_meetingCountAggregateOutputType = {
   group_id: number
   guide_id: number
   meeting_datetime: number
+  duration: number
   purpose: number
   location: number
+  meeting_link: number
+  agenda: number
   notes: number
   status: number
   status_note: number
@@ -86,12 +97,14 @@ export type Project_meetingAvgAggregateInputType = {
   id?: true
   group_id?: true
   guide_id?: true
+  duration?: true
 }
 
 export type Project_meetingSumAggregateInputType = {
   id?: true
   group_id?: true
   guide_id?: true
+  duration?: true
 }
 
 export type Project_meetingMinAggregateInputType = {
@@ -99,8 +112,11 @@ export type Project_meetingMinAggregateInputType = {
   group_id?: true
   guide_id?: true
   meeting_datetime?: true
+  duration?: true
   purpose?: true
   location?: true
+  meeting_link?: true
+  agenda?: true
   notes?: true
   status?: true
   status_note?: true
@@ -113,8 +129,11 @@ export type Project_meetingMaxAggregateInputType = {
   group_id?: true
   guide_id?: true
   meeting_datetime?: true
+  duration?: true
   purpose?: true
   location?: true
+  meeting_link?: true
+  agenda?: true
   notes?: true
   status?: true
   status_note?: true
@@ -127,8 +146,11 @@ export type Project_meetingCountAggregateInputType = {
   group_id?: true
   guide_id?: true
   meeting_datetime?: true
+  duration?: true
   purpose?: true
   location?: true
+  meeting_link?: true
+  agenda?: true
   notes?: true
   status?: true
   status_note?: true
@@ -228,8 +250,11 @@ export type Project_meetingGroupByOutputType = {
   group_id: number | null
   guide_id: number | null
   meeting_datetime: Date
+  duration: number | null
   purpose: string | null
   location: string | null
+  meeting_link: string | null
+  agenda: string | null
   notes: string | null
   status: $Enums.meeting_status | null
   status_note: string | null
@@ -265,8 +290,11 @@ export type project_meetingWhereInput = {
   group_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   guide_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   meeting_datetime?: Prisma.DateTimeFilter<"project_meeting"> | Date | string
+  duration?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   purpose?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   location?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  meeting_link?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  agenda?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   notes?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   status?: Prisma.Enummeeting_statusNullableFilter<"project_meeting"> | $Enums.meeting_status | null
   status_note?: Prisma.StringNullableFilter<"project_meeting"> | string | null
@@ -282,8 +310,11 @@ export type project_meetingOrderByWithRelationInput = {
   group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   guide_id?: Prisma.SortOrderInput | Prisma.SortOrder
   meeting_datetime?: Prisma.SortOrder
+  duration?: Prisma.SortOrderInput | Prisma.SortOrder
   purpose?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  meeting_link?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   status_note?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -302,8 +333,11 @@ export type project_meetingWhereUniqueInput = Prisma.AtLeast<{
   group_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   guide_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   meeting_datetime?: Prisma.DateTimeFilter<"project_meeting"> | Date | string
+  duration?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   purpose?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   location?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  meeting_link?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  agenda?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   notes?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   status?: Prisma.Enummeeting_statusNullableFilter<"project_meeting"> | $Enums.meeting_status | null
   status_note?: Prisma.StringNullableFilter<"project_meeting"> | string | null
@@ -319,8 +353,11 @@ export type project_meetingOrderByWithAggregationInput = {
   group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   guide_id?: Prisma.SortOrderInput | Prisma.SortOrder
   meeting_datetime?: Prisma.SortOrder
+  duration?: Prisma.SortOrderInput | Prisma.SortOrder
   purpose?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  meeting_link?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   status_note?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -341,8 +378,11 @@ export type project_meetingScalarWhereWithAggregatesInput = {
   group_id?: Prisma.IntNullableWithAggregatesFilter<"project_meeting"> | number | null
   guide_id?: Prisma.IntNullableWithAggregatesFilter<"project_meeting"> | number | null
   meeting_datetime?: Prisma.DateTimeWithAggregatesFilter<"project_meeting"> | Date | string
+  duration?: Prisma.IntNullableWithAggregatesFilter<"project_meeting"> | number | null
   purpose?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
+  meeting_link?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
+  agenda?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
   status?: Prisma.Enummeeting_statusNullableWithAggregatesFilter<"project_meeting"> | $Enums.meeting_status | null
   status_note?: Prisma.StringNullableWithAggregatesFilter<"project_meeting"> | string | null
@@ -352,8 +392,11 @@ export type project_meetingScalarWhereWithAggregatesInput = {
 
 export type project_meetingCreateInput = {
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -369,8 +412,11 @@ export type project_meetingUncheckedCreateInput = {
   group_id?: number | null
   guide_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -381,8 +427,11 @@ export type project_meetingUncheckedCreateInput = {
 
 export type project_meetingUpdateInput = {
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -398,8 +447,11 @@ export type project_meetingUncheckedUpdateInput = {
   group_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -413,8 +465,11 @@ export type project_meetingCreateManyInput = {
   group_id?: number | null
   guide_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -424,8 +479,11 @@ export type project_meetingCreateManyInput = {
 
 export type project_meetingUpdateManyMutationInput = {
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -438,8 +496,11 @@ export type project_meetingUncheckedUpdateManyInput = {
   group_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -462,8 +523,11 @@ export type project_meetingCountOrderByAggregateInput = {
   group_id?: Prisma.SortOrder
   guide_id?: Prisma.SortOrder
   meeting_datetime?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
   purpose?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  meeting_link?: Prisma.SortOrder
+  agenda?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   status?: Prisma.SortOrder
   status_note?: Prisma.SortOrder
@@ -475,6 +539,7 @@ export type project_meetingAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   group_id?: Prisma.SortOrder
   guide_id?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type project_meetingMaxOrderByAggregateInput = {
@@ -482,8 +547,11 @@ export type project_meetingMaxOrderByAggregateInput = {
   group_id?: Prisma.SortOrder
   guide_id?: Prisma.SortOrder
   meeting_datetime?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
   purpose?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  meeting_link?: Prisma.SortOrder
+  agenda?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   status?: Prisma.SortOrder
   status_note?: Prisma.SortOrder
@@ -496,8 +564,11 @@ export type project_meetingMinOrderByAggregateInput = {
   group_id?: Prisma.SortOrder
   guide_id?: Prisma.SortOrder
   meeting_datetime?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
   purpose?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  meeting_link?: Prisma.SortOrder
+  agenda?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   status?: Prisma.SortOrder
   status_note?: Prisma.SortOrder
@@ -509,6 +580,7 @@ export type project_meetingSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   group_id?: Prisma.SortOrder
   guide_id?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type Project_meetingNullableScalarRelationFilter = {
@@ -626,8 +698,11 @@ export type project_meetingUncheckedUpdateManyWithoutStaffNestedInput = {
 
 export type project_meetingCreateWithoutProject_groupInput = {
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -641,8 +716,11 @@ export type project_meetingUncheckedCreateWithoutProject_groupInput = {
   id?: number
   guide_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -685,8 +763,11 @@ export type project_meetingScalarWhereInput = {
   group_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   guide_id?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   meeting_datetime?: Prisma.DateTimeFilter<"project_meeting"> | Date | string
+  duration?: Prisma.IntNullableFilter<"project_meeting"> | number | null
   purpose?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   location?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  meeting_link?: Prisma.StringNullableFilter<"project_meeting"> | string | null
+  agenda?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   notes?: Prisma.StringNullableFilter<"project_meeting"> | string | null
   status?: Prisma.Enummeeting_statusNullableFilter<"project_meeting"> | $Enums.meeting_status | null
   status_note?: Prisma.StringNullableFilter<"project_meeting"> | string | null
@@ -696,8 +777,11 @@ export type project_meetingScalarWhereInput = {
 
 export type project_meetingCreateWithoutProject_meeting_attendanceInput = {
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -712,8 +796,11 @@ export type project_meetingUncheckedCreateWithoutProject_meeting_attendanceInput
   group_id?: number | null
   guide_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -739,8 +826,11 @@ export type project_meetingUpdateToOneWithWhereWithoutProject_meeting_attendance
 
 export type project_meetingUpdateWithoutProject_meeting_attendanceInput = {
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -755,8 +845,11 @@ export type project_meetingUncheckedUpdateWithoutProject_meeting_attendanceInput
   group_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -766,8 +859,11 @@ export type project_meetingUncheckedUpdateWithoutProject_meeting_attendanceInput
 
 export type project_meetingCreateWithoutStaffInput = {
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -781,8 +877,11 @@ export type project_meetingUncheckedCreateWithoutStaffInput = {
   id?: number
   group_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -821,8 +920,11 @@ export type project_meetingCreateManyProject_groupInput = {
   id?: number
   guide_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -832,8 +934,11 @@ export type project_meetingCreateManyProject_groupInput = {
 
 export type project_meetingUpdateWithoutProject_groupInput = {
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -847,8 +952,11 @@ export type project_meetingUncheckedUpdateWithoutProject_groupInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -861,8 +969,11 @@ export type project_meetingUncheckedUpdateManyWithoutProject_groupInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -874,8 +985,11 @@ export type project_meetingCreateManyStaffInput = {
   id?: number
   group_id?: number | null
   meeting_datetime: Date | string
+  duration?: number | null
   purpose?: string | null
   location?: string | null
+  meeting_link?: string | null
+  agenda?: string | null
   notes?: string | null
   status?: $Enums.meeting_status | null
   status_note?: string | null
@@ -885,8 +999,11 @@ export type project_meetingCreateManyStaffInput = {
 
 export type project_meetingUpdateWithoutStaffInput = {
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -900,8 +1017,11 @@ export type project_meetingUncheckedUpdateWithoutStaffInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   group_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -914,8 +1034,11 @@ export type project_meetingUncheckedUpdateManyWithoutStaffInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   group_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   meeting_datetime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   purpose?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.NullableEnummeeting_statusFieldUpdateOperationsInput | $Enums.meeting_status | null
   status_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -959,8 +1082,11 @@ export type project_meetingSelect<ExtArgs extends runtime.Types.Extensions.Inter
   group_id?: boolean
   guide_id?: boolean
   meeting_datetime?: boolean
+  duration?: boolean
   purpose?: boolean
   location?: boolean
+  meeting_link?: boolean
+  agenda?: boolean
   notes?: boolean
   status?: boolean
   status_note?: boolean
@@ -977,8 +1103,11 @@ export type project_meetingSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   group_id?: boolean
   guide_id?: boolean
   meeting_datetime?: boolean
+  duration?: boolean
   purpose?: boolean
   location?: boolean
+  meeting_link?: boolean
+  agenda?: boolean
   notes?: boolean
   status?: boolean
   status_note?: boolean
@@ -993,8 +1122,11 @@ export type project_meetingSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   group_id?: boolean
   guide_id?: boolean
   meeting_datetime?: boolean
+  duration?: boolean
   purpose?: boolean
   location?: boolean
+  meeting_link?: boolean
+  agenda?: boolean
   notes?: boolean
   status?: boolean
   status_note?: boolean
@@ -1009,8 +1141,11 @@ export type project_meetingSelectScalar = {
   group_id?: boolean
   guide_id?: boolean
   meeting_datetime?: boolean
+  duration?: boolean
   purpose?: boolean
   location?: boolean
+  meeting_link?: boolean
+  agenda?: boolean
   notes?: boolean
   status?: boolean
   status_note?: boolean
@@ -1018,7 +1153,7 @@ export type project_meetingSelectScalar = {
   updated_at?: boolean
 }
 
-export type project_meetingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "group_id" | "guide_id" | "meeting_datetime" | "purpose" | "location" | "notes" | "status" | "status_note" | "created_at" | "updated_at", ExtArgs["result"]["project_meeting"]>
+export type project_meetingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "group_id" | "guide_id" | "meeting_datetime" | "duration" | "purpose" | "location" | "meeting_link" | "agenda" | "notes" | "status" | "status_note" | "created_at" | "updated_at", ExtArgs["result"]["project_meeting"]>
 export type project_meetingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group?: boolean | Prisma.project_meeting$project_groupArgs<ExtArgs>
   staff?: boolean | Prisma.project_meeting$staffArgs<ExtArgs>
@@ -1046,8 +1181,11 @@ export type $project_meetingPayload<ExtArgs extends runtime.Types.Extensions.Int
     group_id: number | null
     guide_id: number | null
     meeting_datetime: Date
+    duration: number | null
     purpose: string | null
     location: string | null
+    meeting_link: string | null
+    agenda: string | null
     notes: string | null
     status: $Enums.meeting_status | null
     status_note: string | null
@@ -1483,8 +1621,11 @@ export interface project_meetingFieldRefs {
   readonly group_id: Prisma.FieldRef<"project_meeting", 'Int'>
   readonly guide_id: Prisma.FieldRef<"project_meeting", 'Int'>
   readonly meeting_datetime: Prisma.FieldRef<"project_meeting", 'DateTime'>
+  readonly duration: Prisma.FieldRef<"project_meeting", 'Int'>
   readonly purpose: Prisma.FieldRef<"project_meeting", 'String'>
   readonly location: Prisma.FieldRef<"project_meeting", 'String'>
+  readonly meeting_link: Prisma.FieldRef<"project_meeting", 'String'>
+  readonly agenda: Prisma.FieldRef<"project_meeting", 'String'>
   readonly notes: Prisma.FieldRef<"project_meeting", 'String'>
   readonly status: Prisma.FieldRef<"project_meeting", 'meeting_status'>
   readonly status_note: Prisma.FieldRef<"project_meeting", 'String'>

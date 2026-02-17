@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const { id } = await params;
-        const { name, email, phone, role, departmentId } = await request.json();
+        const { name, email, phone, role, department_id } = await request.json();
 
         const staff = await prisma.staff.update({
             where: { id: parseInt(id) },
@@ -13,7 +13,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
                 email,
                 phone: phone || null,
                 role,
-                departmentId: departmentId || null
+                department_id: department_id || null
             }
         });
 

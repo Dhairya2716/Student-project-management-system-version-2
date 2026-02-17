@@ -68,8 +68,11 @@ model project_meeting {
   group_id                   Int?
   guide_id                   Int?
   meeting_datetime           DateTime                     @db.Timestamp(6)
+  duration                   Int?                         // Duration in minutes
   purpose                    String?                      @db.VarChar(255)
   location                   String?                      @db.VarChar(100)
+  meeting_link               String?                      @db.VarChar(500)
+  agenda                     String?
   notes                      String?
   status                     meeting_status?              @default(SCHEDULED)
   status_note                String?
@@ -138,6 +141,22 @@ model student {
   project_meeting_attendance project_meeting_attendance[]
   batch                      batch?                       @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   department                 department?                  @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model notification {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  user_role  user_role
+  type       String   @db.VarChar(50)
+  title      String   @db.VarChar(200)
+  message    String
+  link       String?  @db.VarChar(255)
+  is_read    Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  
+  @@index([user_id, user_role])
+  @@index([is_read])
+  @@index([created_at])
 }
 
 enum meeting_status {

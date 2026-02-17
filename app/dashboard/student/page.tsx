@@ -1,227 +1,275 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import StudentLayout from '@/components/StudentLayout';
 import {
-    GraduationCap,
     Users,
-    ClipboardList,
     Calendar,
-    LogOut,
-    Home,
-    FolderKanban,
-    ChevronRight,
-    Bell,
-    Search,
-    Menu,
-    X,
+    CheckCircle,
     TrendingUp,
     Clock,
-    FileText,
-    Upload
+    Award,
+    AlertCircle,
+    ArrowRight
 } from 'lucide-react';
+import Link from 'next/link';
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    role: 'ADMIN' | 'FACULTY' | 'STUDENT';
+interface DashboardStats {
+    hasGroup: boolean;
+    groupName: string | null;
+    totalMeetings: number;
+    attendedMeetings: number;
+    upcomingMeetings: number;
+    attendancePercentage: number;
+    isLeader: boolean;
+    cgpa: number | null;
+}
+
+interface StudentData {
+    student: {
+        id: number;
+        name: string;
+        email: string;
+        phone: string | null;
+        enrollment_no: string | null;
+        department: { name: string; code: string } | null;
+        batch: { name: string } | null;
+    };
+    stats: DashboardStats;
 }
 
 export default function StudentDashboard() {
-    const router = useRouter();
-    const [user, setUser] = useState<User | null>(null);
+    const [data, setData] = useState<StudentData | null>(null);
     const [loading, setLoading] = useState(true);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const userData = localStorage.getItem('user');
+        fetchDashboard();
+    }, []);
 
-        if (!token || !userData) {
-            router.push('/login');
-            return;
-        }
-
+    const fetchDashboard = async () => {
         try {
-            const parsed = JSON.parse(userData);
-            if (parsed.role !== 'STUDENT') {
-                router.push('/dashboard');
-                return;
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/student/dashboard', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                const dashboardData = await response.json();
+                setData(dashboardData);
             }
-            setUser(parsed);
-        } catch {
-            router.push('/login');
+        } catch (error) {
+            console.error('Error fetching dashboard:', error);
         } finally {
             setLoading(false);
         }
-    }, [router]);
-
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        router.push('/login');
     };
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
-                <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
-            </div>
+            <StudentLayout>
+                <div className="flex items-center justify-center h-full">
+                    <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
+                </div>
+            </StudentLayout>
         );
     }
 
-    if (!user) return null;
+    if (!data) {
+        return (
+            <StudentLayout>
+                <div className="p-8">
+                    <div className="text-center py-16 rounded-2xl bg-white/[0.02] border border-white/10">
+                        <AlertCircle className="w-16 h-16 text-white/20 mx-auto mb-4" />
+                        <p className="text-white/40 text-lg">Failed to load dashboard</p>
+                    </div>
+                </div>
+            </StudentLayout>
+        );
+    }
 
-    const navItems = [
-        { icon: Home, label: 'Dashboard', href: '/dashboard/student', active: true },
-        { icon: Users, label: 'My Group', href: '/dashboard/student/group' },
-        { icon: FolderKanban, label: 'Project', href: '/dashboard/student/project' },
-        { icon: Calendar, label: 'Meetings', href: '/dashboard/student/meetings' },
-        { icon: FileText, label: 'Documents', href: '/dashboard/student/documents' },
-        { icon: ClipboardList, label: 'Tasks', href: '/dashboard/student/tasks' },
-    ];
+    const { student, stats } = data;
 
-    const stats = [
-        { label: 'Group Members', value: '4', icon: Users, color: 'blue' },
-        { label: 'Upcoming Meetings', value: '2', icon: Calendar, trend: 'This week', color: 'cyan' },
-        { label: 'Project Progress', value: '65%', icon: TrendingUp, color: 'emerald' },
-        { label: 'Tasks Pending', value: '5', icon: Clock, color: 'amber' },
+    const statCards = [
+        {
+            label: 'My Team',
+            value: stats.hasGroup ? stats.groupName : 'Not Assigned',
+            icon: Users,
+            color: 'emerald',
+            href: '/dashboard/student/team',
+            badge: stats.isLeader ? 'Leader' : null
+        },
+        {
+            label: 'Upcoming Meetings',
+            value: stats.upcomingMeetings,
+            icon: Calendar,
+            color: 'cyan',
+            href: '/dashboard/student/meetings'
+        },
+        {
+            label: 'Attendance',
+            value: `${stats.attendancePercentage}%`,
+            icon: CheckCircle,
+            color: stats.attendancePercentage >= 75 ? 'emerald' : 'amber',
+            href: '/dashboard/student/meetings',
+            subtext: `${stats.attendedMeetings}/${stats.totalMeetings} meetings`
+        },
+        {
+            label: 'CGPA',
+            value: stats.cgpa ? stats.cgpa.toFixed(2) : 'N/A',
+            icon: Award,
+            color: 'purple',
+            href: '/dashboard/student/profile'
+        }
     ];
 
     return (
-        <div className="min-h-screen bg-[#0a0a0f] flex">
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[150px]"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[150px]"></div>
-            </div>
-
-            <aside className={`${sidebarOpen ? 'w-72' : 'w-20'} relative bg-white/[0.02] border-r border-white/10 flex flex-col transition-all duration-300`}>
-                <div className="p-6 border-b border-white/10">
-                    <Link href="/" className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
-                            <GraduationCap className="w-6 h-6 text-white" />
-                        </div>
-                        {sidebarOpen && (
-                            <div>
-                                <span className="text-xl font-bold text-white">SPMS</span>
-                                <span className="block text-xs text-blue-400">Student Portal</span>
-                            </div>
-                        )}
-                    </Link>
+        <StudentLayout>
+            <div className="p-8">
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold text-white mb-2">
+                        Welcome back, {student.name.split(' ')[0]}! 👋
+                    </h1>
+                    <p className="text-white/50">
+                        {student.enrollment_no} • {student.department?.name} • {student.batch?.name}
+                    </p>
                 </div>
 
-                <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
-                    {navItems.map((item, i) => (
+                {/* Stats Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    {statCards.map((stat, i) => (
                         <Link
                             key={i}
-                            href={item.href}
-                            className={`group flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${item.active
-                                    ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-white'
-                                    : 'text-white/50 hover:text-white hover:bg-white/5'
-                                }`}
+                            href={stat.href}
+                            className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all hover:-translate-y-1"
                         >
-                            <item.icon className={`w-5 h-5 ${item.active ? 'text-blue-400' : ''}`} />
-                            {sidebarOpen && (
-                                <>
-                                    <span className="font-medium">{item.label}</span>
-                                    <ChevronRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </>
+                            <div className="flex items-start justify-between mb-4">
+                                <div className={`w-12 h-12 rounded-xl bg-${stat.color}-500/10 border border-${stat.color}-500/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                                    <stat.icon className={`w-6 h-6 text-${stat.color}-400`} />
+                                </div>
+                                {stat.badge && (
+                                    <span className="px-2 py-1 text-xs font-medium rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                        {stat.badge}
+                                    </span>
+                                )}
+                                <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 group-hover:translate-x-1 transition-all" />
+                            </div>
+                            <p className="text-white/40 text-sm mb-1">{stat.label}</p>
+                            <p className="text-2xl font-bold text-white mb-1">{stat.value}</p>
+                            {stat.subtext && (
+                                <p className="text-xs text-white/30">{stat.subtext}</p>
                             )}
                         </Link>
                     ))}
-                </nav>
-
-                <div className="p-4 border-t border-white/10">
-                    {sidebarOpen && (
-                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/10 mb-3">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">{user.name.charAt(0)}</span>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-white truncate">{user.name}</p>
-                                <p className="text-xs text-blue-400">Student</p>
-                            </div>
-                        </div>
-                    )}
-                    <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all">
-                        <LogOut className="w-5 h-5" />
-                        {sidebarOpen && <span className="font-medium">Logout</span>}
-                    </button>
                 </div>
-            </aside>
 
-            <main className="flex-1 flex flex-col">
-                <header className="sticky top-0 z-40 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/10 px-8 py-4">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-xl text-white/50 hover:text-white hover:bg-white/5 transition-all">
-                                {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                            </button>
-                            <div>
-                                <h1 className="text-2xl font-bold text-white">Welcome, {user.name.split(' ')[0]}!</h1>
-                                <p className="text-white/40 text-sm">Track your project progress</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <div className="relative">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
-                                <input type="text" placeholder="Search..." className="w-64 pl-12 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-all" />
-                            </div>
-                            <button className="relative p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
-                                <Bell className="w-5 h-5 text-white/50" />
-                                <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
-                            </button>
-                        </div>
-                    </div>
-                </header>
-
-                <div className="flex-1 p-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        {stats.map((stat, i) => (
-                            <div key={i} className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all hover:-translate-y-1">
-                                <div className="flex items-start justify-between mb-4">
-                                    <div className={`w-12 h-12 rounded-xl bg-${stat.color}-500/10 border border-${stat.color}-500/20 flex items-center justify-center`}>
-                                        <stat.icon className={`w-6 h-6 text-${stat.color}-400`} />
-                                    </div>
-                                    {stat.trend && (
-                                        <span className="text-xs font-medium px-2 py-1 rounded-lg bg-white/5 text-white/50">{stat.trend}</span>
-                                    )}
-                                </div>
-                                <p className="text-white/40 text-sm mb-1">{stat.label}</p>
-                                <p className="text-3xl font-bold text-white">{stat.value}</p>
-                            </div>
-                        ))}
-                    </div>
-
+                {/* Quick Actions */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                     <div className="rounded-2xl bg-white/[0.02] border border-white/10 p-6">
                         <h2 className="text-xl font-semibold text-white mb-6">Quick Actions</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <Link href="/dashboard/student/group" className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all text-left">
-                                <Users className="w-8 h-8 text-blue-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <p className="font-medium text-white">View Group</p>
-                                <p className="text-sm text-white/40">See team members</p>
+                        <div className="space-y-3">
+                            <Link href="/dashboard/student/team" className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                                        <Users className="w-5 h-5 text-emerald-400" />
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-white">View My Team</p>
+                                        <p className="text-sm text-white/40">See team members and details</p>
+                                    </div>
+                                </div>
+                                <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-emerald-400 transition-colors" />
                             </Link>
-                            <Link href="/dashboard/student/meetings" className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all text-left">
-                                <Calendar className="w-8 h-8 text-cyan-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <p className="font-medium text-white">Meetings</p>
-                                <p className="text-sm text-white/40">View schedule</p>
+                            <Link href="/dashboard/student/meetings" className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                                        <Calendar className="w-5 h-5 text-cyan-400" />
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-white">View Meetings</p>
+                                        <p className="text-sm text-white/40">Check schedule and attendance</p>
+                                    </div>
+                                </div>
+                                <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-cyan-400 transition-colors" />
                             </Link>
-                            <Link href="/dashboard/student/project" className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-left">
-                                <FolderKanban className="w-8 h-8 text-emerald-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <p className="font-medium text-white">Project</p>
-                                <p className="text-sm text-white/40">View details</p>
-                            </Link>
-                            <Link href="/dashboard/student/documents" className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/30 hover:bg-amber-500/5 transition-all text-left">
-                                <Upload className="w-8 h-8 text-amber-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <p className="font-medium text-white">Upload Docs</p>
-                                <p className="text-sm text-white/40">Submit files</p>
+                            <Link href="/dashboard/student/project" className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                                        <TrendingUp className="w-5 h-5 text-purple-400" />
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-white">Project Details</p>
+                                        <p className="text-sm text-white/40">View project information</p>
+                                    </div>
+                                </div>
+                                <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-purple-400 transition-colors" />
                             </Link>
                         </div>
                     </div>
+
+                    {/* Status Card */}
+                    <div className="rounded-2xl bg-white/[0.02] border border-white/10 p-6">
+                        <h2 className="text-xl font-semibold text-white mb-6">Status Overview</h2>
+                        <div className="space-y-4">
+                            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-sm text-white/40">Group Status</span>
+                                    <span className={`px-2 py-1 text-xs font-medium rounded-lg ${stats.hasGroup ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}`}>
+                                        {stats.hasGroup ? 'Assigned' : 'Not Assigned'}
+                                    </span>
+                                </div>
+                                {stats.hasGroup && (
+                                    <p className="text-white font-medium">{stats.groupName}</p>
+                                )}
+                            </div>
+                            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-sm text-white/40">Attendance Rate</span>
+                                    <span className={`px-2 py-1 text-xs font-medium rounded-lg ${stats.attendancePercentage >= 75 ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                                        {stats.attendancePercentage >= 75 ? 'Good' : 'Low'}
+                                    </span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+                                        <div
+                                            className={`h-full ${stats.attendancePercentage >= 75 ? 'bg-emerald-500' : 'bg-red-500'}`}
+                                            style={{ width: `${stats.attendancePercentage}%` }}
+                                        ></div>
+                                    </div>
+                                    <span className="text-sm font-medium text-white">{stats.attendancePercentage}%</span>
+                                </div>
+                            </div>
+                            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                                        <Clock className="w-5 h-5 text-cyan-400" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-white/40">Upcoming Meetings</p>
+                                        <p className="text-xl font-bold text-white">{stats.upcomingMeetings}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </main>
-        </div>
+
+                {/* Alert if not assigned to group */}
+                {!stats.hasGroup && (
+                    <div className="rounded-2xl bg-amber-500/10 border border-amber-500/20 p-6">
+                        <div className="flex items-start gap-4">
+                            <AlertCircle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
+                            <div>
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Not Assigned to a Group</h3>
+                                <p className="text-white/60">
+                                    You haven't been assigned to a project group yet. Please contact your faculty coordinator or admin for assistance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </StudentLayout>
     );
 }

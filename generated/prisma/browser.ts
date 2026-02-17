@@ -62,3 +62,8 @@ export type staff = Prisma.staffModel
  * 
  */
 export type student = Prisma.studentModel
+/**
+ * Model notification
+ * 
+ */
+export type notification = Prisma.notificationModel

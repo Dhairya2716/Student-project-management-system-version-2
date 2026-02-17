@@ -392,7 +392,8 @@ export const ModelName = {
   project_meeting_attendance: 'project_meeting_attendance',
   project_type: 'project_type',
   staff: 'staff',
-  student: 'student'
+  student: 'student',
+  notification: 'notification'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student"
+    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student" | "notification"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1078,6 +1079,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    notification: {
+      payload: Prisma.$notificationPayload<ExtArgs>
+      fields: Prisma.notificationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.notificationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.notificationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        findFirst: {
+          args: Prisma.notificationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.notificationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        findMany: {
+          args: Prisma.notificationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>[]
+        }
+        create: {
+          args: Prisma.notificationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        createMany: {
+          args: Prisma.notificationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.notificationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>[]
+        }
+        delete: {
+          args: Prisma.notificationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        update: {
+          args: Prisma.notificationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        deleteMany: {
+          args: Prisma.notificationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.notificationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.notificationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>[]
+        }
+        upsert: {
+          args: Prisma.notificationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$notificationPayload>
+        }
+        aggregate: {
+          args: Prisma.NotificationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotification>
+        }
+        groupBy: {
+          args: Prisma.notificationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.notificationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1177,8 +1252,11 @@ export const Project_meetingScalarFieldEnum = {
   group_id: 'group_id',
   guide_id: 'guide_id',
   meeting_datetime: 'meeting_datetime',
+  duration: 'duration',
   purpose: 'purpose',
   location: 'location',
+  meeting_link: 'meeting_link',
+  agenda: 'agenda',
   notes: 'notes',
   status: 'status',
   status_note: 'status_note',
@@ -1245,6 +1323,21 @@ export const StudentScalarFieldEnum = {
 } as const
 
 export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  user_role: 'user_role',
+  type: 'type',
+  title: 'title',
+  message: 'message',
+  link: 'link',
+  is_read: 'is_read',
+  created_at: 'created_at'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1471,6 +1564,7 @@ export type GlobalOmitConfig = {
   project_type?: Prisma.project_typeOmit
   staff?: Prisma.staffOmit
   student?: Prisma.studentOmit
+  notification?: Prisma.notificationOmit
 }
 
 /* Types for Logging */

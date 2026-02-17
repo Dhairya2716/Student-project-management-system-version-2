@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
         }
 
         const body = await req.json();
-        const { group_id, meeting_datetime, purpose, location, notes } = body;
+        const { group_id, meeting_datetime, duration, purpose, location, meeting_link, agenda, notes } = body;
 
         if (!group_id || !meeting_datetime) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -98,11 +98,18 @@ export async function POST(req: NextRequest) {
 
         const meeting = await prisma.project_meeting.create({
             data: {
-                group_id: parseInt(group_id),
-                guide_id: decoded.id,
+                project_group: {
+                    connect: { id: parseInt(group_id) }
+                },
+                staff: {
+                    connect: { id: decoded.id }
+                },
                 meeting_datetime: new Date(meeting_datetime),
+                duration: duration ? parseInt(duration) : null,
                 purpose,
                 location,
+                meeting_link,
+                agenda,
                 notes,
                 status: 'SCHEDULED'
             },
@@ -117,8 +124,12 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json(meeting, { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error creating meeting:', error);
-        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+        return NextResponse.json({
+            error: 'Internal server error',
+            details: error.message,
+            stack: error.stack
+        }, { status: 500 });
     }
 }
