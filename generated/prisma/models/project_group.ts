@@ -298,6 +298,7 @@ export type project_groupWhereInput = {
   project_type?: Prisma.XOR<Prisma.Project_typeNullableScalarRelationFilter, Prisma.project_typeWhereInput> | null
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting?: Prisma.Project_meetingListRelationFilter
+  project_submission?: Prisma.Project_submissionListRelationFilter
 }
 
 export type project_groupOrderByWithRelationInput = {
@@ -319,6 +320,7 @@ export type project_groupOrderByWithRelationInput = {
   project_type?: Prisma.project_typeOrderByWithRelationInput
   project_group_member?: Prisma.project_group_memberOrderByRelationAggregateInput
   project_meeting?: Prisma.project_meetingOrderByRelationAggregateInput
+  project_submission?: Prisma.project_submissionOrderByRelationAggregateInput
 }
 
 export type project_groupWhereUniqueInput = Prisma.AtLeast<{
@@ -343,6 +345,7 @@ export type project_groupWhereUniqueInput = Prisma.AtLeast<{
   project_type?: Prisma.XOR<Prisma.Project_typeNullableScalarRelationFilter, Prisma.project_typeWhereInput> | null
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting?: Prisma.Project_meetingListRelationFilter
+  project_submission?: Prisma.Project_submissionListRelationFilter
 }, "id">
 
 export type project_groupOrderByWithAggregationInput = {
@@ -397,6 +400,7 @@ export type project_groupCreateInput = {
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateInput = {
@@ -414,6 +418,7 @@ export type project_groupUncheckedCreateInput = {
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUpdateInput = {
@@ -430,6 +435,7 @@ export type project_groupUpdateInput = {
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateInput = {
@@ -447,6 +453,7 @@ export type project_groupUncheckedUpdateInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateManyInput = {
@@ -565,6 +572,11 @@ export type Project_groupListRelationFilter = {
 
 export type project_groupOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type Project_groupScalarRelationFilter = {
+  is?: Prisma.project_groupWhereInput
+  isNot?: Prisma.project_groupWhereInput
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -787,6 +799,20 @@ export type project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idT
   deleteMany?: Prisma.project_groupScalarWhereInput | Prisma.project_groupScalarWhereInput[]
 }
 
+export type project_groupCreateNestedOneWithoutProject_submissionInput = {
+  create?: Prisma.XOR<Prisma.project_groupCreateWithoutProject_submissionInput, Prisma.project_groupUncheckedCreateWithoutProject_submissionInput>
+  connectOrCreate?: Prisma.project_groupCreateOrConnectWithoutProject_submissionInput
+  connect?: Prisma.project_groupWhereUniqueInput
+}
+
+export type project_groupUpdateOneRequiredWithoutProject_submissionNestedInput = {
+  create?: Prisma.XOR<Prisma.project_groupCreateWithoutProject_submissionInput, Prisma.project_groupUncheckedCreateWithoutProject_submissionInput>
+  connectOrCreate?: Prisma.project_groupCreateOrConnectWithoutProject_submissionInput
+  upsert?: Prisma.project_groupUpsertWithoutProject_submissionInput
+  connect?: Prisma.project_groupWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.project_groupUpdateToOneWithWhereWithoutProject_submissionInput, Prisma.project_groupUpdateWithoutProject_submissionInput>, Prisma.project_groupUncheckedUpdateWithoutProject_submissionInput>
+}
+
 export type project_groupCreateWithoutProject_group_memberInput = {
   name: string
   title: string
@@ -800,6 +826,7 @@ export type project_groupCreateWithoutProject_group_memberInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_guide_idTostaffInput
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_group_memberInput = {
@@ -816,6 +843,7 @@ export type project_groupUncheckedCreateWithoutProject_group_memberInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_group_memberInput = {
@@ -847,6 +875,7 @@ export type project_groupUpdateWithoutProject_group_memberInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_guide_idTostaffNestedInput
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_group_memberInput = {
@@ -863,6 +892,7 @@ export type project_groupUncheckedUpdateWithoutProject_group_memberInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateWithoutProject_meetingInput = {
@@ -878,6 +908,7 @@ export type project_groupCreateWithoutProject_meetingInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_guide_idTostaffInput
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_meetingInput = {
@@ -894,6 +925,7 @@ export type project_groupUncheckedCreateWithoutProject_meetingInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_meetingInput = {
@@ -925,6 +957,7 @@ export type project_groupUpdateWithoutProject_meetingInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_guide_idTostaffNestedInput
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_meetingInput = {
@@ -941,6 +974,7 @@ export type project_groupUncheckedUpdateWithoutProject_meetingInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateWithoutProject_typeInput = {
@@ -956,6 +990,7 @@ export type project_groupCreateWithoutProject_typeInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_guide_idTostaffInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_typeInput = {
@@ -972,6 +1007,7 @@ export type project_groupUncheckedCreateWithoutProject_typeInput = {
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_typeInput = {
@@ -1031,6 +1067,7 @@ export type project_groupCreateWithoutStaff_project_group_convener_idTostaffInpu
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1047,6 +1084,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_convener_idTo
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1072,6 +1110,7 @@ export type project_groupCreateWithoutStaff_project_group_expert_idTostaffInput 
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1088,6 +1127,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_expert_idTost
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1113,6 +1153,7 @@ export type project_groupCreateWithoutStaff_project_group_guide_idTostaffInput =
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1129,6 +1170,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_guide_idTosta
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1189,6 +1231,88 @@ export type project_groupUpdateManyWithWhereWithoutStaff_project_group_guide_idT
   data: Prisma.XOR<Prisma.project_groupUpdateManyMutationInput, Prisma.project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idTostaffInput>
 }
 
+export type project_groupCreateWithoutProject_submissionInput = {
+  name: string
+  title: string
+  area?: string | null
+  description?: string | null
+  average_cpi?: number | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
+  staff_project_group_expert_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_expert_idTostaffInput
+  staff_project_group_guide_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_guide_idTostaffInput
+  project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
+  project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
+  project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+}
+
+export type project_groupUncheckedCreateWithoutProject_submissionInput = {
+  id?: number
+  name: string
+  title: string
+  area?: string | null
+  description?: string | null
+  average_cpi?: number | null
+  project_type_id?: number | null
+  guide_id?: number | null
+  convener_id?: number | null
+  expert_id?: number | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
+  project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+}
+
+export type project_groupCreateOrConnectWithoutProject_submissionInput = {
+  where: Prisma.project_groupWhereUniqueInput
+  create: Prisma.XOR<Prisma.project_groupCreateWithoutProject_submissionInput, Prisma.project_groupUncheckedCreateWithoutProject_submissionInput>
+}
+
+export type project_groupUpsertWithoutProject_submissionInput = {
+  update: Prisma.XOR<Prisma.project_groupUpdateWithoutProject_submissionInput, Prisma.project_groupUncheckedUpdateWithoutProject_submissionInput>
+  create: Prisma.XOR<Prisma.project_groupCreateWithoutProject_submissionInput, Prisma.project_groupUncheckedCreateWithoutProject_submissionInput>
+  where?: Prisma.project_groupWhereInput
+}
+
+export type project_groupUpdateToOneWithWhereWithoutProject_submissionInput = {
+  where?: Prisma.project_groupWhereInput
+  data: Prisma.XOR<Prisma.project_groupUpdateWithoutProject_submissionInput, Prisma.project_groupUncheckedUpdateWithoutProject_submissionInput>
+}
+
+export type project_groupUpdateWithoutProject_submissionInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
+  staff_project_group_expert_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_expert_idTostaffNestedInput
+  staff_project_group_guide_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_guide_idTostaffNestedInput
+  project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
+  project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
+  project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+}
+
+export type project_groupUncheckedUpdateWithoutProject_submissionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+}
+
 export type project_groupCreateManyProject_typeInput = {
   id?: number
   name: string
@@ -1216,6 +1340,7 @@ export type project_groupUpdateWithoutProject_typeInput = {
   staff_project_group_guide_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_guide_idTostaffNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_typeInput = {
@@ -1232,6 +1357,7 @@ export type project_groupUncheckedUpdateWithoutProject_typeInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutProject_typeInput = {
@@ -1303,6 +1429,7 @@ export type project_groupUpdateWithoutStaff_project_group_convener_idTostaffInpu
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1319,6 +1446,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_convener_idTo
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1348,6 +1476,7 @@ export type project_groupUpdateWithoutStaff_project_group_expert_idTostaffInput 
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1364,6 +1493,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_expert_idTost
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1393,6 +1523,7 @@ export type project_groupUpdateWithoutStaff_project_group_guide_idTostaffInput =
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1409,6 +1540,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_guide_idTosta
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1433,11 +1565,13 @@ export type project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idT
 export type Project_groupCountOutputType = {
   project_group_member: number
   project_meeting: number
+  project_submission: number
 }
 
 export type Project_groupCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group_member?: boolean | Project_groupCountOutputTypeCountProject_group_memberArgs
   project_meeting?: boolean | Project_groupCountOutputTypeCountProject_meetingArgs
+  project_submission?: boolean | Project_groupCountOutputTypeCountProject_submissionArgs
 }
 
 /**
@@ -1464,6 +1598,13 @@ export type Project_groupCountOutputTypeCountProject_meetingArgs<ExtArgs extends
   where?: Prisma.project_meetingWhereInput
 }
 
+/**
+ * Project_groupCountOutputType without action
+ */
+export type Project_groupCountOutputTypeCountProject_submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.project_submissionWhereInput
+}
+
 
 export type project_groupSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1484,6 +1625,7 @@ export type project_groupSelect<ExtArgs extends runtime.Types.Extensions.Interna
   project_type?: boolean | Prisma.project_group$project_typeArgs<ExtArgs>
   project_group_member?: boolean | Prisma.project_group$project_group_memberArgs<ExtArgs>
   project_meeting?: boolean | Prisma.project_group$project_meetingArgs<ExtArgs>
+  project_submission?: boolean | Prisma.project_group$project_submissionArgs<ExtArgs>
   _count?: boolean | Prisma.Project_groupCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project_group"]>
 
@@ -1548,6 +1690,7 @@ export type project_groupInclude<ExtArgs extends runtime.Types.Extensions.Intern
   project_type?: boolean | Prisma.project_group$project_typeArgs<ExtArgs>
   project_group_member?: boolean | Prisma.project_group$project_group_memberArgs<ExtArgs>
   project_meeting?: boolean | Prisma.project_group$project_meetingArgs<ExtArgs>
+  project_submission?: boolean | Prisma.project_group$project_submissionArgs<ExtArgs>
   _count?: boolean | Prisma.Project_groupCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type project_groupIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1572,6 +1715,7 @@ export type $project_groupPayload<ExtArgs extends runtime.Types.Extensions.Inter
     project_type: Prisma.$project_typePayload<ExtArgs> | null
     project_group_member: Prisma.$project_group_memberPayload<ExtArgs>[]
     project_meeting: Prisma.$project_meetingPayload<ExtArgs>[]
+    project_submission: Prisma.$project_submissionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1986,6 +2130,7 @@ export interface Prisma__project_groupClient<T, Null = never, ExtArgs extends ru
   project_type<T extends Prisma.project_group$project_typeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_typeArgs<ExtArgs>>): Prisma.Prisma__project_typeClient<runtime.Types.Result.GetResult<Prisma.$project_typePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   project_group_member<T extends Prisma.project_group$project_group_memberArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_group_memberArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_group_memberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   project_meeting<T extends Prisma.project_group$project_meetingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_meetingArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_meetingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  project_submission<T extends Prisma.project_group$project_submissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_submissionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_submissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2544,6 +2689,30 @@ export type project_group$project_meetingArgs<ExtArgs extends runtime.Types.Exte
   take?: number
   skip?: number
   distinct?: Prisma.Project_meetingScalarFieldEnum | Prisma.Project_meetingScalarFieldEnum[]
+}
+
+/**
+ * project_group.project_submission
+ */
+export type project_group$project_submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the project_submission
+   */
+  select?: Prisma.project_submissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the project_submission
+   */
+  omit?: Prisma.project_submissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.project_submissionInclude<ExtArgs> | null
+  where?: Prisma.project_submissionWhereInput
+  orderBy?: Prisma.project_submissionOrderByWithRelationInput | Prisma.project_submissionOrderByWithRelationInput[]
+  cursor?: Prisma.project_submissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Project_submissionScalarFieldEnum | Prisma.Project_submissionScalarFieldEnum[]
 }
 
 /**

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import FacultyLayout from '@/components/FacultyLayout';
+import Link from 'next/link';
 import { FolderKanban, Users, Calendar, TrendingUp, Filter, Search, ExternalLink, Clock } from 'lucide-react';
 
 interface Project {
@@ -253,9 +254,12 @@ export default function ProjectsPage() {
                                 </div>
 
                                 <div className="flex gap-2">
-                                    <button className="flex-1 px-4 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 border border-purple-500/30 transition-all text-sm">
+                                    <Link
+                                        href={`/dashboard/faculty/projects/${project.id}`}
+                                        className="flex-1 px-4 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 border border-purple-500/30 transition-all text-sm text-center"
+                                    >
                                         View Details
-                                    </button>
+                                    </Link>
                                     <button className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-all">
                                         <ExternalLink className="w-4 h-4" />
                                     </button>

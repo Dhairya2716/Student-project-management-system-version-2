@@ -63,7 +63,24 @@ export async function GET(req: NextRequest) {
 
         const totalMeetings = hasGroup
             ? await prisma.project_meeting.count({
-                where: { group_id: groupMembership.group_id }
+                where: {
+                    group_id: groupMembership.group_id,
+                    OR: [
+                        { status: 'COMPLETED' },
+                        {
+                            project_meeting_attendance: {
+                                some: {
+                                    student_id: student.id
+                                }
+                            }
+                        },
+                        {
+                            meeting_datetime: {
+                                lt: new Date()
+                            }
+                        }
+                    ]
+                }
             })
             : 0;
 
@@ -84,8 +101,7 @@ export async function GET(req: NextRequest) {
             attendancePercentage: totalMeetings > 0
                 ? Math.round((attendedMeetings / totalMeetings) * 100)
                 : 0,
-            isLeader: hasGroup ? groupMembership.is_leader : false,
-            cgpa: groupMembership?.cgpa || null
+            isLeader: hasGroup ? groupMembership.is_leader : false
         };
 
         return NextResponse.json({
@@ -96,9 +112,13 @@ export async function GET(req: NextRequest) {
                 phone: student.phone,
                 enrollment_no: student.enrollment_no,
                 department: student.department,
-                batch: student.batch
+                batch: student.batch,
+                cgpa: student.cgpa
             },
-            stats
+            stats: {
+                ...stats,
+                cgpa: student.cgpa || null
+            }
         });
     } catch (error) {
         console.error('Error fetching student dashboard:', error);

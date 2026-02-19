@@ -30,12 +30,14 @@ export type StudentAvgAggregateOutputType = {
   id: number | null
   batch_id: number | null
   department_id: number | null
+  cgpa: number | null
 }
 
 export type StudentSumAggregateOutputType = {
   id: number | null
   batch_id: number | null
   department_id: number | null
+  cgpa: number | null
 }
 
 export type StudentMinAggregateOutputType = {
@@ -50,6 +52,7 @@ export type StudentMinAggregateOutputType = {
   password: string | null
   batch_id: number | null
   department_id: number | null
+  cgpa: number | null
 }
 
 export type StudentMaxAggregateOutputType = {
@@ -64,6 +67,7 @@ export type StudentMaxAggregateOutputType = {
   password: string | null
   batch_id: number | null
   department_id: number | null
+  cgpa: number | null
 }
 
 export type StudentCountAggregateOutputType = {
@@ -78,6 +82,7 @@ export type StudentCountAggregateOutputType = {
   password: number
   batch_id: number
   department_id: number
+  cgpa: number
   _all: number
 }
 
@@ -86,12 +91,14 @@ export type StudentAvgAggregateInputType = {
   id?: true
   batch_id?: true
   department_id?: true
+  cgpa?: true
 }
 
 export type StudentSumAggregateInputType = {
   id?: true
   batch_id?: true
   department_id?: true
+  cgpa?: true
 }
 
 export type StudentMinAggregateInputType = {
@@ -106,6 +113,7 @@ export type StudentMinAggregateInputType = {
   password?: true
   batch_id?: true
   department_id?: true
+  cgpa?: true
 }
 
 export type StudentMaxAggregateInputType = {
@@ -120,6 +128,7 @@ export type StudentMaxAggregateInputType = {
   password?: true
   batch_id?: true
   department_id?: true
+  cgpa?: true
 }
 
 export type StudentCountAggregateInputType = {
@@ -134,6 +143,7 @@ export type StudentCountAggregateInputType = {
   password?: true
   batch_id?: true
   department_id?: true
+  cgpa?: true
   _all?: true
 }
 
@@ -235,6 +245,7 @@ export type StudentGroupByOutputType = {
   password: string | null
   batch_id: number | null
   department_id: number | null
+  cgpa: number | null
   _count: StudentCountAggregateOutputType | null
   _avg: StudentAvgAggregateOutputType | null
   _sum: StudentSumAggregateOutputType | null
@@ -272,10 +283,12 @@ export type studentWhereInput = {
   password?: Prisma.StringNullableFilter<"student"> | string | null
   batch_id?: Prisma.IntNullableFilter<"student"> | number | null
   department_id?: Prisma.IntNullableFilter<"student"> | number | null
+  cgpa?: Prisma.FloatNullableFilter<"student"> | number | null
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting_attendance?: Prisma.Project_meeting_attendanceListRelationFilter
   batch?: Prisma.XOR<Prisma.BatchNullableScalarRelationFilter, Prisma.batchWhereInput> | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.departmentWhereInput> | null
+  project_submission?: Prisma.Project_submissionListRelationFilter
 }
 
 export type studentOrderByWithRelationInput = {
@@ -290,10 +303,12 @@ export type studentOrderByWithRelationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   batch_id?: Prisma.SortOrderInput | Prisma.SortOrder
   department_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  cgpa?: Prisma.SortOrderInput | Prisma.SortOrder
   project_group_member?: Prisma.project_group_memberOrderByRelationAggregateInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceOrderByRelationAggregateInput
   batch?: Prisma.batchOrderByWithRelationInput
   department?: Prisma.departmentOrderByWithRelationInput
+  project_submission?: Prisma.project_submissionOrderByRelationAggregateInput
 }
 
 export type studentWhereUniqueInput = Prisma.AtLeast<{
@@ -311,10 +326,12 @@ export type studentWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringNullableFilter<"student"> | string | null
   batch_id?: Prisma.IntNullableFilter<"student"> | number | null
   department_id?: Prisma.IntNullableFilter<"student"> | number | null
+  cgpa?: Prisma.FloatNullableFilter<"student"> | number | null
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting_attendance?: Prisma.Project_meeting_attendanceListRelationFilter
   batch?: Prisma.XOR<Prisma.BatchNullableScalarRelationFilter, Prisma.batchWhereInput> | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.departmentWhereInput> | null
+  project_submission?: Prisma.Project_submissionListRelationFilter
 }, "id" | "enrollment_no" | "email">
 
 export type studentOrderByWithAggregationInput = {
@@ -329,6 +346,7 @@ export type studentOrderByWithAggregationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   batch_id?: Prisma.SortOrderInput | Prisma.SortOrder
   department_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  cgpa?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.studentCountOrderByAggregateInput
   _avg?: Prisma.studentAvgOrderByAggregateInput
   _max?: Prisma.studentMaxOrderByAggregateInput
@@ -351,6 +369,7 @@ export type studentScalarWhereWithAggregatesInput = {
   password?: Prisma.StringNullableWithAggregatesFilter<"student"> | string | null
   batch_id?: Prisma.IntNullableWithAggregatesFilter<"student"> | number | null
   department_id?: Prisma.IntNullableWithAggregatesFilter<"student"> | number | null
+  cgpa?: Prisma.FloatNullableWithAggregatesFilter<"student"> | number | null
 }
 
 export type studentCreateInput = {
@@ -362,10 +381,12 @@ export type studentCreateInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   password?: string | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceCreateNestedManyWithoutStudentInput
   batch?: Prisma.batchCreateNestedOneWithoutStudentInput
   department?: Prisma.departmentCreateNestedOneWithoutStudentInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutStudentInput
 }
 
 export type studentUncheckedCreateInput = {
@@ -380,8 +401,10 @@ export type studentUncheckedCreateInput = {
   password?: string | null
   batch_id?: number | null
   department_id?: number | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedCreateNestedManyWithoutStudentInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
 export type studentUpdateInput = {
@@ -393,10 +416,12 @@ export type studentUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUpdateManyWithoutStudentNestedInput
   batch?: Prisma.batchUpdateOneWithoutStudentNestedInput
   department?: Prisma.departmentUpdateOneWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateInput = {
@@ -411,8 +436,10 @@ export type studentUncheckedUpdateInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedUpdateManyWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type studentCreateManyInput = {
@@ -427,6 +454,7 @@ export type studentCreateManyInput = {
   password?: string | null
   batch_id?: number | null
   department_id?: number | null
+  cgpa?: number | null
 }
 
 export type studentUpdateManyMutationInput = {
@@ -438,6 +466,7 @@ export type studentUpdateManyMutationInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type studentUncheckedUpdateManyInput = {
@@ -452,6 +481,7 @@ export type studentUncheckedUpdateManyInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type StudentListRelationFilter = {
@@ -481,12 +511,14 @@ export type studentCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   batch_id?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
+  cgpa?: Prisma.SortOrder
 }
 
 export type studentAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   batch_id?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
+  cgpa?: Prisma.SortOrder
 }
 
 export type studentMaxOrderByAggregateInput = {
@@ -501,6 +533,7 @@ export type studentMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   batch_id?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
+  cgpa?: Prisma.SortOrder
 }
 
 export type studentMinOrderByAggregateInput = {
@@ -515,12 +548,19 @@ export type studentMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   batch_id?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
+  cgpa?: Prisma.SortOrder
 }
 
 export type studentSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   batch_id?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
+  cgpa?: Prisma.SortOrder
+}
+
+export type StudentScalarRelationFilter = {
+  is?: Prisma.studentWhereInput
+  isNot?: Prisma.studentWhereInput
 }
 
 export type studentCreateNestedManyWithoutBatchInput = {
@@ -639,6 +679,20 @@ export type studentUpdateOneWithoutProject_meeting_attendanceNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.studentUpdateToOneWithWhereWithoutProject_meeting_attendanceInput, Prisma.studentUpdateWithoutProject_meeting_attendanceInput>, Prisma.studentUncheckedUpdateWithoutProject_meeting_attendanceInput>
 }
 
+export type studentCreateNestedOneWithoutProject_submissionInput = {
+  create?: Prisma.XOR<Prisma.studentCreateWithoutProject_submissionInput, Prisma.studentUncheckedCreateWithoutProject_submissionInput>
+  connectOrCreate?: Prisma.studentCreateOrConnectWithoutProject_submissionInput
+  connect?: Prisma.studentWhereUniqueInput
+}
+
+export type studentUpdateOneRequiredWithoutProject_submissionNestedInput = {
+  create?: Prisma.XOR<Prisma.studentCreateWithoutProject_submissionInput, Prisma.studentUncheckedCreateWithoutProject_submissionInput>
+  connectOrCreate?: Prisma.studentCreateOrConnectWithoutProject_submissionInput
+  upsert?: Prisma.studentUpsertWithoutProject_submissionInput
+  connect?: Prisma.studentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.studentUpdateToOneWithWhereWithoutProject_submissionInput, Prisma.studentUpdateWithoutProject_submissionInput>, Prisma.studentUncheckedUpdateWithoutProject_submissionInput>
+}
+
 export type studentCreateWithoutBatchInput = {
   enrollment_no?: string | null
   name: string
@@ -648,9 +702,11 @@ export type studentCreateWithoutBatchInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   password?: string | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceCreateNestedManyWithoutStudentInput
   department?: Prisma.departmentCreateNestedOneWithoutStudentInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutStudentInput
 }
 
 export type studentUncheckedCreateWithoutBatchInput = {
@@ -664,8 +720,10 @@ export type studentUncheckedCreateWithoutBatchInput = {
   updated_at?: Date | string | null
   password?: string | null
   department_id?: number | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedCreateNestedManyWithoutStudentInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
 export type studentCreateOrConnectWithoutBatchInput = {
@@ -709,6 +767,7 @@ export type studentScalarWhereInput = {
   password?: Prisma.StringNullableFilter<"student"> | string | null
   batch_id?: Prisma.IntNullableFilter<"student"> | number | null
   department_id?: Prisma.IntNullableFilter<"student"> | number | null
+  cgpa?: Prisma.FloatNullableFilter<"student"> | number | null
 }
 
 export type studentCreateWithoutDepartmentInput = {
@@ -720,9 +779,11 @@ export type studentCreateWithoutDepartmentInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   password?: string | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceCreateNestedManyWithoutStudentInput
   batch?: Prisma.batchCreateNestedOneWithoutStudentInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutStudentInput
 }
 
 export type studentUncheckedCreateWithoutDepartmentInput = {
@@ -736,8 +797,10 @@ export type studentUncheckedCreateWithoutDepartmentInput = {
   updated_at?: Date | string | null
   password?: string | null
   batch_id?: number | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutStudentInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedCreateNestedManyWithoutStudentInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
 export type studentCreateOrConnectWithoutDepartmentInput = {
@@ -775,9 +838,11 @@ export type studentCreateWithoutProject_group_memberInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   password?: string | null
+  cgpa?: number | null
   project_meeting_attendance?: Prisma.project_meeting_attendanceCreateNestedManyWithoutStudentInput
   batch?: Prisma.batchCreateNestedOneWithoutStudentInput
   department?: Prisma.departmentCreateNestedOneWithoutStudentInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutStudentInput
 }
 
 export type studentUncheckedCreateWithoutProject_group_memberInput = {
@@ -792,7 +857,9 @@ export type studentUncheckedCreateWithoutProject_group_memberInput = {
   password?: string | null
   batch_id?: number | null
   department_id?: number | null
+  cgpa?: number | null
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedCreateNestedManyWithoutStudentInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
 export type studentCreateOrConnectWithoutProject_group_memberInput = {
@@ -820,9 +887,11 @@ export type studentUpdateWithoutProject_group_memberInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_meeting_attendance?: Prisma.project_meeting_attendanceUpdateManyWithoutStudentNestedInput
   batch?: Prisma.batchUpdateOneWithoutStudentNestedInput
   department?: Prisma.departmentUpdateOneWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateWithoutProject_group_memberInput = {
@@ -837,7 +906,9 @@ export type studentUncheckedUpdateWithoutProject_group_memberInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedUpdateManyWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type studentCreateWithoutProject_meeting_attendanceInput = {
@@ -849,9 +920,11 @@ export type studentCreateWithoutProject_meeting_attendanceInput = {
   created_at?: Date | string | null
   updated_at?: Date | string | null
   password?: string | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutStudentInput
   batch?: Prisma.batchCreateNestedOneWithoutStudentInput
   department?: Prisma.departmentCreateNestedOneWithoutStudentInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutStudentInput
 }
 
 export type studentUncheckedCreateWithoutProject_meeting_attendanceInput = {
@@ -866,7 +939,9 @@ export type studentUncheckedCreateWithoutProject_meeting_attendanceInput = {
   password?: string | null
   batch_id?: number | null
   department_id?: number | null
+  cgpa?: number | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutStudentInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
 export type studentCreateOrConnectWithoutProject_meeting_attendanceInput = {
@@ -894,9 +969,11 @@ export type studentUpdateWithoutProject_meeting_attendanceInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutStudentNestedInput
   batch?: Prisma.batchUpdateOneWithoutStudentNestedInput
   department?: Prisma.departmentUpdateOneWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateWithoutProject_meeting_attendanceInput = {
@@ -911,7 +988,91 @@ export type studentUncheckedUpdateWithoutProject_meeting_attendanceInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutStudentNestedInput
+}
+
+export type studentCreateWithoutProject_submissionInput = {
+  enrollment_no?: string | null
+  name: string
+  phone?: string | null
+  email: string
+  description?: string | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  password?: string | null
+  cgpa?: number | null
+  project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutStudentInput
+  project_meeting_attendance?: Prisma.project_meeting_attendanceCreateNestedManyWithoutStudentInput
+  batch?: Prisma.batchCreateNestedOneWithoutStudentInput
+  department?: Prisma.departmentCreateNestedOneWithoutStudentInput
+}
+
+export type studentUncheckedCreateWithoutProject_submissionInput = {
+  id?: number
+  enrollment_no?: string | null
+  name: string
+  phone?: string | null
+  email: string
+  description?: string | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  password?: string | null
+  batch_id?: number | null
+  department_id?: number | null
+  cgpa?: number | null
+  project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutStudentInput
+  project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedCreateNestedManyWithoutStudentInput
+}
+
+export type studentCreateOrConnectWithoutProject_submissionInput = {
+  where: Prisma.studentWhereUniqueInput
+  create: Prisma.XOR<Prisma.studentCreateWithoutProject_submissionInput, Prisma.studentUncheckedCreateWithoutProject_submissionInput>
+}
+
+export type studentUpsertWithoutProject_submissionInput = {
+  update: Prisma.XOR<Prisma.studentUpdateWithoutProject_submissionInput, Prisma.studentUncheckedUpdateWithoutProject_submissionInput>
+  create: Prisma.XOR<Prisma.studentCreateWithoutProject_submissionInput, Prisma.studentUncheckedCreateWithoutProject_submissionInput>
+  where?: Prisma.studentWhereInput
+}
+
+export type studentUpdateToOneWithWhereWithoutProject_submissionInput = {
+  where?: Prisma.studentWhereInput
+  data: Prisma.XOR<Prisma.studentUpdateWithoutProject_submissionInput, Prisma.studentUncheckedUpdateWithoutProject_submissionInput>
+}
+
+export type studentUpdateWithoutProject_submissionInput = {
+  enrollment_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  project_group_member?: Prisma.project_group_memberUpdateManyWithoutStudentNestedInput
+  project_meeting_attendance?: Prisma.project_meeting_attendanceUpdateManyWithoutStudentNestedInput
+  batch?: Prisma.batchUpdateOneWithoutStudentNestedInput
+  department?: Prisma.departmentUpdateOneWithoutStudentNestedInput
+}
+
+export type studentUncheckedUpdateWithoutProject_submissionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  enrollment_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutStudentNestedInput
+  project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type studentCreateManyBatchInput = {
@@ -925,6 +1086,7 @@ export type studentCreateManyBatchInput = {
   updated_at?: Date | string | null
   password?: string | null
   department_id?: number | null
+  cgpa?: number | null
 }
 
 export type studentUpdateWithoutBatchInput = {
@@ -936,9 +1098,11 @@ export type studentUpdateWithoutBatchInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUpdateManyWithoutStudentNestedInput
   department?: Prisma.departmentUpdateOneWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateWithoutBatchInput = {
@@ -952,8 +1116,10 @@ export type studentUncheckedUpdateWithoutBatchInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedUpdateManyWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateManyWithoutBatchInput = {
@@ -967,6 +1133,7 @@ export type studentUncheckedUpdateManyWithoutBatchInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type studentCreateManyDepartmentInput = {
@@ -980,6 +1147,7 @@ export type studentCreateManyDepartmentInput = {
   updated_at?: Date | string | null
   password?: string | null
   batch_id?: number | null
+  cgpa?: number | null
 }
 
 export type studentUpdateWithoutDepartmentInput = {
@@ -991,9 +1159,11 @@ export type studentUpdateWithoutDepartmentInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUpdateManyWithoutStudentNestedInput
   batch?: Prisma.batchUpdateOneWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateWithoutDepartmentInput = {
@@ -1007,8 +1177,10 @@ export type studentUncheckedUpdateWithoutDepartmentInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutStudentNestedInput
   project_meeting_attendance?: Prisma.project_meeting_attendanceUncheckedUpdateManyWithoutStudentNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type studentUncheckedUpdateManyWithoutDepartmentInput = {
@@ -1022,6 +1194,7 @@ export type studentUncheckedUpdateManyWithoutDepartmentInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   batch_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cgpa?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 
@@ -1032,11 +1205,13 @@ export type studentUncheckedUpdateManyWithoutDepartmentInput = {
 export type StudentCountOutputType = {
   project_group_member: number
   project_meeting_attendance: number
+  project_submission: number
 }
 
 export type StudentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group_member?: boolean | StudentCountOutputTypeCountProject_group_memberArgs
   project_meeting_attendance?: boolean | StudentCountOutputTypeCountProject_meeting_attendanceArgs
+  project_submission?: boolean | StudentCountOutputTypeCountProject_submissionArgs
 }
 
 /**
@@ -1063,6 +1238,13 @@ export type StudentCountOutputTypeCountProject_meeting_attendanceArgs<ExtArgs ex
   where?: Prisma.project_meeting_attendanceWhereInput
 }
 
+/**
+ * StudentCountOutputType without action
+ */
+export type StudentCountOutputTypeCountProject_submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.project_submissionWhereInput
+}
+
 
 export type studentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1076,10 +1258,12 @@ export type studentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   password?: boolean
   batch_id?: boolean
   department_id?: boolean
+  cgpa?: boolean
   project_group_member?: boolean | Prisma.student$project_group_memberArgs<ExtArgs>
   project_meeting_attendance?: boolean | Prisma.student$project_meeting_attendanceArgs<ExtArgs>
   batch?: boolean | Prisma.student$batchArgs<ExtArgs>
   department?: boolean | Prisma.student$departmentArgs<ExtArgs>
+  project_submission?: boolean | Prisma.student$project_submissionArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
@@ -1095,6 +1279,7 @@ export type studentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   password?: boolean
   batch_id?: boolean
   department_id?: boolean
+  cgpa?: boolean
   batch?: boolean | Prisma.student$batchArgs<ExtArgs>
   department?: boolean | Prisma.student$departmentArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
@@ -1111,6 +1296,7 @@ export type studentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   password?: boolean
   batch_id?: boolean
   department_id?: boolean
+  cgpa?: boolean
   batch?: boolean | Prisma.student$batchArgs<ExtArgs>
   department?: boolean | Prisma.student$departmentArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
@@ -1127,14 +1313,16 @@ export type studentSelectScalar = {
   password?: boolean
   batch_id?: boolean
   department_id?: boolean
+  cgpa?: boolean
 }
 
-export type studentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "enrollment_no" | "name" | "phone" | "email" | "description" | "created_at" | "updated_at" | "password" | "batch_id" | "department_id", ExtArgs["result"]["student"]>
+export type studentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "enrollment_no" | "name" | "phone" | "email" | "description" | "created_at" | "updated_at" | "password" | "batch_id" | "department_id" | "cgpa", ExtArgs["result"]["student"]>
 export type studentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group_member?: boolean | Prisma.student$project_group_memberArgs<ExtArgs>
   project_meeting_attendance?: boolean | Prisma.student$project_meeting_attendanceArgs<ExtArgs>
   batch?: boolean | Prisma.student$batchArgs<ExtArgs>
   department?: boolean | Prisma.student$departmentArgs<ExtArgs>
+  project_submission?: boolean | Prisma.student$project_submissionArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type studentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1153,6 +1341,7 @@ export type $studentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     project_meeting_attendance: Prisma.$project_meeting_attendancePayload<ExtArgs>[]
     batch: Prisma.$batchPayload<ExtArgs> | null
     department: Prisma.$departmentPayload<ExtArgs> | null
+    project_submission: Prisma.$project_submissionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1166,6 +1355,7 @@ export type $studentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     password: string | null
     batch_id: number | null
     department_id: number | null
+    cgpa: number | null
   }, ExtArgs["result"]["student"]>
   composites: {}
 }
@@ -1564,6 +1754,7 @@ export interface Prisma__studentClient<T, Null = never, ExtArgs extends runtime.
   project_meeting_attendance<T extends Prisma.student$project_meeting_attendanceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.student$project_meeting_attendanceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_meeting_attendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   batch<T extends Prisma.student$batchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.student$batchArgs<ExtArgs>>): Prisma.Prisma__batchClient<runtime.Types.Result.GetResult<Prisma.$batchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   department<T extends Prisma.student$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.student$departmentArgs<ExtArgs>>): Prisma.Prisma__departmentClient<runtime.Types.Result.GetResult<Prisma.$departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  project_submission<T extends Prisma.student$project_submissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.student$project_submissionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_submissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1604,6 +1795,7 @@ export interface studentFieldRefs {
   readonly password: Prisma.FieldRef<"student", 'String'>
   readonly batch_id: Prisma.FieldRef<"student", 'Int'>
   readonly department_id: Prisma.FieldRef<"student", 'Int'>
+  readonly cgpa: Prisma.FieldRef<"student", 'Float'>
 }
     
 
@@ -2083,6 +2275,30 @@ export type student$departmentArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.departmentInclude<ExtArgs> | null
   where?: Prisma.departmentWhereInput
+}
+
+/**
+ * student.project_submission
+ */
+export type student$project_submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the project_submission
+   */
+  select?: Prisma.project_submissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the project_submission
+   */
+  omit?: Prisma.project_submissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.project_submissionInclude<ExtArgs> | null
+  where?: Prisma.project_submissionWhereInput
+  orderBy?: Prisma.project_submissionOrderByWithRelationInput | Prisma.project_submissionOrderByWithRelationInput[]
+  cursor?: Prisma.project_submissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Project_submissionScalarFieldEnum | Prisma.Project_submissionScalarFieldEnum[]
 }
 
 /**

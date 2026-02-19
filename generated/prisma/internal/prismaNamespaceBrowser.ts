@@ -60,7 +60,8 @@ export const ModelName = {
   project_type: 'project_type',
   staff: 'staff',
   student: 'student',
-  notification: 'notification'
+  notification: 'notification',
+  project_submission: 'project_submission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -206,7 +207,8 @@ export const StudentScalarFieldEnum = {
   updated_at: 'updated_at',
   password: 'password',
   batch_id: 'batch_id',
-  department_id: 'department_id'
+  department_id: 'department_id',
+  cgpa: 'cgpa'
 } as const
 
 export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
@@ -225,6 +227,20 @@ export const NotificationScalarFieldEnum = {
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const Project_submissionScalarFieldEnum = {
+  id: 'id',
+  group_id: 'group_id',
+  student_id: 'student_id',
+  title: 'title',
+  description: 'description',
+  link: 'link',
+  submission_type: 'submission_type',
+  created_at: 'created_at'
+} as const
+
+export type Project_submissionScalarFieldEnum = (typeof Project_submissionScalarFieldEnum)[keyof typeof Project_submissionScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -67,3 +67,8 @@ export type student = Prisma.studentModel
  * 
  */
 export type notification = Prisma.notificationModel
+/**
+ * Model project_submission
+ * 
+ */
+export type project_submission = Prisma.project_submissionModel

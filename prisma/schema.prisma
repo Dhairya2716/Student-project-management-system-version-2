@@ -47,6 +47,7 @@ model project_group {
   project_type                           project_type?          @relation(fields: [project_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   project_group_member                   project_group_member[]
   project_meeting                        project_meeting[]
+  project_submission                     project_submission[]
 }
 
 model project_group_member {
@@ -141,6 +142,8 @@ model student {
   project_meeting_attendance project_meeting_attendance[]
   batch                      batch?                       @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   department                 department?                  @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  project_submission         project_submission[]
+  cgpa                       Float?
 }
 
 model notification {
@@ -169,4 +172,20 @@ enum user_role {
   ADMIN
   FACULTY
   STUDENT
+}
+
+model project_submission {
+  id              Int            @id @default(autoincrement())
+  group_id        Int
+  student_id      Int
+  title           String         @db.VarChar(200)
+  description     String?
+  link            String         @db.VarChar(500)
+  submission_type String         @default("LINK") @db.VarChar(50)
+  created_at      DateTime       @default(now()) @db.Timestamp(6)
+  project_group   project_group  @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  student         student        @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([group_id])
+  @@index([student_id])
 }

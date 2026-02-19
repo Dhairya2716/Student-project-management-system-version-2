@@ -393,7 +393,8 @@ export const ModelName = {
   project_type: 'project_type',
   staff: 'staff',
   student: 'student',
-  notification: 'notification'
+  notification: 'notification',
+  project_submission: 'project_submission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student" | "notification"
+    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student" | "notification" | "project_submission"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1153,6 +1154,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    project_submission: {
+      payload: Prisma.$project_submissionPayload<ExtArgs>
+      fields: Prisma.project_submissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.project_submissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.project_submissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        findFirst: {
+          args: Prisma.project_submissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.project_submissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        findMany: {
+          args: Prisma.project_submissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>[]
+        }
+        create: {
+          args: Prisma.project_submissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        createMany: {
+          args: Prisma.project_submissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.project_submissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>[]
+        }
+        delete: {
+          args: Prisma.project_submissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        update: {
+          args: Prisma.project_submissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.project_submissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.project_submissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.project_submissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.project_submissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$project_submissionPayload>
+        }
+        aggregate: {
+          args: Prisma.Project_submissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProject_submission>
+        }
+        groupBy: {
+          args: Prisma.project_submissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Project_submissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.project_submissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Project_submissionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1319,7 +1394,8 @@ export const StudentScalarFieldEnum = {
   updated_at: 'updated_at',
   password: 'password',
   batch_id: 'batch_id',
-  department_id: 'department_id'
+  department_id: 'department_id',
+  cgpa: 'cgpa'
 } as const
 
 export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
@@ -1338,6 +1414,20 @@ export const NotificationScalarFieldEnum = {
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const Project_submissionScalarFieldEnum = {
+  id: 'id',
+  group_id: 'group_id',
+  student_id: 'student_id',
+  title: 'title',
+  description: 'description',
+  link: 'link',
+  submission_type: 'submission_type',
+  created_at: 'created_at'
+} as const
+
+export type Project_submissionScalarFieldEnum = (typeof Project_submissionScalarFieldEnum)[keyof typeof Project_submissionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1565,6 +1655,7 @@ export type GlobalOmitConfig = {
   staff?: Prisma.staffOmit
   student?: Prisma.studentOmit
   notification?: Prisma.notificationOmit
+  project_submission?: Prisma.project_submissionOmit
 }
 
 /* Types for Logging */
