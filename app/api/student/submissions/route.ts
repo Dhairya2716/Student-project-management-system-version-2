@@ -62,10 +62,10 @@ export async function POST(req: NextRequest) {
         }
 
         const body = await req.json();
-        const { title, description, link, submission_type } = body;
+        const { title, description, link, fileUrl, submission_type } = body;
 
-        if (!title || !link) {
-            return NextResponse.json({ error: 'Title and Link are required' }, { status: 400 });
+        if (!title || (!link && !fileUrl)) {
+            return NextResponse.json({ error: 'Title and either a Link or File are required' }, { status: 400 });
         }
 
         const newSubmission = await prisma.project_submission.create({
@@ -74,8 +74,10 @@ export async function POST(req: NextRequest) {
                 student_id: decoded.id,
                 title,
                 description,
-                link,
-                submission_type: submission_type || 'LINK'
+                link: link || null,
+                fileUrl: fileUrl || null,
+                submission_type: submission_type || 'LINK',
+                status: 'PENDING'
             }
         });
 

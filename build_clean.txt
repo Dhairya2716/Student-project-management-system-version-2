@@ -1,0 +1,26 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ΓÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 2.3s
+  Running TypeScript ...
+Failed to compile.
+System.Management.Automation.RemoteException
+.next/dev/types/validator.ts:459:31
+Type error: Type 'typeof import("C:/Users/LENOVO/Desktop/Darshan/SEM-6/AWT/project/spms/app/api/notifications/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/notifications/[id]">'.
+  Types of property 'PATCH' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ id: number; created_at: Date; title: string; user_id: number; ... 4 more ...; is_read: boolean; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+System.Management.Automation.RemoteException
+  457 |   type __IsExpected<Specific extends RouteHandlerConfig<"/api/notifications/[id]">> = Specific
+  458 |   const handler = {} as typeof import("../../../app/api/notifications/[id]/route.js")
+> 459 |   type __Check = __IsExpected<typeof handler>
+      |                               ^
+  460 |   // @ts-ignore
+  461 |   type __Unused = __Check
+  462 | }
+Next.js build worker exited with code: 1 and signal: null

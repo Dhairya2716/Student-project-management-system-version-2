@@ -18,6 +18,24 @@ export const meeting_status = {
 export type meeting_status = (typeof meeting_status)[keyof typeof meeting_status]
 
 
+export const group_status = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type group_status = (typeof group_status)[keyof typeof group_status]
+
+
+export const submission_status = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type submission_status = (typeof submission_status)[keyof typeof submission_status]
+
+
 export const user_role = {
   ADMIN: 'ADMIN',
   FACULTY: 'FACULTY',

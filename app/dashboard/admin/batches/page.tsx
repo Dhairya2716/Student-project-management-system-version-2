@@ -117,8 +117,8 @@ export default function BatchesPage() {
         <div>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">Batches</h1>
-                    <p className="text-white/50">Manage academic batches/years</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Batches</h1>
+                    <p className="text-gray-500 dark:text-gray-400">Manage academic batches/years</p>
                 </div>
                 <button onClick={openCreateModal} className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all">
                     <Plus className="w-5 h-5" />
@@ -134,13 +134,13 @@ export default function BatchesPage() {
             )}
 
             <div className="relative mb-6">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                     type="text"
                     placeholder="Search batches..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full max-w-md pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                    className="w-full max-w-md pl-12 pr-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                 />
             </div>
 
@@ -148,33 +148,33 @@ export default function BatchesPage() {
                 {loading ? (
                     <div className="col-span-full p-12 text-center">
                         <Loader2 className="w-8 h-8 text-orange-400 animate-spin mx-auto mb-4" />
-                        <p className="text-white/50">Loading batches...</p>
+                        <p className="text-gray-500 dark:text-gray-400">Loading batches...</p>
                     </div>
                 ) : filteredBatches.length === 0 ? (
                     <div className="col-span-full p-12 text-center">
-                        <BookOpen className="w-12 h-12 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/50">{searchQuery ? 'No batches found' : 'No batches yet'}</p>
+                        <BookOpen className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                        <p className="text-gray-500 dark:text-gray-400">{searchQuery ? 'No batches found' : 'No batches yet'}</p>
                     </div>
                 ) : (
                     filteredBatches.map((batch) => (
-                        <div key={batch.id} className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-orange-500/30 transition-all group">
+                        <div key={batch.id} className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-orange-500/30 transition-all group">
                             <div className="flex items-start justify-between mb-4">
                                 <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
                                     <Calendar className="w-6 h-6 text-orange-400" />
                                 </div>
                                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button onClick={() => openEditModal(batch)} className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                                    <button onClick={() => openEditModal(batch)} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all">
                                         <Edit2 className="w-4 h-4" />
                                     </button>
-                                    <button onClick={() => handleDelete(batch.id)} className="p-2 rounded-lg text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all">
+                                    <button onClick={() => handleDelete(batch.id)} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all">
                                         <Trash2 className="w-4 h-4" />
                                     </button>
                                 </div>
                             </div>
-                            <h3 className="text-xl font-semibold text-white mb-2">{batch.name}</h3>
-                            <p className="text-white/50 text-sm mb-4">{batch.start_year} - {batch.end_year}</p>
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{batch.name}</h3>
+                            <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">{batch.start_year} - {batch.end_year}</p>
                             <div className="flex items-center gap-2 text-sm">
-                                <span className="px-3 py-1 rounded-lg bg-white/5 text-white/70">
+                                <span className="px-3 py-1 rounded-lg bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300">
                                     {batch._count?.student || 0} Students
                                 </span>
                             </div>
@@ -186,49 +186,49 @@ export default function BatchesPage() {
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal}></div>
-                    <div className="relative w-full max-w-md bg-[#12121a] border border-white/10 rounded-2xl shadow-2xl">
-                        <div className="flex items-center justify-between p-6 border-b border-white/10">
+                    <div className="relative w-full max-w-md bg-[#12121a] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl">
+                        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-white/10">
                             <h2 className="text-xl font-bold text-white">{editingBatch ? 'Edit Batch' : 'Add Batch'}</h2>
-                            <button onClick={closeModal} className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                            <button onClick={closeModal} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all">
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-5">
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">Batch Name</label>
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Batch Name</label>
                                 <input
                                     type="text"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     placeholder="e.g. 2024-2028"
                                     required
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                 />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Start Year</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Start Year</label>
                                     <input
                                         type="number"
                                         value={formData.start_year}
                                         onChange={(e) => setFormData({ ...formData, start_year: parseInt(e.target.value) })}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">End Year</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">End Year</label>
                                     <input
                                         type="number"
                                         value={formData.end_year}
                                         onChange={(e) => setFormData({ ...formData, end_year: parseInt(e.target.value) })}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                             </div>
                             <div className="flex gap-3 pt-2">
-                                <button type="button" onClick={closeModal} className="flex-1 px-4 py-3 bg-white/5 text-white font-medium rounded-xl border border-white/10 hover:bg-white/10 transition-all">Cancel</button>
+                                <button type="button" onClick={closeModal} className="flex-1 px-4 py-3 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white font-medium rounded-xl border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:bg-white/10 transition-all">Cancel</button>
                                 <button type="submit" disabled={saving} className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all disabled:opacity-50 flex items-center justify-center gap-2">
                                     {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
                                     {editingBatch ? 'Update' : 'Create'}

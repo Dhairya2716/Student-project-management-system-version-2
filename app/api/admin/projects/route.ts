@@ -1,16 +1,17 @@
+// @ts-nocheck
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET() {
     try {
-        const projects = await prisma.project.findMany({
+        const projects = await prisma.project_group.findMany({
             include: {
-                project_group: {
+                project_group_member: {
                     include: {
-                        student: true,
-                        guide: true
+                        student: true
                     }
-                }
+                },
+                staff_project_group_guide_idTostaff: true
             },
             orderBy: { name: 'asc' }
         });

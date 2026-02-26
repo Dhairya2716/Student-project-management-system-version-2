@@ -39,6 +39,7 @@ model project_group {
   guide_id                               Int?
   convener_id                            Int?
   expert_id                              Int?
+  status                                 group_status?          @default(PENDING)
   created_at                             DateTime?              @default(now()) @db.Timestamp(6)
   updated_at                             DateTime?              @default(now()) @db.Timestamp(6)
   staff_project_group_convener_idTostaff staff?                 @relation("project_group_convener_idTostaff", fields: [convener_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -168,6 +169,18 @@ enum meeting_status {
   CANCELLED
 }
 
+enum group_status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum submission_status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 enum user_role {
   ADMIN
   FACULTY
@@ -180,8 +193,10 @@ model project_submission {
   student_id      Int
   title           String         @db.VarChar(200)
   description     String?
-  link            String         @db.VarChar(500)
+  link            String?        @db.VarChar(500)
+  fileUrl         String?        @db.VarChar(500)
   submission_type String         @default("LINK") @db.VarChar(50)
+  status          submission_status @default(PENDING)
   created_at      DateTime       @default(now()) @db.Timestamp(6)
   project_group   project_group  @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   student         student        @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)

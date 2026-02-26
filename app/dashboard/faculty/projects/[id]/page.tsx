@@ -47,8 +47,10 @@ interface Submission {
     id: number;
     title: string;
     description: string | null;
-    link: string;
+    link: string | null;
+    fileUrl: string | null;
     submission_type: string;
+    status: 'PENDING' | 'APPROVED' | 'REJECTED';
     created_at: string;
     student: {
         name: string;
@@ -108,6 +110,30 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
         }
     };
 
+    const handleUpdateSubmissionStatus = async (submissionId: number, status: 'APPROVED' | 'REJECTED') => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`/api/faculty/projects/${id}/submissions/${submissionId}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status })
+            });
+
+            if (response.ok) {
+                // Instantly update local state to avoid refetching everything
+                setSubmissions(submissions.map(sub =>
+                    sub.id === submissionId ? { ...sub, status } : sub
+                ));
+            }
+        } catch (error) {
+            console.error('Error updating submission status:', error);
+            alert('Failed to update submission status');
+        }
+    };
+
     if (loading) {
         return (
             <FacultyLayout>
@@ -145,8 +171,8 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                     <button
                         onClick={() => setActiveTab('overview')}
                         className={`px-6 py-2.5 rounded-lg transition-all text-sm font-medium ${activeTab === 'overview'
-                                ? 'bg-purple-500/20 text-purple-300'
-                                : 'text-white/50 hover:text-white'
+                            ? 'bg-purple-500/20 text-purple-300'
+                            : 'text-white/50 hover:text-white'
                             }`}
                     >
                         Overview
@@ -154,8 +180,8 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                     <button
                         onClick={() => setActiveTab('submissions')}
                         className={`px-6 py-2.5 rounded-lg transition-all text-sm font-medium ${activeTab === 'submissions'
-                                ? 'bg-purple-500/20 text-purple-300'
-                                : 'text-white/50 hover:text-white'
+                            ? 'bg-purple-500/20 text-purple-300'
+                            : 'text-white/50 hover:text-white'
                             }`}
                     >
                         Submissions
@@ -248,6 +274,12 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                                             <div className="flex-1">
                                                 <div className="flex items-center gap-3 mb-1">
                                                     <h4 className="text-lg font-medium text-white">{submission.title}</h4>
+                                                    <span className={`text-xs px-2 py-0.5 rounded flex items-center gap-1 font-medium ${submission.status === 'APPROVED' ? 'bg-emerald-500/10 text-emerald-400' :
+                                                            submission.status === 'REJECTED' ? 'bg-red-500/10 text-red-400' :
+                                                                'bg-amber-500/10 text-amber-400'
+                                                        }`}>
+                                                        {submission.status.charAt(0) + submission.status.slice(1).toLowerCase()}
+                                                    </span>
                                                     <span className="text-xs text-white/40 bg-white/5 px-2 py-0.5 rounded flex items-center gap-1">
                                                         <Clock className="w-3 h-3" />
                                                         {new Date(submission.created_at).toLocaleDateString()}
@@ -261,13 +293,33 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                                                         <Users className="w-3 h-3" />
                                                         Submitted by <span className="text-purple-400">{submission.student?.name}</span> ({submission.student?.enrollment_no})
                                                     </span>
+                                                    <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400">
+                                                        {submission.submission_type === 'FILE' ? 'File Upload' : 'External Link'}
+                                                    </span>
                                                 </div>
+                                                {submission.status === 'PENDING' && (
+                                                    <div className="mt-4 flex items-center gap-2">
+                                                        <button
+                                                            onClick={() => handleUpdateSubmissionStatus(submission.id, 'APPROVED')}
+                                                            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-all border border-emerald-500/20"
+                                                        >
+                                                            Approve
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleUpdateSubmissionStatus(submission.id, 'REJECTED')}
+                                                            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all border border-red-500/20"
+                                                        >
+                                                            Reject
+                                                        </button>
+                                                    </div>
+                                                )}
                                             </div>
                                             <a
-                                                href={submission.link}
+                                                href={submission.submission_type === 'FILE' ? (submission.fileUrl || '#') : (submission.link || '#')}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="p-2 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all"
+                                                download={submission.submission_type === 'FILE'}
                                             >
                                                 <ExternalLink className="w-5 h-5" />
                                             </a>

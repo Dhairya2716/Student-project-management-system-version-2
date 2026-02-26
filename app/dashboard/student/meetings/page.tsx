@@ -84,7 +84,7 @@ export default function StudentMeetingsPage() {
             case 'CANCELLED':
                 return 'bg-red-500/10 text-red-400 border-red-500/20';
             default:
-                return 'bg-white/10 text-white/40 border-white/20';
+                return 'bg-gray-200 dark:bg-white/10 text-gray-500 dark:text-gray-400 border-gray-300 dark:border-white/20';
         }
     };
 
@@ -110,27 +110,27 @@ export default function StudentMeetingsPage() {
         <StudentLayout>
             <div className="p-8">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-2">Meetings</h1>
-                    <p className="text-white/50">View your project meetings and attendance</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Meetings</h1>
+                    <p className="text-gray-500 dark:text-gray-400">View your project meetings and attendance</p>
                 </div>
 
                 {/* Filter Tabs */}
-                <div className="flex items-center gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-6 w-fit">
+                <div className="flex items-center gap-2 p-1 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 mb-6 w-fit">
                     <button
                         onClick={() => setFilter('all')}
-                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'all' ? 'bg-emerald-500/20 text-white' : 'text-white/50 hover:text-white'}`}
+                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'all' ? 'bg-emerald-500/20 text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
                     >
                         All Meetings
                     </button>
                     <button
                         onClick={() => setFilter('upcoming')}
-                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'upcoming' ? 'bg-emerald-500/20 text-white' : 'text-white/50 hover:text-white'}`}
+                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'upcoming' ? 'bg-emerald-500/20 text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
                     >
                         Upcoming
                     </button>
                     <button
                         onClick={() => setFilter('past')}
-                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'past' ? 'bg-emerald-500/20 text-white' : 'text-white/50 hover:text-white'}`}
+                        className={`px-4 py-2 rounded-lg transition-all ${filter === 'past' ? 'bg-emerald-500/20 text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
                     >
                         Past
                     </button>
@@ -138,9 +138,9 @@ export default function StudentMeetingsPage() {
 
                 {/* Meetings List */}
                 {filteredMeetings.length === 0 ? (
-                    <div className="text-center py-16 rounded-2xl bg-white/[0.02] border border-white/10">
-                        <Calendar className="w-16 h-16 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/40 text-lg">No meetings found</p>
+                    <div className="text-center py-16 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
+                        <Calendar className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                        <p className="text-gray-500 dark:text-gray-400 text-lg">No meetings found</p>
                     </div>
                 ) : (
                     <div className="space-y-4">
@@ -149,7 +149,7 @@ export default function StudentMeetingsPage() {
                             const isPast = new Date(meeting.meeting_datetime) < new Date();
 
                             return (
-                                <div key={meeting.id} className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all">
+                                <div key={meeting.id} className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-emerald-500/30 transition-all">
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-3 mb-2">
@@ -161,7 +161,7 @@ export default function StudentMeetingsPage() {
                                                 </span>
                                             </div>
                                             {meeting.project_group && (
-                                                <p className="text-sm text-white/40 mb-3">{meeting.project_group.name}</p>
+                                                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{meeting.project_group.name}</p>
                                             )}
                                         </div>
                                         {meeting.myAttendance && (
@@ -182,25 +182,25 @@ export default function StudentMeetingsPage() {
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                             <Calendar className="w-5 h-5 text-cyan-400" />
                                             <div>
-                                                <p className="text-xs text-white/40">Date</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-400">Date</p>
                                                 <p className="text-sm font-medium text-white">{date}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                             <Clock className="w-5 h-5 text-purple-400" />
                                             <div>
-                                                <p className="text-xs text-white/40">Time</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-400">Time</p>
                                                 <p className="text-sm font-medium text-white">{time}</p>
                                             </div>
                                         </div>
                                         {meeting.location && (
-                                            <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                            <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                                 <MapPin className="w-5 h-5 text-emerald-400" />
                                                 <div>
-                                                    <p className="text-xs text-white/40">Location</p>
+                                                    <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
                                                     <p className="text-sm font-medium text-white">{meeting.location}</p>
                                                 </div>
                                             </div>
@@ -208,19 +208,19 @@ export default function StudentMeetingsPage() {
                                     </div>
 
                                     {meeting.staff && (
-                                        <div className="flex items-center gap-2 text-sm text-white/40 mb-3">
+                                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
                                             <User className="w-4 h-4" />
                                             <span>Conducted by: {meeting.staff.name}</span>
                                         </div>
                                     )}
 
                                     {meeting.notes && (
-                                        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 mt-3">
+                                        <div className="p-4 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 mt-3">
                                             <div className="flex items-center gap-2 mb-2">
-                                                <FileText className="w-4 h-4 text-white/40" />
-                                                <span className="text-sm font-medium text-white/60">Notes</span>
+                                                <FileText className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                                                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Notes</span>
                                             </div>
-                                            <p className="text-sm text-white/50">{meeting.notes}</p>
+                                            <p className="text-sm text-gray-500 dark:text-gray-400">{meeting.notes}</p>
                                         </div>
                                     )}
 
@@ -230,7 +230,7 @@ export default function StudentMeetingsPage() {
                                                 <AlertCircle className="w-4 h-4 text-amber-400" />
                                                 <span className="text-sm font-medium text-amber-400">Remarks</span>
                                             </div>
-                                            <p className="text-sm text-white/60">{meeting.myAttendance.remarks}</p>
+                                            <p className="text-sm text-gray-500 dark:text-gray-400">{meeting.myAttendance.remarks}</p>
                                         </div>
                                     )}
                                 </div>

@@ -248,8 +248,8 @@ export default function MeetingsPage() {
             <div className="p-8">
                 <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-white mb-2">Meetings</h1>
-                        <p className="text-white/40">Schedule and manage project meetings</p>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Meetings</h1>
+                        <p className="text-gray-500 dark:text-gray-400">Schedule and manage project meetings</p>
                     </div>
                     <button
                         onClick={() => setShowCreateModal(true)}
@@ -261,9 +261,9 @@ export default function MeetingsPage() {
                 </div>
 
                 {meetings.length === 0 ? (
-                    <div className="text-center py-16 rounded-2xl bg-white/[0.02] border border-white/10">
-                        <Calendar className="w-16 h-16 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/40 text-lg mb-4">No meetings scheduled</p>
+                    <div className="text-center py-16 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
+                        <Calendar className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                        <p className="text-gray-500 dark:text-gray-400 text-lg mb-4">No meetings scheduled</p>
                         <button
                             onClick={() => setShowCreateModal(true)}
                             className="px-6 py-3 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30 hover:bg-purple-500/30 transition-all"
@@ -274,7 +274,7 @@ export default function MeetingsPage() {
                 ) : (
                     <div className="space-y-4">
                         {meetings.map((meeting) => (
-                            <div key={meeting.id} className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-500/30 transition-all">
+                            <div key={meeting.id} className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-purple-500/30 transition-all">
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-2">
@@ -284,16 +284,16 @@ export default function MeetingsPage() {
                                                 {meeting.status}
                                             </span>
                                         </div>
-                                        <p className="text-white/60 text-sm">{meeting.project_group.title}</p>
+                                        <p className="text-gray-500 dark:text-gray-400 text-sm">{meeting.project_group.title}</p>
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                    <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                    <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                         <Calendar className="w-5 h-5 text-purple-400" />
                                         <div>
-                                            <p className="text-xs text-white/40">Date & Time</p>
-                                            <p className="text-sm text-white font-medium">
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">Date & Time</p>
+                                            <p className="text-sm text-gray-900 dark:text-white font-medium">
                                                 {new Date(meeting.meeting_datetime).toLocaleString('en-US', {
                                                     dateStyle: 'medium',
                                                     timeStyle: 'short'
@@ -302,28 +302,28 @@ export default function MeetingsPage() {
                                         </div>
                                     </div>
                                     {meeting.duration && (
-                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                             <Clock className="w-5 h-5 text-violet-400" />
                                             <div>
-                                                <p className="text-xs text-white/40">Duration</p>
-                                                <p className="text-sm text-white font-medium">{meeting.duration} minutes</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-400">Duration</p>
+                                                <p className="text-sm text-gray-900 dark:text-white font-medium">{meeting.duration} minutes</p>
                                             </div>
                                         </div>
                                     )}
                                     {meeting.location && (
-                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                        <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                             <MapPin className="w-5 h-5 text-cyan-400" />
                                             <div>
-                                                <p className="text-xs text-white/40">Location</p>
-                                                <p className="text-sm text-white font-medium">{meeting.location}</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
+                                                <p className="text-sm text-gray-900 dark:text-white font-medium">{meeting.location}</p>
                                             </div>
                                         </div>
                                     )}
-                                    <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/10">
+                                    <div className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                                         <Users className="w-5 h-5 text-emerald-400" />
                                         <div>
-                                            <p className="text-xs text-white/40">Participants</p>
-                                            <p className="text-sm text-white font-medium">
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">Participants</p>
+                                            <p className="text-sm text-gray-900 dark:text-white font-medium">
                                                 {meeting.project_group.project_group_member.length} students
                                             </p>
                                         </div>
@@ -332,7 +332,7 @@ export default function MeetingsPage() {
 
                                 {meeting.meeting_link && (
                                     <div className="mb-4">
-                                        <p className="text-xs text-white/40 mb-2">Meeting Link</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Meeting Link</p>
                                         <a
                                             href={meeting.meeting_link}
                                             target="_blank"
@@ -346,22 +346,22 @@ export default function MeetingsPage() {
 
                                 {meeting.purpose && (
                                     <div className="mb-4">
-                                        <p className="text-xs text-white/40 mb-1">Purpose</p>
-                                        <p className="text-sm text-white/80">{meeting.purpose}</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Purpose</p>
+                                        <p className="text-sm text-gray-700 dark:text-gray-300">{meeting.purpose}</p>
                                     </div>
                                 )}
 
                                 {meeting.agenda && (
                                     <div className="mb-4">
-                                        <p className="text-xs text-white/40 mb-1">Agenda</p>
-                                        <p className="text-sm text-white/80 whitespace-pre-wrap">{meeting.agenda}</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Agenda</p>
+                                        <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{meeting.agenda}</p>
                                     </div>
                                 )}
 
                                 {meeting.notes && (
                                     <div className="mb-4">
-                                        <p className="text-xs text-white/40 mb-1">Notes</p>
-                                        <p className="text-sm text-white/60">{meeting.notes}</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Notes</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400">{meeting.notes}</p>
                                     </div>
                                 )}
 
@@ -396,23 +396,23 @@ export default function MeetingsPage() {
 
                 {showCreateModal && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-                        <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl bg-[#0a0a0f] border border-white/10">
-                            <div className="flex items-center justify-between p-6 pb-4 border-b border-white/10">
+                        <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl bg-white dark:bg-[#0a0a0f] border border-gray-200 dark:border-white/10">
+                            <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 dark:border-white/10">
                                 <h2 className="text-2xl font-bold text-white">Schedule New Meeting</h2>
-                                <button onClick={() => setShowCreateModal(false)} className="p-2 rounded-xl hover:bg-white/5 transition-all">
-                                    <X className="w-5 h-5 text-white/50" />
+                                <button onClick={() => setShowCreateModal(false)} className="p-2 rounded-xl hover:bg-gray-100 dark:bg-white/5 transition-all">
+                                    <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                                 </button>
                             </div>
 
                             <form onSubmit={handleCreateMeeting} className="flex flex-col flex-1 overflow-hidden">
                                 <div className="overflow-y-auto px-6 py-4 space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-white/80 mb-2">Project Group</label>
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Project Group</label>
                                         <select
                                             required
                                             value={formData.group_id}
                                             onChange={(e) => setFormData({ ...formData, group_id: e.target.value })}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-purple-500/50 transition-all"
+                                            className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:border-purple-500/50 transition-all"
                                         >
                                             <option value="">Select a group</option>
                                             {groups.map((group) => (
@@ -425,18 +425,18 @@ export default function MeetingsPage() {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-white/80 mb-2">Date & Time</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Date & Time</label>
                                             <input
                                                 type="datetime-local"
                                                 required
                                                 value={formData.meeting_datetime}
                                                 onChange={(e) => setFormData({ ...formData, meeting_datetime: e.target.value })}
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-purple-500/50 transition-all"
+                                                className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:border-purple-500/50 transition-all"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-white/80 mb-2">Duration (minutes)</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Duration (minutes)</label>
                                             <input
                                                 type="number"
                                                 min="15"
@@ -444,71 +444,71 @@ export default function MeetingsPage() {
                                                 value={formData.duration}
                                                 onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                                                 placeholder="60"
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                                className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-white/80 mb-2">Purpose</label>
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Purpose</label>
                                         <input
                                             type="text"
                                             value={formData.purpose}
                                             onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                                             placeholder="e.g., Progress Review, Design Discussion"
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                            className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                         />
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-white/80 mb-2">Location</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Location</label>
                                             <input
                                                 type="text"
                                                 value={formData.location}
                                                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                                                 placeholder="e.g., Room 301, Lab 2"
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                                className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-white/80 mb-2">Meeting Link (Optional)</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Meeting Link (Optional)</label>
                                             <input
                                                 type="url"
                                                 value={formData.meeting_link}
                                                 onChange={(e) => setFormData({ ...formData, meeting_link: e.target.value })}
                                                 placeholder="https://zoom.us/j/..."
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                                className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-white/80 mb-2">Agenda</label>
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Agenda</label>
                                         <textarea
                                             value={formData.agenda}
                                             onChange={(e) => setFormData({ ...formData, agenda: e.target.value })}
                                             placeholder="Meeting agenda and discussion points..."
                                             rows={3}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
+                                            className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-white/80 mb-2">Notes</label>
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Notes</label>
                                         <textarea
                                             value={formData.notes}
                                             onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                                             placeholder="Additional notes or agenda items..."
                                             rows={4}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
+                                            className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
                                         />
                                     </div>
 
                                 </div>
 
-                                <div className="flex gap-3 p-6 pt-4 border-t border-white/10">
+                                <div className="flex gap-3 p-6 pt-4 border-t border-gray-200 dark:border-white/10">
                                     <button
                                         type="submit"
                                         className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all"
@@ -518,7 +518,7 @@ export default function MeetingsPage() {
                                     <button
                                         type="button"
                                         onClick={() => setShowCreateModal(false)}
-                                        className="px-6 py-3 rounded-xl bg-white/5 text-white/50 hover:text-white hover:bg-white/10 border border-white/10 transition-all"
+                                        className="px-6 py-3 rounded-xl bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:bg-white/10 border border-gray-200 dark:border-white/10 transition-all"
                                     >
                                         Cancel
                                     </button>
@@ -530,29 +530,29 @@ export default function MeetingsPage() {
 
                 {selectedMeeting && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-                        <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl bg-[#0a0a0f] border border-white/10">
-                            <div className="flex items-center justify-between p-6 pb-4 border-b border-white/10">
+                        <div className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl bg-white dark:bg-[#0a0a0f] border border-gray-200 dark:border-white/10">
+                            <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 dark:border-white/10">
                                 <h2 className="text-2xl font-bold text-white">Meeting Details</h2>
-                                <button onClick={() => setSelectedMeeting(null)} className="p-2 rounded-xl hover:bg-white/5 transition-all">
-                                    <X className="w-5 h-5 text-white/50" />
+                                <button onClick={() => setSelectedMeeting(null)} className="p-2 rounded-xl hover:bg-gray-100 dark:bg-white/5 transition-all">
+                                    <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                                 </button>
                             </div>
 
                             <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
                                 <div>
-                                    <h3 className="text-lg font-semibold text-white mb-2">{selectedMeeting.project_group.name}</h3>
-                                    <p className="text-white/60 text-sm">{selectedMeeting.project_group.title}</p>
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{selectedMeeting.project_group.name}</h3>
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm">{selectedMeeting.project_group.title}</p>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                                        <p className="text-xs text-white/40 mb-1">Date & Time</p>
-                                        <p className="text-white">
+                                    <div className="p-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Date & Time</p>
+                                        <p className="text-gray-900 dark:text-white">
                                             {new Date(selectedMeeting.meeting_datetime).toLocaleString()}
                                         </p>
                                     </div>
-                                    <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                                        <p className="text-xs text-white/40 mb-1">Status</p>
+                                    <div className="p-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
+                                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Status</p>
                                         <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-lg border ${getStatusColor(selectedMeeting.status)}`}>
                                             {getStatusIcon(selectedMeeting.status)}
                                             {selectedMeeting.status}
@@ -561,16 +561,16 @@ export default function MeetingsPage() {
                                 </div>
 
                                 <div>
-                                    <h3 className="text-lg font-semibold text-white mb-4">Attendance</h3>
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Attendance</h3>
                                     <div className="space-y-3">
                                         {selectedMeeting.project_group.project_group_member.map((member) => (
-                                            <div key={member.student.id} className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
+                                            <div key={member.student.id} className="flex items-center justify-between p-3 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
                                                 <div>
-                                                    <p className="text-white font-medium">{member.student.name}</p>
-                                                    <p className="text-white/40 text-sm">{member.student.enrollment_no}</p>
+                                                    <p className="text-gray-900 dark:text-white font-medium">{member.student.name}</p>
+                                                    <p className="text-gray-500 dark:text-gray-400 text-sm">{member.student.enrollment_no}</p>
                                                 </div>
                                                 <label className="flex items-center gap-3 cursor-pointer">
-                                                    <span className="text-sm text-white/60">Present</span>
+                                                    <span className="text-sm text-gray-500 dark:text-gray-400">Present</span>
                                                     <input
                                                         type="checkbox"
                                                         checked={attendanceData[member.student.id]?.is_present || false}
@@ -583,7 +583,7 @@ export default function MeetingsPage() {
                                                                 }
                                                             }));
                                                         }}
-                                                        className="w-5 h-5 rounded border-white/20 bg-white/10 text-purple-500 focus:ring-purple-500/50"
+                                                        className="w-5 h-5 rounded border-gray-300 dark:border-white/20 bg-gray-200 dark:bg-white/10 text-purple-500 focus:ring-purple-500/50"
                                                     />
                                                 </label>
                                             </div>
@@ -592,7 +592,7 @@ export default function MeetingsPage() {
                                 </div>
                             </div>
 
-                            <div className="flex gap-3 p-6 pt-4 border-t border-white/10">
+                            <div className="flex gap-3 p-6 pt-4 border-t border-gray-200 dark:border-white/10">
                                 <button
                                     onClick={handleSaveDetails}
                                     className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all"
@@ -601,7 +601,7 @@ export default function MeetingsPage() {
                                 </button>
                                 <button
                                     onClick={() => setSelectedMeeting(null)}
-                                    className="px-6 py-3 rounded-xl bg-white/5 text-white/50 hover:text-white hover:bg-white/10 border border-white/10 transition-all"
+                                    className="px-6 py-3 rounded-xl bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:bg-white/10 border border-gray-200 dark:border-white/10 transition-all"
                                 >
                                     Close
                                 </button>

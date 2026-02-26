@@ -115,6 +115,7 @@ export const Project_groupScalarFieldEnum = {
   guide_id: 'guide_id',
   convener_id: 'convener_id',
   expert_id: 'expert_id',
+  status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -236,7 +237,9 @@ export const Project_submissionScalarFieldEnum = {
   title: 'title',
   description: 'description',
   link: 'link',
+  fileUrl: 'fileUrl',
   submission_type: 'submission_type',
+  status: 'status',
   created_at: 'created_at'
 } as const
 

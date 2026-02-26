@@ -64,57 +64,57 @@ export default function StudentSettings() {
         <StudentLayout>
             <div className="p-8 max-w-2xl mx-auto">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-2">Settings</h1>
-                    <p className="text-white/50">Manage your account security</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Settings</h1>
+                    <p className="text-gray-500 dark:text-gray-400">Manage your account security</p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <div className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center">
                             <Lock className="w-6 h-6 text-amber-400" />
                         </div>
                         <div>
                             <h2 className="text-xl font-semibold text-white">Change Password</h2>
-                            <p className="text-white/50 text-sm">Update your login credentials</p>
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">Update your login credentials</p>
                         </div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-white/70 mb-2">
+                            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                 Current Password
                             </label>
                             <input
                                 type="password"
                                 value={currentPassword}
                                 onChange={(e) => setCurrentPassword(e.target.value)}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
+                                className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
                                 required
                             />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     New Password
                                 </label>
                                 <input
                                     type="password"
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     Confirm New Password
                                 </label>
                                 <input
                                     type="password"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all font-mono"
                                     required
                                 />
                             </div>
@@ -134,7 +134,7 @@ export default function StudentSettings() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-medium rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-gray-900 dark:text-white font-medium rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <Save className="w-5 h-5" />
                                 {loading ? 'Updating...' : 'Update Password'}

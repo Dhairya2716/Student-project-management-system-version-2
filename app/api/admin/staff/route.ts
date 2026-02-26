@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
                 phone: phone || null,
                 password: hashedPassword,
                 role: role || 'FACULTY',
-                departmentId: departmentId || null
+                department_id: departmentId || null
             }
         });
 

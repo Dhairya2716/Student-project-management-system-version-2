@@ -71,14 +71,26 @@ export const signToken = (user: {
 
 export const verifyToken = (token: string) => {
 
-    try{
+    try {
         return jwt.verify(
-            token, 
+            token,
             JWT_SECRET
         ) as TokenPayload;
     }
-    catch{
+    catch {
         return null;
     }
+}
 
+import { NextRequest } from 'next/server';
+
+export async function verifyAuth(request: NextRequest): Promise<TokenPayload | null> {
+    try {
+        const token = request.headers.get('Authorization')?.replace('Bearer ', '');
+        if (!token) return null;
+
+        return verifyToken(token);
+    } catch {
+        return null;
+    }
 }

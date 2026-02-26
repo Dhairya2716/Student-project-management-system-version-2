@@ -45,7 +45,9 @@ export type Project_submissionMinAggregateOutputType = {
   title: string | null
   description: string | null
   link: string | null
+  fileUrl: string | null
   submission_type: string | null
+  status: $Enums.submission_status | null
   created_at: Date | null
 }
 
@@ -56,7 +58,9 @@ export type Project_submissionMaxAggregateOutputType = {
   title: string | null
   description: string | null
   link: string | null
+  fileUrl: string | null
   submission_type: string | null
+  status: $Enums.submission_status | null
   created_at: Date | null
 }
 
@@ -67,7 +71,9 @@ export type Project_submissionCountAggregateOutputType = {
   title: number
   description: number
   link: number
+  fileUrl: number
   submission_type: number
+  status: number
   created_at: number
   _all: number
 }
@@ -92,7 +98,9 @@ export type Project_submissionMinAggregateInputType = {
   title?: true
   description?: true
   link?: true
+  fileUrl?: true
   submission_type?: true
+  status?: true
   created_at?: true
 }
 
@@ -103,7 +111,9 @@ export type Project_submissionMaxAggregateInputType = {
   title?: true
   description?: true
   link?: true
+  fileUrl?: true
   submission_type?: true
+  status?: true
   created_at?: true
 }
 
@@ -114,7 +124,9 @@ export type Project_submissionCountAggregateInputType = {
   title?: true
   description?: true
   link?: true
+  fileUrl?: true
   submission_type?: true
+  status?: true
   created_at?: true
   _all?: true
 }
@@ -211,8 +223,10 @@ export type Project_submissionGroupByOutputType = {
   student_id: number
   title: string
   description: string | null
-  link: string
+  link: string | null
+  fileUrl: string | null
   submission_type: string
+  status: $Enums.submission_status
   created_at: Date
   _count: Project_submissionCountAggregateOutputType | null
   _avg: Project_submissionAvgAggregateOutputType | null
@@ -245,8 +259,10 @@ export type project_submissionWhereInput = {
   student_id?: Prisma.IntFilter<"project_submission"> | number
   title?: Prisma.StringFilter<"project_submission"> | string
   description?: Prisma.StringNullableFilter<"project_submission"> | string | null
-  link?: Prisma.StringFilter<"project_submission"> | string
+  link?: Prisma.StringNullableFilter<"project_submission"> | string | null
+  fileUrl?: Prisma.StringNullableFilter<"project_submission"> | string | null
   submission_type?: Prisma.StringFilter<"project_submission"> | string
+  status?: Prisma.Enumsubmission_statusFilter<"project_submission"> | $Enums.submission_status
   created_at?: Prisma.DateTimeFilter<"project_submission"> | Date | string
   project_group?: Prisma.XOR<Prisma.Project_groupScalarRelationFilter, Prisma.project_groupWhereInput>
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.studentWhereInput>
@@ -258,8 +274,10 @@ export type project_submissionOrderByWithRelationInput = {
   student_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  link?: Prisma.SortOrder
+  link?: Prisma.SortOrderInput | Prisma.SortOrder
+  fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   submission_type?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   project_group?: Prisma.project_groupOrderByWithRelationInput
   student?: Prisma.studentOrderByWithRelationInput
@@ -274,8 +292,10 @@ export type project_submissionWhereUniqueInput = Prisma.AtLeast<{
   student_id?: Prisma.IntFilter<"project_submission"> | number
   title?: Prisma.StringFilter<"project_submission"> | string
   description?: Prisma.StringNullableFilter<"project_submission"> | string | null
-  link?: Prisma.StringFilter<"project_submission"> | string
+  link?: Prisma.StringNullableFilter<"project_submission"> | string | null
+  fileUrl?: Prisma.StringNullableFilter<"project_submission"> | string | null
   submission_type?: Prisma.StringFilter<"project_submission"> | string
+  status?: Prisma.Enumsubmission_statusFilter<"project_submission"> | $Enums.submission_status
   created_at?: Prisma.DateTimeFilter<"project_submission"> | Date | string
   project_group?: Prisma.XOR<Prisma.Project_groupScalarRelationFilter, Prisma.project_groupWhereInput>
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.studentWhereInput>
@@ -287,8 +307,10 @@ export type project_submissionOrderByWithAggregationInput = {
   student_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  link?: Prisma.SortOrder
+  link?: Prisma.SortOrderInput | Prisma.SortOrder
+  fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   submission_type?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.project_submissionCountOrderByAggregateInput
   _avg?: Prisma.project_submissionAvgOrderByAggregateInput
@@ -306,16 +328,20 @@ export type project_submissionScalarWhereWithAggregatesInput = {
   student_id?: Prisma.IntWithAggregatesFilter<"project_submission"> | number
   title?: Prisma.StringWithAggregatesFilter<"project_submission"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"project_submission"> | string | null
-  link?: Prisma.StringWithAggregatesFilter<"project_submission"> | string
+  link?: Prisma.StringNullableWithAggregatesFilter<"project_submission"> | string | null
+  fileUrl?: Prisma.StringNullableWithAggregatesFilter<"project_submission"> | string | null
   submission_type?: Prisma.StringWithAggregatesFilter<"project_submission"> | string
+  status?: Prisma.Enumsubmission_statusWithAggregatesFilter<"project_submission"> | $Enums.submission_status
   created_at?: Prisma.DateTimeWithAggregatesFilter<"project_submission"> | Date | string
 }
 
 export type project_submissionCreateInput = {
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
   project_group: Prisma.project_groupCreateNestedOneWithoutProject_submissionInput
   student: Prisma.studentCreateNestedOneWithoutProject_submissionInput
@@ -327,16 +353,20 @@ export type project_submissionUncheckedCreateInput = {
   student_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
 export type project_submissionUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project_group?: Prisma.project_groupUpdateOneRequiredWithoutProject_submissionNestedInput
   student?: Prisma.studentUpdateOneRequiredWithoutProject_submissionNestedInput
@@ -348,8 +378,10 @@ export type project_submissionUncheckedUpdateInput = {
   student_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -359,16 +391,20 @@ export type project_submissionCreateManyInput = {
   student_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
 export type project_submissionUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -378,8 +414,10 @@ export type project_submissionUncheckedUpdateManyInput = {
   student_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -400,7 +438,9 @@ export type project_submissionCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   link?: Prisma.SortOrder
+  fileUrl?: Prisma.SortOrder
   submission_type?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -417,7 +457,9 @@ export type project_submissionMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   link?: Prisma.SortOrder
+  fileUrl?: Prisma.SortOrder
   submission_type?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -428,7 +470,9 @@ export type project_submissionMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   link?: Prisma.SortOrder
+  fileUrl?: Prisma.SortOrder
   submission_type?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -522,11 +566,17 @@ export type project_submissionUncheckedUpdateManyWithoutStudentNestedInput = {
   deleteMany?: Prisma.project_submissionScalarWhereInput | Prisma.project_submissionScalarWhereInput[]
 }
 
+export type Enumsubmission_statusFieldUpdateOperationsInput = {
+  set?: $Enums.submission_status
+}
+
 export type project_submissionCreateWithoutProject_groupInput = {
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
   student: Prisma.studentCreateNestedOneWithoutProject_submissionInput
 }
@@ -536,8 +586,10 @@ export type project_submissionUncheckedCreateWithoutProject_groupInput = {
   student_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
@@ -576,16 +628,20 @@ export type project_submissionScalarWhereInput = {
   student_id?: Prisma.IntFilter<"project_submission"> | number
   title?: Prisma.StringFilter<"project_submission"> | string
   description?: Prisma.StringNullableFilter<"project_submission"> | string | null
-  link?: Prisma.StringFilter<"project_submission"> | string
+  link?: Prisma.StringNullableFilter<"project_submission"> | string | null
+  fileUrl?: Prisma.StringNullableFilter<"project_submission"> | string | null
   submission_type?: Prisma.StringFilter<"project_submission"> | string
+  status?: Prisma.Enumsubmission_statusFilter<"project_submission"> | $Enums.submission_status
   created_at?: Prisma.DateTimeFilter<"project_submission"> | Date | string
 }
 
 export type project_submissionCreateWithoutStudentInput = {
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
   project_group: Prisma.project_groupCreateNestedOneWithoutProject_submissionInput
 }
@@ -595,8 +651,10 @@ export type project_submissionUncheckedCreateWithoutStudentInput = {
   group_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
@@ -631,16 +689,20 @@ export type project_submissionCreateManyProject_groupInput = {
   student_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
 export type project_submissionUpdateWithoutProject_groupInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.studentUpdateOneRequiredWithoutProject_submissionNestedInput
 }
@@ -650,8 +712,10 @@ export type project_submissionUncheckedUpdateWithoutProject_groupInput = {
   student_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -660,8 +724,10 @@ export type project_submissionUncheckedUpdateManyWithoutProject_groupInput = {
   student_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -670,16 +736,20 @@ export type project_submissionCreateManyStudentInput = {
   group_id: number
   title: string
   description?: string | null
-  link: string
+  link?: string | null
+  fileUrl?: string | null
   submission_type?: string
+  status?: $Enums.submission_status
   created_at?: Date | string
 }
 
 export type project_submissionUpdateWithoutStudentInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project_group?: Prisma.project_groupUpdateOneRequiredWithoutProject_submissionNestedInput
 }
@@ -689,8 +759,10 @@ export type project_submissionUncheckedUpdateWithoutStudentInput = {
   group_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -699,8 +771,10 @@ export type project_submissionUncheckedUpdateManyWithoutStudentInput = {
   group_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  link?: Prisma.StringFieldUpdateOperationsInput | string
+  link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   submission_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.Enumsubmission_statusFieldUpdateOperationsInput | $Enums.submission_status
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -713,7 +787,9 @@ export type project_submissionSelect<ExtArgs extends runtime.Types.Extensions.In
   title?: boolean
   description?: boolean
   link?: boolean
+  fileUrl?: boolean
   submission_type?: boolean
+  status?: boolean
   created_at?: boolean
   project_group?: boolean | Prisma.project_groupDefaultArgs<ExtArgs>
   student?: boolean | Prisma.studentDefaultArgs<ExtArgs>
@@ -726,7 +802,9 @@ export type project_submissionSelectCreateManyAndReturn<ExtArgs extends runtime.
   title?: boolean
   description?: boolean
   link?: boolean
+  fileUrl?: boolean
   submission_type?: boolean
+  status?: boolean
   created_at?: boolean
   project_group?: boolean | Prisma.project_groupDefaultArgs<ExtArgs>
   student?: boolean | Prisma.studentDefaultArgs<ExtArgs>
@@ -739,7 +817,9 @@ export type project_submissionSelectUpdateManyAndReturn<ExtArgs extends runtime.
   title?: boolean
   description?: boolean
   link?: boolean
+  fileUrl?: boolean
   submission_type?: boolean
+  status?: boolean
   created_at?: boolean
   project_group?: boolean | Prisma.project_groupDefaultArgs<ExtArgs>
   student?: boolean | Prisma.studentDefaultArgs<ExtArgs>
@@ -752,11 +832,13 @@ export type project_submissionSelectScalar = {
   title?: boolean
   description?: boolean
   link?: boolean
+  fileUrl?: boolean
   submission_type?: boolean
+  status?: boolean
   created_at?: boolean
 }
 
-export type project_submissionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "group_id" | "student_id" | "title" | "description" | "link" | "submission_type" | "created_at", ExtArgs["result"]["project_submission"]>
+export type project_submissionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "group_id" | "student_id" | "title" | "description" | "link" | "fileUrl" | "submission_type" | "status" | "created_at", ExtArgs["result"]["project_submission"]>
 export type project_submissionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group?: boolean | Prisma.project_groupDefaultArgs<ExtArgs>
   student?: boolean | Prisma.studentDefaultArgs<ExtArgs>
@@ -782,8 +864,10 @@ export type $project_submissionPayload<ExtArgs extends runtime.Types.Extensions.
     student_id: number
     title: string
     description: string | null
-    link: string
+    link: string | null
+    fileUrl: string | null
     submission_type: string
+    status: $Enums.submission_status
     created_at: Date
   }, ExtArgs["result"]["project_submission"]>
   composites: {}
@@ -1216,7 +1300,9 @@ export interface project_submissionFieldRefs {
   readonly title: Prisma.FieldRef<"project_submission", 'String'>
   readonly description: Prisma.FieldRef<"project_submission", 'String'>
   readonly link: Prisma.FieldRef<"project_submission", 'String'>
+  readonly fileUrl: Prisma.FieldRef<"project_submission", 'String'>
   readonly submission_type: Prisma.FieldRef<"project_submission", 'String'>
+  readonly status: Prisma.FieldRef<"project_submission", 'submission_status'>
   readonly created_at: Prisma.FieldRef<"project_submission", 'DateTime'>
 }
     

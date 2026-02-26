@@ -55,6 +55,7 @@ export type Project_groupMinAggregateOutputType = {
   guide_id: number | null
   convener_id: number | null
   expert_id: number | null
+  status: $Enums.group_status | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -70,6 +71,7 @@ export type Project_groupMaxAggregateOutputType = {
   guide_id: number | null
   convener_id: number | null
   expert_id: number | null
+  status: $Enums.group_status | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -85,6 +87,7 @@ export type Project_groupCountAggregateOutputType = {
   guide_id: number
   convener_id: number
   expert_id: number
+  status: number
   created_at: number
   updated_at: number
   _all: number
@@ -120,6 +123,7 @@ export type Project_groupMinAggregateInputType = {
   guide_id?: true
   convener_id?: true
   expert_id?: true
+  status?: true
   created_at?: true
   updated_at?: true
 }
@@ -135,6 +139,7 @@ export type Project_groupMaxAggregateInputType = {
   guide_id?: true
   convener_id?: true
   expert_id?: true
+  status?: true
   created_at?: true
   updated_at?: true
 }
@@ -150,6 +155,7 @@ export type Project_groupCountAggregateInputType = {
   guide_id?: true
   convener_id?: true
   expert_id?: true
+  status?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -252,6 +258,7 @@ export type Project_groupGroupByOutputType = {
   guide_id: number | null
   convener_id: number | null
   expert_id: number | null
+  status: $Enums.group_status | null
   created_at: Date | null
   updated_at: Date | null
   _count: Project_groupCountAggregateOutputType | null
@@ -290,6 +297,7 @@ export type project_groupWhereInput = {
   guide_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   convener_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   expert_id?: Prisma.IntNullableFilter<"project_group"> | number | null
+  status?: Prisma.Enumgroup_statusNullableFilter<"project_group"> | $Enums.group_status | null
   created_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
   updated_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.XOR<Prisma.StaffNullableScalarRelationFilter, Prisma.staffWhereInput> | null
@@ -312,6 +320,7 @@ export type project_groupOrderByWithRelationInput = {
   guide_id?: Prisma.SortOrderInput | Prisma.SortOrder
   convener_id?: Prisma.SortOrderInput | Prisma.SortOrder
   expert_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
   updated_at?: Prisma.SortOrderInput | Prisma.SortOrder
   staff_project_group_convener_idTostaff?: Prisma.staffOrderByWithRelationInput
@@ -337,6 +346,7 @@ export type project_groupWhereUniqueInput = Prisma.AtLeast<{
   guide_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   convener_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   expert_id?: Prisma.IntNullableFilter<"project_group"> | number | null
+  status?: Prisma.Enumgroup_statusNullableFilter<"project_group"> | $Enums.group_status | null
   created_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
   updated_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.XOR<Prisma.StaffNullableScalarRelationFilter, Prisma.staffWhereInput> | null
@@ -359,6 +369,7 @@ export type project_groupOrderByWithAggregationInput = {
   guide_id?: Prisma.SortOrderInput | Prisma.SortOrder
   convener_id?: Prisma.SortOrderInput | Prisma.SortOrder
   expert_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
   updated_at?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.project_groupCountOrderByAggregateInput
@@ -382,6 +393,7 @@ export type project_groupScalarWhereWithAggregatesInput = {
   guide_id?: Prisma.IntNullableWithAggregatesFilter<"project_group"> | number | null
   convener_id?: Prisma.IntNullableWithAggregatesFilter<"project_group"> | number | null
   expert_id?: Prisma.IntNullableWithAggregatesFilter<"project_group"> | number | null
+  status?: Prisma.Enumgroup_statusNullableWithAggregatesFilter<"project_group"> | $Enums.group_status | null
   created_at?: Prisma.DateTimeNullableWithAggregatesFilter<"project_group"> | Date | string | null
   updated_at?: Prisma.DateTimeNullableWithAggregatesFilter<"project_group"> | Date | string | null
 }
@@ -392,6 +404,7 @@ export type project_groupCreateInput = {
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -414,6 +427,7 @@ export type project_groupUncheckedCreateInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -427,6 +441,7 @@ export type project_groupUpdateInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -449,6 +464,7 @@ export type project_groupUncheckedUpdateInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -467,6 +483,7 @@ export type project_groupCreateManyInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
 }
@@ -477,6 +494,7 @@ export type project_groupUpdateManyMutationInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -492,6 +510,7 @@ export type project_groupUncheckedUpdateManyInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -507,6 +526,7 @@ export type project_groupCountOrderByAggregateInput = {
   guide_id?: Prisma.SortOrder
   convener_id?: Prisma.SortOrder
   expert_id?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -531,6 +551,7 @@ export type project_groupMaxOrderByAggregateInput = {
   guide_id?: Prisma.SortOrder
   convener_id?: Prisma.SortOrder
   expert_id?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -546,6 +567,7 @@ export type project_groupMinOrderByAggregateInput = {
   guide_id?: Prisma.SortOrder
   convener_id?: Prisma.SortOrder
   expert_id?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -589,6 +611,10 @@ export type NullableFloatFieldUpdateOperationsInput = {
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type NullableEnumgroup_statusFieldUpdateOperationsInput = {
+  set?: $Enums.group_status | null
 }
 
 export type NullableIntFieldUpdateOperationsInput = {
@@ -819,6 +845,7 @@ export type project_groupCreateWithoutProject_group_memberInput = {
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -840,6 +867,7 @@ export type project_groupUncheckedCreateWithoutProject_group_memberInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
@@ -868,6 +896,7 @@ export type project_groupUpdateWithoutProject_group_memberInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -889,6 +918,7 @@ export type project_groupUncheckedUpdateWithoutProject_group_memberInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -901,6 +931,7 @@ export type project_groupCreateWithoutProject_meetingInput = {
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -922,6 +953,7 @@ export type project_groupUncheckedCreateWithoutProject_meetingInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -950,6 +982,7 @@ export type project_groupUpdateWithoutProject_meetingInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -971,6 +1004,7 @@ export type project_groupUncheckedUpdateWithoutProject_meetingInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -983,6 +1017,7 @@ export type project_groupCreateWithoutProject_typeInput = {
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -1003,6 +1038,7 @@ export type project_groupUncheckedCreateWithoutProject_typeInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -1050,6 +1086,7 @@ export type project_groupScalarWhereInput = {
   guide_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   convener_id?: Prisma.IntNullableFilter<"project_group"> | number | null
   expert_id?: Prisma.IntNullableFilter<"project_group"> | number | null
+  status?: Prisma.Enumgroup_statusNullableFilter<"project_group"> | $Enums.group_status | null
   created_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
   updated_at?: Prisma.DateTimeNullableFilter<"project_group"> | Date | string | null
 }
@@ -1060,6 +1097,7 @@ export type project_groupCreateWithoutStaff_project_group_convener_idTostaffInpu
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_expert_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_expert_idTostaffInput
@@ -1080,6 +1118,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_convener_idTo
   project_type_id?: number | null
   guide_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -1103,6 +1142,7 @@ export type project_groupCreateWithoutStaff_project_group_expert_idTostaffInput 
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -1123,6 +1163,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_expert_idTost
   project_type_id?: number | null
   guide_id?: number | null
   convener_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -1146,6 +1187,7 @@ export type project_groupCreateWithoutStaff_project_group_guide_idTostaffInput =
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -1166,6 +1208,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_guide_idTosta
   project_type_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -1237,6 +1280,7 @@ export type project_groupCreateWithoutProject_submissionInput = {
   area?: string | null
   description?: string | null
   average_cpi?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
@@ -1258,6 +1302,7 @@ export type project_groupUncheckedCreateWithoutProject_submissionInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
@@ -1286,6 +1331,7 @@ export type project_groupUpdateWithoutProject_submissionInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -1307,6 +1353,7 @@ export type project_groupUncheckedUpdateWithoutProject_submissionInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -1323,6 +1370,7 @@ export type project_groupCreateManyProject_typeInput = {
   guide_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
 }
@@ -1333,6 +1381,7 @@ export type project_groupUpdateWithoutProject_typeInput = {
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -1353,6 +1402,7 @@ export type project_groupUncheckedUpdateWithoutProject_typeInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -1370,6 +1420,7 @@ export type project_groupUncheckedUpdateManyWithoutProject_typeInput = {
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1384,6 +1435,7 @@ export type project_groupCreateManyStaff_project_group_convener_idTostaffInput =
   project_type_id?: number | null
   guide_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
 }
@@ -1398,6 +1450,7 @@ export type project_groupCreateManyStaff_project_group_expert_idTostaffInput = {
   project_type_id?: number | null
   guide_id?: number | null
   convener_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
 }
@@ -1412,6 +1465,7 @@ export type project_groupCreateManyStaff_project_group_guide_idTostaffInput = {
   project_type_id?: number | null
   convener_id?: number | null
   expert_id?: number | null
+  status?: $Enums.group_status | null
   created_at?: Date | string | null
   updated_at?: Date | string | null
 }
@@ -1422,6 +1476,7 @@ export type project_groupUpdateWithoutStaff_project_group_convener_idTostaffInpu
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_expert_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_expert_idTostaffNestedInput
@@ -1442,6 +1497,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_convener_idTo
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -1459,6 +1515,7 @@ export type project_groupUncheckedUpdateManyWithoutStaff_project_group_convener_
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1469,6 +1526,7 @@ export type project_groupUpdateWithoutStaff_project_group_expert_idTostaffInput 
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -1489,6 +1547,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_expert_idTost
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -1506,6 +1565,7 @@ export type project_groupUncheckedUpdateManyWithoutStaff_project_group_expert_id
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1516,6 +1576,7 @@ export type project_groupUpdateWithoutStaff_project_group_guide_idTostaffInput =
   area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
@@ -1536,6 +1597,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_guide_idTosta
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
@@ -1553,6 +1615,7 @@ export type project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idT
   project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1617,6 +1680,7 @@ export type project_groupSelect<ExtArgs extends runtime.Types.Extensions.Interna
   guide_id?: boolean
   convener_id?: boolean
   expert_id?: boolean
+  status?: boolean
   created_at?: boolean
   updated_at?: boolean
   staff_project_group_convener_idTostaff?: boolean | Prisma.project_group$staff_project_group_convener_idTostaffArgs<ExtArgs>
@@ -1640,6 +1704,7 @@ export type project_groupSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   guide_id?: boolean
   convener_id?: boolean
   expert_id?: boolean
+  status?: boolean
   created_at?: boolean
   updated_at?: boolean
   staff_project_group_convener_idTostaff?: boolean | Prisma.project_group$staff_project_group_convener_idTostaffArgs<ExtArgs>
@@ -1659,6 +1724,7 @@ export type project_groupSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   guide_id?: boolean
   convener_id?: boolean
   expert_id?: boolean
+  status?: boolean
   created_at?: boolean
   updated_at?: boolean
   staff_project_group_convener_idTostaff?: boolean | Prisma.project_group$staff_project_group_convener_idTostaffArgs<ExtArgs>
@@ -1678,11 +1744,12 @@ export type project_groupSelectScalar = {
   guide_id?: boolean
   convener_id?: boolean
   expert_id?: boolean
+  status?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type project_groupOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "title" | "area" | "description" | "average_cpi" | "project_type_id" | "guide_id" | "convener_id" | "expert_id" | "created_at" | "updated_at", ExtArgs["result"]["project_group"]>
+export type project_groupOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "title" | "area" | "description" | "average_cpi" | "project_type_id" | "guide_id" | "convener_id" | "expert_id" | "status" | "created_at" | "updated_at", ExtArgs["result"]["project_group"]>
 export type project_groupInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   staff_project_group_convener_idTostaff?: boolean | Prisma.project_group$staff_project_group_convener_idTostaffArgs<ExtArgs>
   staff_project_group_expert_idTostaff?: boolean | Prisma.project_group$staff_project_group_expert_idTostaffArgs<ExtArgs>
@@ -1728,6 +1795,7 @@ export type $project_groupPayload<ExtArgs extends runtime.Types.Extensions.Inter
     guide_id: number | null
     convener_id: number | null
     expert_id: number | null
+    status: $Enums.group_status | null
     created_at: Date | null
     updated_at: Date | null
   }, ExtArgs["result"]["project_group"]>
@@ -2170,6 +2238,7 @@ export interface project_groupFieldRefs {
   readonly guide_id: Prisma.FieldRef<"project_group", 'Int'>
   readonly convener_id: Prisma.FieldRef<"project_group", 'Int'>
   readonly expert_id: Prisma.FieldRef<"project_group", 'Int'>
+  readonly status: Prisma.FieldRef<"project_group", 'group_status'>
   readonly created_at: Prisma.FieldRef<"project_group", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"project_group", 'DateTime'>
 }

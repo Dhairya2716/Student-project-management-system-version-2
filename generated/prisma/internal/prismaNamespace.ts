@@ -1302,6 +1302,7 @@ export const Project_groupScalarFieldEnum = {
   guide_id: 'guide_id',
   convener_id: 'convener_id',
   expert_id: 'expert_id',
+  status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -1423,7 +1424,9 @@ export const Project_submissionScalarFieldEnum = {
   title: 'title',
   description: 'description',
   link: 'link',
+  fileUrl: 'fileUrl',
   submission_type: 'submission_type',
+  status: 'status',
   created_at: 'created_at'
 } as const
 
@@ -1524,6 +1527,20 @@ export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMode
 
 
 /**
+ * Reference to a field of type 'group_status'
+ */
+export type Enumgroup_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'group_status'>
+    
+
+
+/**
+ * Reference to a field of type 'group_status[]'
+ */
+export type ListEnumgroup_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'group_status[]'>
+    
+
+
+/**
  * Reference to a field of type 'meeting_status'
  */
 export type Enummeeting_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'meeting_status'>
@@ -1548,6 +1565,20 @@ export type Enumuser_roleFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'user_role[]'
  */
 export type ListEnumuser_roleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'user_role[]'>
+    
+
+
+/**
+ * Reference to a field of type 'submission_status'
+ */
+export type Enumsubmission_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'submission_status'>
+    
+
+
+/**
+ * Reference to a field of type 'submission_status[]'
+ */
+export type ListEnumsubmission_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'submission_status[]'>
     
 
 /**

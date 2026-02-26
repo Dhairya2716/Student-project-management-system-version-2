@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 // PATCH /api/notifications/[id] - Mark notification as read
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const token = request.headers.get('authorization')?.split(' ')[1];
@@ -18,7 +18,8 @@ export async function PATCH(
             return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
         }
 
-        const notificationId = parseInt(params.id);
+        const { id } = await params;
+        const notificationId = parseInt(id);
 
         // Verify notification belongs to user
         const notification = await prisma.notification.findFirst({
@@ -49,7 +50,7 @@ export async function PATCH(
 // DELETE /api/notifications/[id] - Delete notification
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const token = request.headers.get('authorization')?.split(' ')[1];
@@ -62,7 +63,8 @@ export async function DELETE(
             return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
         }
 
-        const notificationId = parseInt(params.id);
+        const { id } = await params;
+        const notificationId = parseInt(id);
 
         // Verify notification belongs to user
         const notification = await prisma.notification.findFirst({

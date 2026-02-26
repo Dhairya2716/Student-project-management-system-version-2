@@ -177,8 +177,8 @@ export default function StudentsPage() {
         <div>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">Students</h1>
-                    <p className="text-white/50">Manage student records</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Students</h1>
+                    <p className="text-gray-500 dark:text-gray-400">Manage student records</p>
                 </div>
                 <button onClick={openCreateModal} className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all">
                     <Plus className="w-5 h-5" />
@@ -194,44 +194,44 @@ export default function StudentsPage() {
             )}
 
             <div className="relative mb-6">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                     type="text"
                     placeholder="Search by name, email, or enrollment..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full max-w-md pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                    className="w-full max-w-md pl-12 pr-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                 />
             </div>
 
-            <div className="rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden">
+            <div className="rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 overflow-hidden">
                 {loading ? (
                     <div className="p-12 text-center">
                         <Loader2 className="w-8 h-8 text-orange-400 animate-spin mx-auto mb-4" />
-                        <p className="text-white/50">Loading students...</p>
+                        <p className="text-gray-500 dark:text-gray-400">Loading students...</p>
                     </div>
                 ) : filteredStudents.length === 0 ? (
                     <div className="p-12 text-center">
-                        <GraduationCap className="w-12 h-12 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/50">{searchQuery ? 'No students found' : 'No students yet'}</p>
+                        <GraduationCap className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                        <p className="text-gray-500 dark:text-gray-400">{searchQuery ? 'No students found' : 'No students yet'}</p>
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-white/10">
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Enrollment</th>
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Name</th>
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Email</th>
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Batch</th>
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Department</th>
-                                    <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Group</th>
-                                    <th className="text-right text-sm font-medium text-white/50 px-6 py-4">Actions</th>
+                                <tr className="border-b border-gray-200 dark:border-white/10">
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Enrollment</th>
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Name</th>
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Email</th>
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Batch</th>
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Department</th>
+                                    <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Group</th>
+                                    <th className="text-right text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredStudents.map((student) => (
-                                    <tr key={student.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                                    <tr key={student.id} className="border-b border-white/5 hover:bg-white dark:bg-white/[0.02] transition-colors">
                                         <td className="px-6 py-4">
                                             <span className="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-400 text-sm font-medium">
                                                 {student.enrollment_no || '-'}
@@ -240,14 +240,14 @@ export default function StudentsPage() {
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
-                                                    <span className="text-white font-bold">{student.name.charAt(0)}</span>
+                                                    <span className="text-gray-900 dark:text-white font-bold">{student.name.charAt(0)}</span>
                                                 </div>
-                                                <span className="text-white font-medium">{student.name}</span>
+                                                <span className="text-gray-900 dark:text-white font-medium">{student.name}</span>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-white/70">{student.email}</td>
-                                        <td className="px-6 py-4 text-white/70">{student.batch?.name || '-'}</td>
-                                        <td className="px-6 py-4 text-white/70">{student.department?.code || '-'}</td>
+                                        <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{student.email}</td>
+                                        <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{student.batch?.name || '-'}</td>
+                                        <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{student.department?.code || '-'}</td>
                                         <td className="px-6 py-4">
                                             {student.project_group ? (
                                                 <span className="flex items-center gap-2 text-emerald-400">
@@ -255,15 +255,15 @@ export default function StudentsPage() {
                                                     {student.project_group.name}
                                                 </span>
                                             ) : (
-                                                <span className="text-white/30">Unassigned</span>
+                                                <span className="text-gray-400 dark:text-gray-500">Unassigned</span>
                                             )}
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center justify-end gap-2">
-                                                <button onClick={() => openEditModal(student)} className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                                                <button onClick={() => openEditModal(student)} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all">
                                                     <Edit2 className="w-4 h-4" />
                                                 </button>
-                                                <button onClick={() => handleDelete(student.id)} className="p-2 rounded-lg text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all">
+                                                <button onClick={() => handleDelete(student.id)} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all">
                                                     <Trash2 className="w-4 h-4" />
                                                 </button>
                                             </div>
@@ -279,72 +279,72 @@ export default function StudentsPage() {
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal}></div>
-                    <div className="relative w-full max-w-lg bg-[#12121a] border border-white/10 rounded-2xl shadow-2xl">
-                        <div className="flex items-center justify-between p-6 border-b border-white/10">
+                    <div className="relative w-full max-w-lg bg-[#12121a] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl">
+                        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-white/10">
                             <h2 className="text-xl font-bold text-white">{editingStudent ? 'Edit Student' : 'Add Student'}</h2>
-                            <button onClick={closeModal} className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                            <button onClick={closeModal} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all">
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Enrollment No</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Enrollment No</label>
                                     <input
                                         type="text"
                                         value={formData.enrollment_no}
                                         onChange={(e) => setFormData({ ...formData, enrollment_no: e.target.value })}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Full Name *</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Full Name *</label>
                                     <input
                                         type="text"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Email *</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Email *</label>
                                     <input
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Phone</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Phone</label>
                                     <input
                                         type="tel"
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                     />
                                 </div>
                                 {!editingStudent && (
                                     <div className="col-span-2">
-                                        <label className="block text-sm font-medium text-white/70 mb-2">Password *</label>
+                                        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Password *</label>
                                         <input
                                             type="password"
                                             value={formData.password}
                                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                             required={!editingStudent}
                                             minLength={6}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                            className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                         />
                                     </div>
                                 )}
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Batch</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Batch</label>
                                     <select
                                         value={formData.batchId}
                                         onChange={(e) => setFormData({ ...formData, batchId: e.target.value })}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:border-orange-500/50 transition-all"
                                     >
                                         <option value="" className="bg-[#12121a]">Select Batch</option>
                                         {batches.map((b) => (
@@ -353,11 +353,11 @@ export default function StudentsPage() {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-white/70 mb-2">Department</label>
+                                    <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Department</label>
                                     <select
                                         value={formData.departmentId}
                                         onChange={(e) => setFormData({ ...formData, departmentId: e.target.value })}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-orange-500/50 transition-all"
+                                        className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:border-orange-500/50 transition-all"
                                     >
                                         <option value="" className="bg-[#12121a]">Select Department</option>
                                         {departments.map((d) => (
@@ -367,7 +367,7 @@ export default function StudentsPage() {
                                 </div>
                             </div>
                             <div className="flex gap-3 pt-2">
-                                <button type="button" onClick={closeModal} className="flex-1 px-4 py-3 bg-white/5 text-white font-medium rounded-xl border border-white/10 hover:bg-white/10 transition-all">Cancel</button>
+                                <button type="button" onClick={closeModal} className="flex-1 px-4 py-3 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white font-medium rounded-xl border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:bg-white/10 transition-all">Cancel</button>
                                 <button type="submit" disabled={saving} className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all disabled:opacity-50 flex items-center justify-center gap-2">
                                     {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
                                     {editingStudent ? 'Update' : 'Create'}

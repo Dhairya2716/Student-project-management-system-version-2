@@ -114,7 +114,7 @@ export default function ProfilePage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+            <div className="min-h-screen bg-white dark:bg-[#0a0a0f] flex items-center justify-center">
                 <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
             </div>
         );
@@ -125,7 +125,7 @@ export default function ProfilePage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold text-white">My Profile</h1>
-                    <p className="text-white/50 mt-1">Manage your personal information</p>
+                    <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your personal information</p>
                 </div>
             </div>
 
@@ -140,17 +140,17 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Profile Card */}
                 <div className="lg:col-span-1">
-                    <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 space-y-4">
+                    <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded-2xl p-6 space-y-4">
                         <div className="flex flex-col items-center text-center">
                             <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-400 to-violet-400 flex items-center justify-center mb-4">
-                                <span className="text-white font-bold text-3xl">{profile?.name.charAt(0)}</span>
+                                <span className="text-gray-900 dark:text-white font-bold text-3xl">{profile?.name.charAt(0)}</span>
                             </div>
                             <h2 className="text-xl font-bold text-white">{profile?.name}</h2>
                             <p className="text-purple-400 text-sm">{profile?.role}</p>
                             {profile?.department && (
                                 <div className="mt-4 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                                    <p className="text-xs text-white/50">Department</p>
-                                    <p className="text-sm text-white font-medium">{profile.department.name}</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">Department</p>
+                                    <p className="text-sm text-gray-900 dark:text-white font-medium">{profile.department.name}</p>
                                     <p className="text-xs text-purple-400">{profile.department.code}</p>
                                 </div>
                             )}
@@ -160,12 +160,12 @@ export default function ProfilePage() {
 
                 {/* Edit Form */}
                 <div className="lg:col-span-2">
-                    <form onSubmit={handleSubmit} className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 space-y-6">
+                    <form onSubmit={handleSubmit} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded-2xl p-6 space-y-6">
                         <h3 className="text-xl font-bold text-white">Edit Profile</h3>
 
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     <User className="w-4 h-4 inline mr-2" />
                                     Full Name
                                 </label>
@@ -173,13 +173,13 @@ export default function ProfilePage() {
                                     type="text"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     <Mail className="w-4 h-4 inline mr-2" />
                                     Email Address
                                 </label>
@@ -187,13 +187,13 @@ export default function ProfilePage() {
                                     type="email"
                                     value={profile?.email}
                                     disabled
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white/50 cursor-not-allowed"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-500 dark:text-gray-400 cursor-not-allowed"
                                 />
-                                <p className="text-xs text-white/30 mt-1">Email cannot be changed</p>
+                                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Email cannot be changed</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     <Phone className="w-4 h-4 inline mr-2" />
                                     Phone Number
                                 </label>
@@ -201,20 +201,20 @@ export default function ProfilePage() {
                                     type="tel"
                                     value={formData.phone}
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all"
                                     placeholder="+91 1234567890"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                                     About / Bio
                                 </label>
                                 <textarea
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                     rows={4}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
                                     placeholder="Tell us about yourself..."
                                 />
                             </div>
@@ -241,7 +241,7 @@ export default function ProfilePage() {
                             <button
                                 type="button"
                                 onClick={() => router.back()}
-                                className="px-6 py-3 bg-white/5 border border-white/10 text-white rounded-xl font-medium hover:bg-white/10 transition-all"
+                                className="px-6 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-xl font-medium hover:bg-gray-200 dark:bg-white/10 transition-all"
                             >
                                 Cancel
                             </button>

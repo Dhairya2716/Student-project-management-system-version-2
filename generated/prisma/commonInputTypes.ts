@@ -154,6 +154,13 @@ export type IntNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
 }
 
+export type Enumgroup_statusNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.group_status | Prisma.Enumgroup_statusFieldRefInput<$PrismaModel> | null
+  in?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel> | $Enums.group_status | null
+}
+
 export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -202,6 +209,16 @@ export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type Enumgroup_statusNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.group_status | Prisma.Enumgroup_statusFieldRefInput<$PrismaModel> | null
+  in?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumgroup_statusNullableWithAggregatesFilter<$PrismaModel> | $Enums.group_status | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel>
 }
 
 export type BoolNullableFilter<$PrismaModel = never> = {
@@ -291,6 +308,23 @@ export type Enumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
   _max?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
+}
+
+export type Enumsubmission_statusFilter<$PrismaModel = never> = {
+  equals?: $Enums.submission_status | Prisma.Enumsubmission_statusFieldRefInput<$PrismaModel>
+  in?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel> | $Enums.submission_status
+}
+
+export type Enumsubmission_statusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.submission_status | Prisma.Enumsubmission_statusFieldRefInput<$PrismaModel>
+  in?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumsubmission_statusWithAggregatesFilter<$PrismaModel> | $Enums.submission_status
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel>
 }
 
 export type NestedIntFilter<$PrismaModel = never> = {
@@ -436,6 +470,13 @@ export type NestedFloatNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
 }
 
+export type NestedEnumgroup_statusNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.group_status | Prisma.Enumgroup_statusFieldRefInput<$PrismaModel> | null
+  in?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel> | $Enums.group_status | null
+}
+
 export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -483,6 +524,16 @@ export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumgroup_statusNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.group_status | Prisma.Enumgroup_statusFieldRefInput<$PrismaModel> | null
+  in?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.group_status[] | Prisma.ListEnumgroup_statusFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumgroup_statusNullableWithAggregatesFilter<$PrismaModel> | $Enums.group_status | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumgroup_statusNullableFilter<$PrismaModel>
 }
 
 export type NestedBoolNullableFilter<$PrismaModel = never> = {
@@ -572,6 +623,23 @@ export type NestedEnumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
   _max?: Prisma.NestedEnumuser_roleFilter<$PrismaModel>
+}
+
+export type NestedEnumsubmission_statusFilter<$PrismaModel = never> = {
+  equals?: $Enums.submission_status | Prisma.Enumsubmission_statusFieldRefInput<$PrismaModel>
+  in?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel> | $Enums.submission_status
+}
+
+export type NestedEnumsubmission_statusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.submission_status | Prisma.Enumsubmission_statusFieldRefInput<$PrismaModel>
+  in?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.submission_status[] | Prisma.ListEnumsubmission_statusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumsubmission_statusWithAggregatesFilter<$PrismaModel> | $Enums.submission_status
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumsubmission_statusFilter<$PrismaModel>
 }
 
 

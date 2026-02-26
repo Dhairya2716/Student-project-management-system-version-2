@@ -13,8 +13,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
                 name,
                 email,
                 phone: phone || null,
-                batchId: batchId || null,
-                departmentId: departmentId || null
+                batch_id: batchId || null,
+                department_id: departmentId || null
             }
         });
 

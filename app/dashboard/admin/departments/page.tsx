@@ -123,8 +123,8 @@ export default function DepartmentsPage() {
             {/* Header */}
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">Departments</h1>
-                    <p className="text-white/50">Manage academic departments</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Departments</h1>
+                    <p className="text-gray-500 dark:text-gray-400">Manage academic departments</p>
                 </div>
                 <button
                     onClick={openCreateModal}
@@ -148,61 +148,61 @@ export default function DepartmentsPage() {
 
             {/* Search */}
             <div className="relative mb-6">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                     type="text"
                     placeholder="Search departments..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full max-w-md pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                    className="w-full max-w-md pl-12 pr-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                 />
             </div>
 
             {/* Table */}
-            <div className="rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden">
+            <div className="rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 overflow-hidden">
                 {loading ? (
                     <div className="p-12 text-center">
                         <Loader2 className="w-8 h-8 text-orange-400 animate-spin mx-auto mb-4" />
-                        <p className="text-white/50">Loading departments...</p>
+                        <p className="text-gray-500 dark:text-gray-400">Loading departments...</p>
                     </div>
                 ) : filteredDepartments.length === 0 ? (
                     <div className="p-12 text-center">
-                        <Building className="w-12 h-12 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/50">{searchQuery ? 'No departments found' : 'No departments yet'}</p>
+                        <Building className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                        <p className="text-gray-500 dark:text-gray-400">{searchQuery ? 'No departments found' : 'No departments yet'}</p>
                     </div>
                 ) : (
                     <table className="w-full">
                         <thead>
-                            <tr className="border-b border-white/10">
-                                <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Code</th>
-                                <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Department Name</th>
-                                <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Staff</th>
-                                <th className="text-left text-sm font-medium text-white/50 px-6 py-4">Students</th>
-                                <th className="text-right text-sm font-medium text-white/50 px-6 py-4">Actions</th>
+                            <tr className="border-b border-gray-200 dark:border-white/10">
+                                <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Code</th>
+                                <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Department Name</th>
+                                <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Staff</th>
+                                <th className="text-left text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Students</th>
+                                <th className="text-right text-sm font-medium text-gray-500 dark:text-gray-400 px-6 py-4">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredDepartments.map((dept) => (
-                                <tr key={dept.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                                <tr key={dept.id} className="border-b border-white/5 hover:bg-white dark:bg-white/[0.02] transition-colors">
                                     <td className="px-6 py-4">
                                         <span className="px-3 py-1 rounded-lg bg-orange-500/10 text-orange-400 text-sm font-medium">
                                             {dept.code}
                                         </span>
                                     </td>
-                                    <td className="px-6 py-4 text-white font-medium">{dept.name}</td>
-                                    <td className="px-6 py-4 text-white/70">{dept._count?.staff || 0}</td>
-                                    <td className="px-6 py-4 text-white/70">{dept._count?.student || 0}</td>
+                                    <td className="px-6 py-4 text-gray-900 dark:text-white font-medium">{dept.name}</td>
+                                    <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{dept._count?.staff || 0}</td>
+                                    <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{dept._count?.student || 0}</td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center justify-end gap-2">
                                             <button
                                                 onClick={() => openEditModal(dept)}
-                                                className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all"
+                                                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all"
                                             >
                                                 <Edit2 className="w-4 h-4" />
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(dept.id)}
-                                                className="p-2 rounded-lg text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                                                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
                                             >
                                                 <Trash2 className="w-4 h-4" />
                                             </button>
@@ -219,43 +219,43 @@ export default function DepartmentsPage() {
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal}></div>
-                    <div className="relative w-full max-w-md bg-[#12121a] border border-white/10 rounded-2xl shadow-2xl">
-                        <div className="flex items-center justify-between p-6 border-b border-white/10">
+                    <div className="relative w-full max-w-md bg-[#12121a] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl">
+                        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-white/10">
                             <h2 className="text-xl font-bold text-white">
                                 {editingDept ? 'Edit Department' : 'Add Department'}
                             </h2>
-                            <button onClick={closeModal} className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                            <button onClick={closeModal} className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:bg-white/5 transition-all">
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-5">
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">Department Code</label>
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Department Code</label>
                                 <input
                                     type="text"
                                     value={formData.code}
                                     onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })}
                                     placeholder="e.g. CSE, ECE"
                                     required
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-white/70 mb-2">Department Name</label>
+                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Department Name</label>
                                 <input
                                     type="text"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     placeholder="e.g. Computer Science & Engineering"
                                     required
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500/50 transition-all"
                                 />
                             </div>
                             <div className="flex gap-3 pt-2">
                                 <button
                                     type="button"
                                     onClick={closeModal}
-                                    className="flex-1 px-4 py-3 bg-white/5 text-white font-medium rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+                                    className="flex-1 px-4 py-3 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white font-medium rounded-xl border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:bg-white/10 transition-all"
                                 >
                                     Cancel
                                 </button>

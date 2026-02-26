@@ -28,10 +28,10 @@ export default function DashboardPage() {
     }, [router]);
 
     return (
-        <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+        <div className="min-h-screen bg-white dark:bg-[#0a0a0f] flex items-center justify-center">
             <div className="relative">
                 <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
-                <p className="text-white/50 text-sm mt-4 text-center">Redirecting...</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-4 text-center">Redirecting...</p>
             </div>
         </div>
     );
