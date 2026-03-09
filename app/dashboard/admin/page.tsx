@@ -25,10 +25,11 @@ interface Stats {
     departments: number;
     batches: number;
     projects: number;
+    pendingGroups: number;
 }
 
 export default function AdminDashboardHome() {
-    const [stats, setStats] = useState<Stats>({ students: 0, staff: 0, departments: 0, batches: 0, projects: 0 });
+    const [stats, setStats] = useState<Stats>({ students: 0, staff: 0, departments: 0, batches: 0, projects: 0, pendingGroups: 0 });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -37,18 +38,20 @@ export default function AdminDashboardHome() {
 
     const fetchStats = async () => {
         try {
-            const [studentsRes, staffRes, deptsRes, batchesRes] = await Promise.all([
+            const [studentsRes, staffRes, deptsRes, batchesRes, projectsRes] = await Promise.all([
                 fetch('/api/admin/students'),
                 fetch('/api/admin/staff'),
                 fetch('/api/admin/departments'),
                 fetch('/api/admin/batches'),
+                fetch('/api/admin/projects'),
             ]);
 
-            const [students, staff, depts, batches] = await Promise.all([
+            const [students, staff, depts, batches, projects] = await Promise.all([
                 studentsRes.ok ? studentsRes.json() : [],
                 staffRes.ok ? staffRes.json() : [],
                 deptsRes.ok ? deptsRes.json() : [],
                 batchesRes.ok ? batchesRes.json() : [],
+                projectsRes.ok ? projectsRes.json() : [],
             ]);
 
             setStats({
@@ -56,7 +59,8 @@ export default function AdminDashboardHome() {
                 staff: staff.length,
                 departments: depts.length,
                 batches: batches.length,
-                projects: 0,
+                projects: Array.isArray(projects) ? projects.filter((p: any) => p.status === 'APPROVED').length : 0,
+                pendingGroups: Array.isArray(projects) ? projects.filter((p: any) => p.status === 'PENDING').length : 0,
             });
         } catch (error) {
             console.error('Failed to fetch stats:', error);
@@ -170,7 +174,7 @@ export default function AdminDashboardHome() {
                             </div>
                             <h3 className="font-semibold text-gray-900 dark:text-white">Pending Tasks</h3>
                         </div>
-                        <p className="text-3xl font-bold text-gray-900 dark:text-white mb-1">0</p>
+                        <p className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stats.pendingGroups}</p>
                         <p className="text-sm text-gray-500 dark:text-gray-400">Approvals and reviews pending</p>
                     </div>
                 </div>

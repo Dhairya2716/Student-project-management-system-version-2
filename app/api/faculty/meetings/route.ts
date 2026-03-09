@@ -84,11 +84,15 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        // Verify faculty is guide of this group
+        // Verify faculty is associated with this group (guide, convener, or expert)
         const group = await prisma.project_group.findFirst({
             where: {
                 id: parseInt(group_id),
-                guide_id: decoded.id
+                OR: [
+                    { guide_id: decoded.id },
+                    { convener_id: decoded.id },
+                    { expert_id: decoded.id }
+                ]
             }
         });
 

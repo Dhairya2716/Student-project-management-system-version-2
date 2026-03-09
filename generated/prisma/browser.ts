@@ -72,3 +72,8 @@ export type notification = Prisma.notificationModel
  * 
  */
 export type project_submission = Prisma.project_submissionModel
+/**
+ * Model group_message
+ * 
+ */
+export type group_message = Prisma.group_messageModel

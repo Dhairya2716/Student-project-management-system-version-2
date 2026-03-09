@@ -49,6 +49,7 @@ model project_group {
   project_group_member                   project_group_member[]
   project_meeting                        project_meeting[]
   project_submission                     project_submission[]
+  group_message                          group_message[]
 }
 
 model project_group_member {
@@ -203,4 +204,17 @@ model project_submission {
 
   @@index([group_id])
   @@index([student_id])
+}
+
+model group_message {
+  id          Int           @id @default(autoincrement())
+  group_id    Int
+  sender_id   Int
+  sender_role user_role
+  message     String
+  created_at  DateTime      @default(now()) @db.Timestamp(6)
+  project_group project_group @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([group_id])
+  @@index([created_at])
 }

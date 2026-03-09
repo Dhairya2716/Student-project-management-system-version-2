@@ -25,10 +25,23 @@ interface User {
     role: 'ADMIN' | 'FACULTY' | 'STUDENT';
 }
 
+interface FacultyStats {
+    totalGroups: number;
+    scheduledMeetings: number;
+    pendingSubmissions: number;
+    completedGroups: number;
+}
+
 export default function FacultyDashboard() {
     const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
+    const [stats, setStats] = useState<FacultyStats>({
+        totalGroups: 0,
+        scheduledMeetings: 0,
+        pendingSubmissions: 0,
+        completedGroups: 0
+    });
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -46,10 +59,18 @@ export default function FacultyDashboard() {
                 return;
             }
             setUser(parsed);
+            // Fetch live stats
+            fetch('/api/faculty/stats', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data && !data.error) setStats(data);
+                })
+                .catch(console.error)
+                .finally(() => setLoading(false));
         } catch {
             router.push('/login');
-        } finally {
-            setLoading(false);
         }
     }, [router]);
 
@@ -65,11 +86,11 @@ export default function FacultyDashboard() {
 
     if (!user) return null;
 
-    const stats = [
-        { label: 'My Groups', value: '6', icon: Users, bg: 'bg-purple-50 dark:bg-purple-500/10', border: 'border-purple-200 dark:border-purple-500/20', text: 'text-purple-600 dark:text-purple-400' },
-        { label: 'Scheduled Meetings', value: '3', icon: Calendar, trend: 'Today', bg: 'bg-cyan-50 dark:bg-cyan-500/10', border: 'border-cyan-200 dark:border-cyan-500/20', text: 'text-cyan-600 dark:text-cyan-400' },
-        { label: 'Pending Reviews', value: '8', icon: ClipboardList, bg: 'bg-amber-50 dark:bg-amber-500/10', border: 'border-amber-200 dark:border-amber-500/20', text: 'text-amber-600 dark:text-amber-400' },
-        { label: 'Completed Projects', value: '15', icon: CheckCircle, trend: '+3', bg: 'bg-emerald-50 dark:bg-emerald-500/10', border: 'border-emerald-200 dark:border-emerald-500/20', text: 'text-emerald-600 dark:text-emerald-400' },
+    const statCards = [
+        { label: 'My Groups', value: stats.totalGroups, icon: Users, bg: 'bg-purple-50 dark:bg-purple-500/10', border: 'border-purple-200 dark:border-purple-500/20', text: 'text-purple-600 dark:text-purple-400' },
+        { label: 'Scheduled Meetings', value: stats.scheduledMeetings, icon: Calendar, bg: 'bg-cyan-50 dark:bg-cyan-500/10', border: 'border-cyan-200 dark:border-cyan-500/20', text: 'text-cyan-600 dark:text-cyan-400' },
+        { label: 'Pending Reviews', value: stats.pendingSubmissions, icon: ClipboardList, bg: 'bg-amber-50 dark:bg-amber-500/10', border: 'border-amber-200 dark:border-amber-500/20', text: 'text-amber-600 dark:text-amber-400' },
+        { label: 'Completed Groups', value: stats.completedGroups, icon: CheckCircle, bg: 'bg-emerald-50 dark:bg-emerald-500/10', border: 'border-emerald-200 dark:border-emerald-500/20', text: 'text-emerald-600 dark:text-emerald-400' },
     ];
 
     return (
@@ -87,7 +108,7 @@ export default function FacultyDashboard() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 stagger-children">
-                {stats.map((stat, i) => (
+                {statCards.map((stat, i) => (
                     <SpotlightCard
                         key={i}
                         className="group p-5 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] hover:border-gray-300 dark:hover:border-white/[0.12] card-hover shadow-sm hover:shadow-lg transition-all"
@@ -97,13 +118,10 @@ export default function FacultyDashboard() {
                             <div className={`w-12 h-12 rounded-xl ${stat.bg} border ${stat.border} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                                 <stat.icon className={`w-6 h-6 ${stat.text}`} />
                             </div>
-                            {stat.trend && (
-                                <span className="text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-white/[0.05] text-gray-500 dark:text-gray-400 border border-gray-200/60 dark:border-white/[0.06]">{stat.trend}</span>
-                            )}
                         </div>
                         <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{stat.label}</p>
                         <p className="text-3xl font-bold text-gray-900 dark:text-white">
-                            <CountUp to={parseInt(stat.value)} duration={2} />
+                            <CountUp to={stat.value} duration={2} />
                         </p>
                     </SpotlightCard>
                 ))}

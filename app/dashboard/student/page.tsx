@@ -284,17 +284,26 @@ export default function StudentDashboard() {
 
                 {/* Alert if not assigned to group */}
                 {!stats.hasGroup && (
-                    <div className="rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 p-6 shadow-sm animate-fade-in-up">
-                        <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center shrink-0">
-                                <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                    <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 p-6 shadow-sm animate-fade-in-up">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div className="flex items-start gap-4">
+                                <div className="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                    <Users className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-emerald-800 dark:text-emerald-300 mb-1">Create Your Project Group</h3>
+                                    <p className="text-emerald-700/80 dark:text-emerald-300/70 text-sm">
+                                        You are not currently assigned to a project team. You can establish a new group and invite other available students.
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="text-lg font-semibold text-amber-700 dark:text-amber-400 mb-1">Not Assigned to a Group</h3>
-                                <p className="text-amber-600/80 dark:text-amber-300/60 text-sm">
-                                    You haven&apos;t been assigned to a project group yet. Please contact your faculty coordinator or admin for assistance.
-                                </p>
-                            </div>
+                            <Link
+                                href="/dashboard/student/team/create"
+                                className="whitespace-nowrap px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-gray-900 dark:text-white font-medium transition-all flex items-center gap-2"
+                            >
+                                <Users className="w-4 h-4" />
+                                Form a Team
+                            </Link>
                         </div>
                     </div>
                 )}

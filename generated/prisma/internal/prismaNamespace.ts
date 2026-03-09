@@ -394,7 +394,8 @@ export const ModelName = {
   staff: 'staff',
   student: 'student',
   notification: 'notification',
-  project_submission: 'project_submission'
+  project_submission: 'project_submission',
+  group_message: 'group_message'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student" | "notification" | "project_submission"
+    modelProps: "batch" | "department" | "project_group" | "project_group_member" | "project_meeting" | "project_meeting_attendance" | "project_type" | "staff" | "student" | "notification" | "project_submission" | "group_message"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1228,6 +1229,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    group_message: {
+      payload: Prisma.$group_messagePayload<ExtArgs>
+      fields: Prisma.group_messageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.group_messageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.group_messageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        findFirst: {
+          args: Prisma.group_messageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.group_messageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        findMany: {
+          args: Prisma.group_messageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>[]
+        }
+        create: {
+          args: Prisma.group_messageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        createMany: {
+          args: Prisma.group_messageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.group_messageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>[]
+        }
+        delete: {
+          args: Prisma.group_messageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        update: {
+          args: Prisma.group_messageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        deleteMany: {
+          args: Prisma.group_messageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.group_messageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.group_messageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>[]
+        }
+        upsert: {
+          args: Prisma.group_messageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$group_messagePayload>
+        }
+        aggregate: {
+          args: Prisma.Group_messageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGroup_message>
+        }
+        groupBy: {
+          args: Prisma.group_messageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Group_messageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.group_messageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Group_messageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1431,6 +1506,18 @@ export const Project_submissionScalarFieldEnum = {
 } as const
 
 export type Project_submissionScalarFieldEnum = (typeof Project_submissionScalarFieldEnum)[keyof typeof Project_submissionScalarFieldEnum]
+
+
+export const Group_messageScalarFieldEnum = {
+  id: 'id',
+  group_id: 'group_id',
+  sender_id: 'sender_id',
+  sender_role: 'sender_role',
+  message: 'message',
+  created_at: 'created_at'
+} as const
+
+export type Group_messageScalarFieldEnum = (typeof Group_messageScalarFieldEnum)[keyof typeof Group_messageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1687,6 +1774,7 @@ export type GlobalOmitConfig = {
   student?: Prisma.studentOmit
   notification?: Prisma.notificationOmit
   project_submission?: Prisma.project_submissionOmit
+  group_message?: Prisma.group_messageOmit
 }
 
 /* Types for Logging */

@@ -307,6 +307,7 @@ export type project_groupWhereInput = {
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting?: Prisma.Project_meetingListRelationFilter
   project_submission?: Prisma.Project_submissionListRelationFilter
+  group_message?: Prisma.Group_messageListRelationFilter
 }
 
 export type project_groupOrderByWithRelationInput = {
@@ -330,6 +331,7 @@ export type project_groupOrderByWithRelationInput = {
   project_group_member?: Prisma.project_group_memberOrderByRelationAggregateInput
   project_meeting?: Prisma.project_meetingOrderByRelationAggregateInput
   project_submission?: Prisma.project_submissionOrderByRelationAggregateInput
+  group_message?: Prisma.group_messageOrderByRelationAggregateInput
 }
 
 export type project_groupWhereUniqueInput = Prisma.AtLeast<{
@@ -356,6 +358,7 @@ export type project_groupWhereUniqueInput = Prisma.AtLeast<{
   project_group_member?: Prisma.Project_group_memberListRelationFilter
   project_meeting?: Prisma.Project_meetingListRelationFilter
   project_submission?: Prisma.Project_submissionListRelationFilter
+  group_message?: Prisma.Group_messageListRelationFilter
 }, "id">
 
 export type project_groupOrderByWithAggregationInput = {
@@ -414,6 +417,7 @@ export type project_groupCreateInput = {
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateInput = {
@@ -433,6 +437,7 @@ export type project_groupUncheckedCreateInput = {
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUpdateInput = {
@@ -451,6 +456,7 @@ export type project_groupUpdateInput = {
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateInput = {
@@ -470,6 +476,7 @@ export type project_groupUncheckedUpdateInput = {
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateManyInput = {
@@ -839,6 +846,20 @@ export type project_groupUpdateOneRequiredWithoutProject_submissionNestedInput =
   update?: Prisma.XOR<Prisma.XOR<Prisma.project_groupUpdateToOneWithWhereWithoutProject_submissionInput, Prisma.project_groupUpdateWithoutProject_submissionInput>, Prisma.project_groupUncheckedUpdateWithoutProject_submissionInput>
 }
 
+export type project_groupCreateNestedOneWithoutGroup_messageInput = {
+  create?: Prisma.XOR<Prisma.project_groupCreateWithoutGroup_messageInput, Prisma.project_groupUncheckedCreateWithoutGroup_messageInput>
+  connectOrCreate?: Prisma.project_groupCreateOrConnectWithoutGroup_messageInput
+  connect?: Prisma.project_groupWhereUniqueInput
+}
+
+export type project_groupUpdateOneRequiredWithoutGroup_messageNestedInput = {
+  create?: Prisma.XOR<Prisma.project_groupCreateWithoutGroup_messageInput, Prisma.project_groupUncheckedCreateWithoutGroup_messageInput>
+  connectOrCreate?: Prisma.project_groupCreateOrConnectWithoutGroup_messageInput
+  upsert?: Prisma.project_groupUpsertWithoutGroup_messageInput
+  connect?: Prisma.project_groupWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.project_groupUpdateToOneWithWhereWithoutGroup_messageInput, Prisma.project_groupUpdateWithoutGroup_messageInput>, Prisma.project_groupUncheckedUpdateWithoutGroup_messageInput>
+}
+
 export type project_groupCreateWithoutProject_group_memberInput = {
   name: string
   title: string
@@ -854,6 +875,7 @@ export type project_groupCreateWithoutProject_group_memberInput = {
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_group_memberInput = {
@@ -872,6 +894,7 @@ export type project_groupUncheckedCreateWithoutProject_group_memberInput = {
   updated_at?: Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_group_memberInput = {
@@ -905,6 +928,7 @@ export type project_groupUpdateWithoutProject_group_memberInput = {
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_group_memberInput = {
@@ -923,6 +947,7 @@ export type project_groupUncheckedUpdateWithoutProject_group_memberInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateWithoutProject_meetingInput = {
@@ -940,6 +965,7 @@ export type project_groupCreateWithoutProject_meetingInput = {
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_meetingInput = {
@@ -958,6 +984,7 @@ export type project_groupUncheckedCreateWithoutProject_meetingInput = {
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_meetingInput = {
@@ -991,6 +1018,7 @@ export type project_groupUpdateWithoutProject_meetingInput = {
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_meetingInput = {
@@ -1009,6 +1037,7 @@ export type project_groupUncheckedUpdateWithoutProject_meetingInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateWithoutProject_typeInput = {
@@ -1026,6 +1055,7 @@ export type project_groupCreateWithoutProject_typeInput = {
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_typeInput = {
@@ -1044,6 +1074,7 @@ export type project_groupUncheckedCreateWithoutProject_typeInput = {
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_typeInput = {
@@ -1106,6 +1137,7 @@ export type project_groupCreateWithoutStaff_project_group_convener_idTostaffInpu
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1124,6 +1156,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_convener_idTo
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1151,6 +1184,7 @@ export type project_groupCreateWithoutStaff_project_group_expert_idTostaffInput 
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1169,6 +1203,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_expert_idTost
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1196,6 +1231,7 @@ export type project_groupCreateWithoutStaff_project_group_guide_idTostaffInput =
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1214,6 +1250,7 @@ export type project_groupUncheckedCreateWithoutStaff_project_group_guide_idTosta
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
   project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1289,6 +1326,7 @@ export type project_groupCreateWithoutProject_submissionInput = {
   project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
   project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupUncheckedCreateWithoutProject_submissionInput = {
@@ -1307,6 +1345,7 @@ export type project_groupUncheckedCreateWithoutProject_submissionInput = {
   updated_at?: Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
   project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  group_message?: Prisma.group_messageUncheckedCreateNestedManyWithoutProject_groupInput
 }
 
 export type project_groupCreateOrConnectWithoutProject_submissionInput = {
@@ -1340,6 +1379,7 @@ export type project_groupUpdateWithoutProject_submissionInput = {
   project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_submissionInput = {
@@ -1358,6 +1398,97 @@ export type project_groupUncheckedUpdateWithoutProject_submissionInput = {
   updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
+}
+
+export type project_groupCreateWithoutGroup_messageInput = {
+  name: string
+  title: string
+  area?: string | null
+  description?: string | null
+  average_cpi?: number | null
+  status?: $Enums.group_status | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  staff_project_group_convener_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_convener_idTostaffInput
+  staff_project_group_expert_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_expert_idTostaffInput
+  staff_project_group_guide_idTostaff?: Prisma.staffCreateNestedOneWithoutProject_group_project_group_guide_idTostaffInput
+  project_type?: Prisma.project_typeCreateNestedOneWithoutProject_groupInput
+  project_group_member?: Prisma.project_group_memberCreateNestedManyWithoutProject_groupInput
+  project_meeting?: Prisma.project_meetingCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionCreateNestedManyWithoutProject_groupInput
+}
+
+export type project_groupUncheckedCreateWithoutGroup_messageInput = {
+  id?: number
+  name: string
+  title: string
+  area?: string | null
+  description?: string | null
+  average_cpi?: number | null
+  project_type_id?: number | null
+  guide_id?: number | null
+  convener_id?: number | null
+  expert_id?: number | null
+  status?: $Enums.group_status | null
+  created_at?: Date | string | null
+  updated_at?: Date | string | null
+  project_group_member?: Prisma.project_group_memberUncheckedCreateNestedManyWithoutProject_groupInput
+  project_meeting?: Prisma.project_meetingUncheckedCreateNestedManyWithoutProject_groupInput
+  project_submission?: Prisma.project_submissionUncheckedCreateNestedManyWithoutProject_groupInput
+}
+
+export type project_groupCreateOrConnectWithoutGroup_messageInput = {
+  where: Prisma.project_groupWhereUniqueInput
+  create: Prisma.XOR<Prisma.project_groupCreateWithoutGroup_messageInput, Prisma.project_groupUncheckedCreateWithoutGroup_messageInput>
+}
+
+export type project_groupUpsertWithoutGroup_messageInput = {
+  update: Prisma.XOR<Prisma.project_groupUpdateWithoutGroup_messageInput, Prisma.project_groupUncheckedUpdateWithoutGroup_messageInput>
+  create: Prisma.XOR<Prisma.project_groupCreateWithoutGroup_messageInput, Prisma.project_groupUncheckedCreateWithoutGroup_messageInput>
+  where?: Prisma.project_groupWhereInput
+}
+
+export type project_groupUpdateToOneWithWhereWithoutGroup_messageInput = {
+  where?: Prisma.project_groupWhereInput
+  data: Prisma.XOR<Prisma.project_groupUpdateWithoutGroup_messageInput, Prisma.project_groupUncheckedUpdateWithoutGroup_messageInput>
+}
+
+export type project_groupUpdateWithoutGroup_messageInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  staff_project_group_convener_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_convener_idTostaffNestedInput
+  staff_project_group_expert_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_expert_idTostaffNestedInput
+  staff_project_group_guide_idTostaff?: Prisma.staffUpdateOneWithoutProject_group_project_group_guide_idTostaffNestedInput
+  project_type?: Prisma.project_typeUpdateOneWithoutProject_groupNestedInput
+  project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
+  project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+}
+
+export type project_groupUncheckedUpdateWithoutGroup_messageInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  average_cpi?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  project_type_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  guide_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  convener_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  expert_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.NullableEnumgroup_statusFieldUpdateOperationsInput | $Enums.group_status | null
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updated_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
+  project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupCreateManyProject_typeInput = {
@@ -1390,6 +1521,7 @@ export type project_groupUpdateWithoutProject_typeInput = {
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutProject_typeInput = {
@@ -1408,6 +1540,7 @@ export type project_groupUncheckedUpdateWithoutProject_typeInput = {
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutProject_typeInput = {
@@ -1485,6 +1618,7 @@ export type project_groupUpdateWithoutStaff_project_group_convener_idTostaffInpu
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1503,6 +1637,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_convener_idTo
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_convener_idTostaffInput = {
@@ -1535,6 +1670,7 @@ export type project_groupUpdateWithoutStaff_project_group_expert_idTostaffInput 
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1553,6 +1689,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_expert_idTost
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_expert_idTostaffInput = {
@@ -1585,6 +1722,7 @@ export type project_groupUpdateWithoutStaff_project_group_guide_idTostaffInput =
   project_group_member?: Prisma.project_group_memberUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1603,6 +1741,7 @@ export type project_groupUncheckedUpdateWithoutStaff_project_group_guide_idTosta
   project_group_member?: Prisma.project_group_memberUncheckedUpdateManyWithoutProject_groupNestedInput
   project_meeting?: Prisma.project_meetingUncheckedUpdateManyWithoutProject_groupNestedInput
   project_submission?: Prisma.project_submissionUncheckedUpdateManyWithoutProject_groupNestedInput
+  group_message?: Prisma.group_messageUncheckedUpdateManyWithoutProject_groupNestedInput
 }
 
 export type project_groupUncheckedUpdateManyWithoutStaff_project_group_guide_idTostaffInput = {
@@ -1629,12 +1768,14 @@ export type Project_groupCountOutputType = {
   project_group_member: number
   project_meeting: number
   project_submission: number
+  group_message: number
 }
 
 export type Project_groupCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project_group_member?: boolean | Project_groupCountOutputTypeCountProject_group_memberArgs
   project_meeting?: boolean | Project_groupCountOutputTypeCountProject_meetingArgs
   project_submission?: boolean | Project_groupCountOutputTypeCountProject_submissionArgs
+  group_message?: boolean | Project_groupCountOutputTypeCountGroup_messageArgs
 }
 
 /**
@@ -1668,6 +1809,13 @@ export type Project_groupCountOutputTypeCountProject_submissionArgs<ExtArgs exte
   where?: Prisma.project_submissionWhereInput
 }
 
+/**
+ * Project_groupCountOutputType without action
+ */
+export type Project_groupCountOutputTypeCountGroup_messageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.group_messageWhereInput
+}
+
 
 export type project_groupSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1690,6 +1838,7 @@ export type project_groupSelect<ExtArgs extends runtime.Types.Extensions.Interna
   project_group_member?: boolean | Prisma.project_group$project_group_memberArgs<ExtArgs>
   project_meeting?: boolean | Prisma.project_group$project_meetingArgs<ExtArgs>
   project_submission?: boolean | Prisma.project_group$project_submissionArgs<ExtArgs>
+  group_message?: boolean | Prisma.project_group$group_messageArgs<ExtArgs>
   _count?: boolean | Prisma.Project_groupCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project_group"]>
 
@@ -1758,6 +1907,7 @@ export type project_groupInclude<ExtArgs extends runtime.Types.Extensions.Intern
   project_group_member?: boolean | Prisma.project_group$project_group_memberArgs<ExtArgs>
   project_meeting?: boolean | Prisma.project_group$project_meetingArgs<ExtArgs>
   project_submission?: boolean | Prisma.project_group$project_submissionArgs<ExtArgs>
+  group_message?: boolean | Prisma.project_group$group_messageArgs<ExtArgs>
   _count?: boolean | Prisma.Project_groupCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type project_groupIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1783,6 +1933,7 @@ export type $project_groupPayload<ExtArgs extends runtime.Types.Extensions.Inter
     project_group_member: Prisma.$project_group_memberPayload<ExtArgs>[]
     project_meeting: Prisma.$project_meetingPayload<ExtArgs>[]
     project_submission: Prisma.$project_submissionPayload<ExtArgs>[]
+    group_message: Prisma.$group_messagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2199,6 +2350,7 @@ export interface Prisma__project_groupClient<T, Null = never, ExtArgs extends ru
   project_group_member<T extends Prisma.project_group$project_group_memberArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_group_memberArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_group_memberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   project_meeting<T extends Prisma.project_group$project_meetingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_meetingArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_meetingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   project_submission<T extends Prisma.project_group$project_submissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$project_submissionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$project_submissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  group_message<T extends Prisma.project_group$group_messageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.project_group$group_messageArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$group_messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2782,6 +2934,30 @@ export type project_group$project_submissionArgs<ExtArgs extends runtime.Types.E
   take?: number
   skip?: number
   distinct?: Prisma.Project_submissionScalarFieldEnum | Prisma.Project_submissionScalarFieldEnum[]
+}
+
+/**
+ * project_group.group_message
+ */
+export type project_group$group_messageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the group_message
+   */
+  select?: Prisma.group_messageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the group_message
+   */
+  omit?: Prisma.group_messageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.group_messageInclude<ExtArgs> | null
+  where?: Prisma.group_messageWhereInput
+  orderBy?: Prisma.group_messageOrderByWithRelationInput | Prisma.group_messageOrderByWithRelationInput[]
+  cursor?: Prisma.group_messageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Group_messageScalarFieldEnum | Prisma.Group_messageScalarFieldEnum[]
 }
 
 /**

@@ -13,12 +13,12 @@ import {
     Home,
     FolderKanban,
     ChevronRight,
-    Bell,
     Search,
     Menu,
     X,
     MessageSquare
 } from 'lucide-react';
+import NotificationBell from './NotificationBell';
 
 interface User {
     id: number;
@@ -182,10 +182,7 @@ export default function FacultyLayout({ children }: FacultyLayoutProps) {
                                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-purple-500 transition-colors duration-200" />
                                 <input type="text" placeholder="Search..." className="w-56 pl-10 pr-4 py-2 bg-gray-100 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.06] rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-400/50 transition-all duration-300" />
                             </div>
-                            <button className="relative p-2.5 rounded-xl bg-gray-100 dark:bg-white/[0.04] hover:bg-gray-200 dark:hover:bg-white/[0.08] border border-gray-200 dark:border-white/[0.06] transition-all duration-200 group">
-                                <Bell className="w-4 h-4 text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-white transition-colors" />
-                                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-purple-500 rounded-full ring-2 ring-white dark:ring-[#0a0a12]"></span>
-                            </button>
+                            <NotificationBell accentColor="purple" />
                             <UserProfileDropdown user={user!} />
                         </div>
                     </div>

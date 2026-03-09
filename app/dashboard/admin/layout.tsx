@@ -18,7 +18,8 @@ import {
     X,
     Building,
     BookOpen,
-    Layers
+    Layers,
+    MessageSquare
 } from 'lucide-react';
 
 interface User {
@@ -85,6 +86,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         { icon: Users, label: 'Staff', href: '/dashboard/admin/staff' },
         { icon: GraduationCap, label: 'Students', href: '/dashboard/admin/students' },
         { icon: FolderKanban, label: 'Projects', href: '/dashboard/admin/projects' },
+        { icon: MessageSquare, label: 'Messages', href: '/dashboard/admin/messages' },
         { icon: ClipboardList, label: 'Reports', href: '/dashboard/admin/reports' },
         { icon: Settings, label: 'Settings', href: '/dashboard/admin/settings' },
     ];
