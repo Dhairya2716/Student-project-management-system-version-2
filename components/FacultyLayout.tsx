@@ -103,7 +103,7 @@ export default function FacultyLayout({ children }: FacultyLayoutProps) {
                 <div className="p-5 border-b border-gray-200/80 dark:border-white/[0.06]">
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 group-hover:scale-105 transition-all duration-300">
-                            <img src="/faculty_ logo.png" alt="StudentSync" className="w-full h-full object-cover" />
+                            <img src="/faculty_logo.png" alt="StudentSync" className="w-full h-full object-cover" />
                         </div>
                         {sidebarOpen && (
                             <div className="animate-slide-in">

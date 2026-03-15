@@ -135,17 +135,17 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
 
     if (loading) {
         return (
-            <FacultyLayout>
+            <>
                 <div className="flex items-center justify-center h-full">
                     <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
                 </div>
-            </FacultyLayout>
+            </>
         );
     }
 
     if (error || !project) {
         return (
-            <FacultyLayout>
+            <>
                 <div className="p-8">
                     <div className="text-center py-16 rounded-2xl bg-white/[0.02] border border-white/10">
                         <AlertCircle className="w-16 h-16 text-white/20 mx-auto mb-4" />
@@ -153,12 +153,12 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                         <p className="text-white/40">The requested project could not be found.</p>
                     </div>
                 </div>
-            </FacultyLayout>
+            </>
         );
     }
 
     return (
-        <FacultyLayout>
+        <>
             <div className="p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-white mb-2">Project Details</h1>
@@ -330,6 +330,6 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                     </div>
                 )}
             </div>
-        </FacultyLayout>
+        </>
     );
 }
