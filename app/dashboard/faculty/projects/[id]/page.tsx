@@ -137,7 +137,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
         return (
             <>
                 <div className="flex items-center justify-center h-full">
-                    <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
+                    <div className="w-12 h-12 border-4 border-purple-500/31 border-t-purple-500 rounded-full animate-spin"></div>
                 </div>
             </>
         );
@@ -274,8 +274,8 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                                                 <div className="flex items-center gap-3 mb-1">
                                                     <h4 className="text-lg font-medium text-white">{submission.title}</h4>
                                                     <span className={`text-xs px-2 py-0.5 rounded flex items-center gap-1 font-medium ${submission.status === 'APPROVED' ? 'bg-emerald-500/10 text-emerald-400' :
-                                                            submission.status === 'REJECTED' ? 'bg-red-500/10 text-red-400' :
-                                                                'bg-amber-500/10 text-amber-400'
+                                                        submission.status === 'REJECTED' ? 'bg-red-500/10 text-red-400' :
+                                                            'bg-amber-500/10 text-amber-400'
                                                         }`}>
                                                         {submission.status.charAt(0) + submission.status.slice(1).toLowerCase()}
                                                     </span>
