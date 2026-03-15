@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import FacultyLayout from '@/components/FacultyLayout';
 import {
     Calendar, Clock, MapPin, Users, Plus, X, CheckCircle, XCircle,
     AlertCircle, Trash2, ExternalLink, Loader2, Save, Filter
@@ -152,16 +151,13 @@ export default function MeetingsPage() {
 
     if (loading) {
         return (
-            <FacultyLayout>
-                <div className="flex items-center justify-center h-full">
-                    <Loader2 className="w-10 h-10 text-purple-400 animate-spin" />
-                </div>
-            </FacultyLayout>
+            <div className="flex items-center justify-center h-full">
+                <Loader2 className="w-10 h-10 text-purple-400 animate-spin" />
+            </div>
         );
     }
 
     return (
-        <FacultyLayout>
             <div className="p-8">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
@@ -456,6 +452,5 @@ export default function MeetingsPage() {
                     </div>
                 )}
             </div>
-        </FacultyLayout>
     );
 }

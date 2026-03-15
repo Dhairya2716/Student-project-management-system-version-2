@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import StudentLayout from '@/components/StudentLayout';
 import {
     Users,
     ArrowLeft,
@@ -195,16 +194,16 @@ export default function CreateTeamPage() {
 
     if (loading) {
         return (
-            <StudentLayout>
+            <>
                 <div className="flex items-center justify-center min-h-[60vh]">
                     <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-6 max-w-5xl mx-auto py-8">
                 {/* Header */}
                 <div className="mb-6 flex items-center gap-4">
@@ -490,6 +489,6 @@ export default function CreateTeamPage() {
                     </div>
                 </div>
             </div>
-        </StudentLayout>
+        </>
     );
 }

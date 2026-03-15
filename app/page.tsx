@@ -27,11 +27,11 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 py-4">
             <div className="flex items-center justify-between rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200/80 dark:border-white/10 px-6 py-3 shadow-lg dark:shadow-2xl transition-colors duration-300">
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
-                  <GraduationCap className="w-6 h-6 text-white" />
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+                  <img src="/logo.png" alt="StudentSync" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-400 blur-lg opacity-40 group-hover:opacity-60 transition-opacity"></div>
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">SPMS</span>
+                <span className="text-xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">StudentSync</span>
               </Link>
               <div className="flex items-center gap-3">
                 <Link
@@ -240,12 +240,12 @@ export default function Home() {
         <footer className="relative py-8 px-6 border-t border-gray-200 dark:border-white/10">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-md">
-                <GraduationCap className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md">
+                <img src="/logo.png" alt="StudentSync" className="w-full h-full object-cover" />
               </div>
-              <span className="font-semibold text-gray-700 dark:text-white/80">SPMS</span>
+              <span className="font-semibold text-gray-700 dark:text-white/80">StudentSync</span>
             </div>
-            <p className="text-gray-400 dark:text-white/40 text-sm">© 2026 Student Project Management System. All rights reserved.</p>
+            <p className="text-gray-400 dark:text-white/40 text-sm">© 2026 StudentSync — Student Project Management System. All rights reserved.</p>
           </div>
         </footer>
 

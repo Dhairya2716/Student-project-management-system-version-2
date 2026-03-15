@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import {
+
     Users,
     Calendar,
     CheckCircle,
@@ -70,26 +70,26 @@ export default function StudentDashboard() {
 
     if (loading) {
         return (
-            <StudentLayout>
+            <>
                 <div className="flex items-center justify-center h-full min-h-[60vh]">
                     <div className="relative">
                         <div className="w-14 h-14 border-4 border-emerald-200 dark:border-emerald-500/20 border-t-emerald-500 dark:border-t-emerald-400 rounded-full animate-spin"></div>
                     </div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
     if (!data) {
         return (
-            <StudentLayout>
+            <>
                 <div className="p-6">
                     <div className="text-center py-16 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] shadow-sm">
                         <AlertCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
                         <p className="text-gray-500 dark:text-gray-400 text-lg">Failed to load dashboard</p>
                     </div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
@@ -137,7 +137,7 @@ export default function StudentDashboard() {
     ];
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-6">
                 {/* Page Header */}
                 <div className="mb-8">
@@ -308,6 +308,6 @@ export default function StudentDashboard() {
                     </div>
                 )}
             </div>
-        </StudentLayout>
+        </>
     );
 }

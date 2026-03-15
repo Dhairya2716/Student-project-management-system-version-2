@@ -70,12 +70,12 @@ export default function SignupPage() {
                     {/* Logo */}
                     <div className="text-center mb-8">
                         <Link href="/" className="inline-flex items-center gap-3 group">
-                            <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-purple-500/20">
-                                <GraduationCap className="w-8 h-8 text-white" />
+                            <div className="relative w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-purple-500/20">
+                                <img src="/logo.png" alt="StudentSync" className="w-full h-full object-cover" />
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-400 to-violet-400 blur-xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
                             </div>
                             <GradientText colors={['#a855f7', '#8b5cf6', '#a855f7']} animationSpeed={3} showBorder={false}>
-                                <span className="text-3xl font-bold bg-clip-text text-transparent">SPMS</span>
+                                <span className="text-3xl font-bold bg-clip-text text-transparent">StudentSync</span>
                             </GradientText>
                         </Link>
                     </div>
@@ -87,7 +87,7 @@ export default function SignupPage() {
                         <SpotlightCard className="relative bg-white/90 dark:bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-gray-200/80 dark:border-white/10 p-8 shadow-xl dark:shadow-2xl" spotlightColor="rgba(168, 85, 247, 0.15)">
                             <div className="text-center mb-8">
                                 <BlurText text="Create Account" className="text-3xl font-bold text-gray-900 dark:text-white mb-2" delay={30} />
-                                <p className="text-gray-500 dark:text-white/50">Join SPMS to manage your projects</p>
+                                <p className="text-gray-500 dark:text-white/50">Join StudentSync to manage your projects</p>
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-5">

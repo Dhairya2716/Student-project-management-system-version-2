@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, use } from 'react';
-import FacultyLayout from '@/components/FacultyLayout';
 import {
     FolderKanban,
     Users,

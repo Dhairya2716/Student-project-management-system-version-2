@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import { Lock, Save, AlertCircle } from 'lucide-react';
 
 export default function StudentSettings() {
@@ -61,7 +60,7 @@ export default function StudentSettings() {
     };
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-8 max-w-2xl mx-auto">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Settings</h1>
@@ -143,6 +142,6 @@ export default function StudentSettings() {
                     </form>
                 </div>
             </div>
-        </StudentLayout>
+        </>
     );
 }

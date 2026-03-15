@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import FacultyLayout from '@/components/FacultyLayout';
 import { ClipboardList, Star, FileText, ExternalLink, Check, X, AlertCircle, Clock } from 'lucide-react';
 
 interface Submission {
@@ -83,8 +82,7 @@ export default function EvaluationsPage() {
     };
 
     return (
-        <FacultyLayout>
-            <div className="p-8">
+        <div className="p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Evaluations</h1>
                     <p className="text-gray-500 dark:text-gray-400">Review and evaluate project submissions from your groups</p>
@@ -211,6 +209,5 @@ export default function EvaluationsPage() {
                     </ul>
                 </div>
             </div>
-        </FacultyLayout>
     );
 }

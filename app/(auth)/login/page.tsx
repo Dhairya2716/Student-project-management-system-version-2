@@ -68,12 +68,12 @@ export default function LoginPage() {
                     {/* Logo */}
                     <div className="text-center mb-8">
                         <Link href="/" className="inline-flex items-center gap-3 group">
-                            <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
-                                <GraduationCap className="w-8 h-8 text-white" />
+                            <div className="relative w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+                                <img src="/logo.png" alt="StudentSync" className="w-full h-full object-cover" />
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-400 blur-xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
                             </div>
                             <GradientText colors={['#10b981', '#06b6d4', '#10b981']} animationSpeed={3} showBorder={false}>
-                                <span className="text-3xl font-bold bg-clip-text text-transparent">SPMS</span>
+                                <span className="text-3xl font-bold bg-clip-text text-transparent">StudentSync</span>
                             </GradientText>
                         </Link>
                     </div>

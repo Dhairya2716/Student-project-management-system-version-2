@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import {
+
     FolderKanban,
     Users,
     Calendar,
@@ -307,17 +307,17 @@ export default function StudentProjectPage() {
 
     if (loading) {
         return (
-            <StudentLayout>
+            <>
                 <div className="flex items-center justify-center h-full">
                     <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
     if (error || !group) {
         return (
-            <StudentLayout>
+            <>
                 <div className="p-8">
                     <div className="text-center py-16 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10">
                         <AlertCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
@@ -325,7 +325,7 @@ export default function StudentProjectPage() {
                         <p className="text-gray-500 dark:text-gray-400">You haven't been assigned to a project yet.</p>
                     </div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
@@ -336,7 +336,7 @@ export default function StudentProjectPage() {
     ] as const;
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Project Details</h1>
@@ -746,6 +746,6 @@ export default function StudentProjectPage() {
                     </div>
                 )}
             </div>
-        </StudentLayout>
+        </>
     );
 }

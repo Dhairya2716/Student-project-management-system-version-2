@@ -1,9 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import FacultyLayout from '@/components/FacultyLayout';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FolderKanban, Users, Calendar, TrendingUp, Filter, Search, ExternalLink, Clock } from 'lucide-react';
+import {
+    FolderKanban,
+    Users,
+    Calendar,
+    Award,
+    Building,
+    AlertCircle,
+    Plus,
+    Search,
+    Filter,
+    ArrowRight,
+    Loader2,
+    TrendingUp,
+    Clock,
+    ExternalLink
+} from 'lucide-react';
 
 interface Project {
     id: number;
@@ -83,17 +97,14 @@ export default function ProjectsPage() {
 
     if (loading) {
         return (
-            <FacultyLayout>
-                <div className="flex items-center justify-center h-full">
-                    <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
-                </div>
-            </FacultyLayout>
+            <div className="flex items-center justify-center h-full">
+                <Loader2 className="w-10 h-10 text-purple-400 animate-spin" />
+            </div>
         );
     }
 
     return (
-        <FacultyLayout>
-            <div className="p-8">
+        <div className="p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Projects</h1>
                     <p className="text-gray-500 dark:text-gray-400">Monitor project progress and team performance</p>
@@ -268,6 +279,5 @@ export default function ProjectsPage() {
                     </div>
                 )}
             </div>
-        </FacultyLayout>
     );
 }

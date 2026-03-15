@@ -1,0 +1,115 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+node.exe : ΓÜá The 
+"middleware" file 
+convention is deprecated. 
+Please use "proxy" 
+instead. Learn more: https
+://nextjs.org/docs/message
+s/middleware-to-proxy
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (Γ  
+  Üá The "middle...lewa   
+ re-to-proxy:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.3s
+  Running TypeScript ...
+Failed to compile.
+
+.next/dev/types/validator.
+ts:594:31
+Type error: Type 'typeof i
+mport("C:/Users/LENOVO/Des
+ktop/Darshan/SEM-6/AWT/pro
+ject/spms/app/api/faculty/
+submissions/[id]/route")' 
+does not satisfy the 
+constraint 'RouteHandlerCo
+nfig<"/api/faculty/submiss
+ions/[id]">'.
+  Types of property 
+'PATCH' are incompatible.
+    Type '(req: 
+NextRequest, { params }: 
+{ params: { id: string; 
+}; }) => 
+Promise<NextResponse<{ 
+id: number; created_at: 
+Date; title: string; 
+description: string | 
+null; status: 
+submission_status; ... 4 
+more ...; 
+submission_type: string; 
+}> | NextResponse<...>>' 
+is not assignable to type 
+'(request: NextRequest, 
+context: { params: 
+Promise<{ id: string; }>; 
+}) => void | Response | 
+Promise<void | Response>'.
+      Types of parameters 
+'__1' and 'context' are 
+incompatible.
+        Type '{ params: 
+Promise<{ id: string; }>; 
+}' is not assignable to 
+type '{ params: { id: 
+string; }; }'.
+          Types of 
+property 'params' are 
+incompatible.
+            Property 'id' 
+is missing in type 
+'Promise<{ id: string; 
+}>' but required in type 
+'{ id: string; }'.
+
+[0m [90m 592 |[39m   
+type __IsExpected[33m<[3
+9m[33mSpecific[39m 
+[36mextends[39m [33mRou
+teHandlerConfig[39m[33m<
+[39m[32m"/api/faculty/su
+bmissions/[id]"[39m[33m>
+>[39m [33m=[39m 
+[33mSpecific[39m
+ [90m 593 |[39m   
+[36mconst[39m handler 
+[33m=[39m {} 
+[36mas[39m 
+[36mtypeof[39m [36mimpo
+rt[39m([32m"../../../app
+/api/faculty/submissions/[
+id]/route.js"[39m)
+[31m[1m>[22m[39m[90m 
+594 |[39m   type __Check 
+[33m=[39m __IsExpected[
+33m<[39m[36mtypeof[39m 
+handler[33m>[39m
+ [90m     |[39m         
+                      
+[31m[1m^[22m[39m
+ [90m 595 |[39m   
+[90m// @ts-ignore[39m
+ [90m 596 |[39m   type 
+__Unused [33m=[39m 
+__Check
+ [90m 597 |[39m }[0m
+Next.js build worker 
+exited with code: 1 and 
+signal: null

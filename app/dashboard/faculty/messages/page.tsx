@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import FacultyLayout from '@/components/FacultyLayout';
 import GroupChat from '@/components/GroupChat';
 import { MessageSquare, Search, Loader2, Users } from 'lucide-react';
 
@@ -28,7 +27,7 @@ export default function MessagesPage() {
         }
 
         const token = localStorage.getItem('token');
-        fetch('/api/faculty/projects', {
+        fetch('/api/faculty/groups', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(r => r.json())
@@ -43,7 +42,6 @@ export default function MessagesPage() {
     );
 
     return (
-        <FacultyLayout>
             <div className="p-8 flex flex-col" style={{ height: 'calc(100vh - 73px)' }}>
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Messages</h1>
@@ -112,6 +110,5 @@ export default function MessagesPage() {
                     </div>
                 </div>
             </div>
-        </FacultyLayout>
     );
 }

@@ -7,9 +7,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 // PATCH: Approve or Reject a submission
 export async function PATCH(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
         const token = req.headers.get('authorization')?.replace('Bearer ', '');
         if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
@@ -18,7 +19,8 @@ export async function PATCH(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
-        const submissionId = parseInt(params.id);
+        const submissionId = parseInt(id);
+
         const { status } = await req.json();
 
         if (!['APPROVED', 'REJECTED'].includes(status)) {

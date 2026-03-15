@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SPMS — Student Project Management System",
+  title: "StudentSync — Student Project Management System",
   description: "A comprehensive platform for students, faculty, and administrators to manage academic projects, track progress, and collaborate seamlessly.",
 };
 

@@ -103,12 +103,12 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
                 {/* Logo */}
                 <div className="p-5 border-b border-gray-200/80 dark:border-white/[0.06]">
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 group-hover:scale-105 transition-all duration-300">
-                            <GraduationCap className="w-5 h-5 text-white" />
+                        <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 group-hover:scale-105 transition-all duration-300">
+                            <img src="/logo.png" alt="StudentSync" className="w-full h-full object-cover" />
                         </div>
                         {sidebarOpen && (
                             <div className="animate-slide-in">
-                                <span className="text-lg font-bold text-gray-900 dark:text-white">SPMS</span>
+                                <span className="text-lg font-bold text-gray-900 dark:text-white">StudentSync</span>
                                 <span className="block text-[11px] font-medium text-emerald-500 dark:text-emerald-400">Student Portal</span>
                             </div>
                         )}

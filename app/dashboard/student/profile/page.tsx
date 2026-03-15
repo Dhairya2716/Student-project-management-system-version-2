@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import Link from 'next/link';
 import {
     User, Mail, Phone, BookOpen, GraduationCap, Building2,
@@ -95,11 +94,11 @@ export default function StudentProfile() {
 
     if (loading) {
         return (
-            <StudentLayout>
+            <>
                 <div className="flex items-center justify-center h-full">
                     <Loader2 className="w-10 h-10 text-emerald-400 animate-spin" />
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
@@ -108,7 +107,7 @@ export default function StudentProfile() {
     const initials = profile.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-8 max-w-5xl mx-auto">
                 {/* Hero Banner */}
                 <div className="relative mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent border border-emerald-500/20 dark:border-emerald-500/10 p-6">
@@ -383,6 +382,6 @@ export default function StudentProfile() {
                     </div>
                 </div>
             </div>
-        </StudentLayout>
+        </>
     );
 }

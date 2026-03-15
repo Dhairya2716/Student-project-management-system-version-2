@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import {
+
     Calendar,
     Clock,
     MapPin,
@@ -98,16 +98,16 @@ export default function StudentMeetingsPage() {
 
     if (loading) {
         return (
-            <StudentLayout>
+            <>
                 <div className="flex items-center justify-center h-full">
                     <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
                 </div>
-            </StudentLayout>
+            </>
         );
     }
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Meetings</h1>
@@ -239,6 +239,6 @@ export default function StudentMeetingsPage() {
                     </div>
                 )}
             </div>
-        </StudentLayout>
+        </>
     );
 }

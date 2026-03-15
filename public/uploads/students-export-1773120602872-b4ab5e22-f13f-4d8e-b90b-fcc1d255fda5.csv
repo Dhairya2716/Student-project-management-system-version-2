@@ -1,0 +1,8 @@
+ID,Enrollment No,Name,Email,Phone,Department,Batch,CGPA
+7,CE001,"Student Test","student@test.com",0987654321,"Computer Science & Engineering","my-batch",8.5
+6,23010101075,"Dhairya Dudkiya","DemoUser05@gmail.com",0123456789,"Computer Science & Engineering","my-batch",
+5,230101010292,"DemoUser04","DemoUser04@gmail.com",4567539510,"Computer Engineering","2022-2026",
+4,23010101184,"DemoUser03","DemoUser03@gmail.com",1234567898,"Computer Science & Engineering","my-batch",
+3,23010101145,"DemoUser02","DemoUser02@gmail.com",0147852369,"Computer Science & Engineering","my-batch",
+2,23010101299,"DemoUser01","DemoUser01@gmail.com",1234567890,"Computer Science & Engineering","my-batch",7.3
+1,23010101789,"Alice Johnson","student@spms.com",+1234567892,"Computer Science & Engineering","2022-2026",8.5

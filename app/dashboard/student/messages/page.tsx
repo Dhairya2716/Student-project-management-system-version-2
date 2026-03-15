@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import StudentLayout from '@/components/StudentLayout';
 import GroupChat from '@/components/GroupChat';
 import { MessageSquare, Loader2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -42,7 +41,7 @@ export default function StudentMessagesPage() {
     }, []);
 
     return (
-        <StudentLayout>
+        <>
             <div className="p-8 flex flex-col" style={{ height: 'calc(100vh - 73px)' }}>
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Group Messages</h1>
@@ -79,6 +78,6 @@ export default function StudentMessagesPage() {
                     ) : null}
                 </div>
             </div>
-        </StudentLayout>
+        </>
     );
 }
