@@ -17,7 +17,35 @@ export interface CreateNotificationParams {
 }
 
 /**
- * Create a notification and emit it via WebSocket
+ * Emit an event to the Socket.io server (hosted on Render)
+ * This replaces the old global.io approach since Socket.io runs as a separate service
+ */
+async function emitViaSocketServer(room: string, event: string, data: any) {
+    const socketServerUrl = process.env.SOCKET_SERVER_URL || process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
+    const secret = process.env.SOCKET_SERVER_SECRET;
+
+    if (!secret) {
+        console.warn('SOCKET_SERVER_SECRET not set, skipping real-time notification emit');
+        return;
+    }
+
+    try {
+        await fetch(`${socketServerUrl}/emit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${secret}`,
+            },
+            body: JSON.stringify({ room, event, data }),
+        });
+    } catch (error) {
+        console.error('Error emitting via socket server:', error);
+        // Don't throw — notification is still saved in DB, just not pushed in real-time
+    }
+}
+
+/**
+ * Create a notification and emit it via the Socket.io server
  */
 export async function createNotification(params: CreateNotificationParams) {
     const { userId, userRole, type, title, message, link } = params;
@@ -36,12 +64,10 @@ export async function createNotification(params: CreateNotificationParams) {
             }
         });
 
-        // Emit via WebSocket if io is available
-        if (global.io) {
-            const room = `${userRole.toLowerCase()}:${userId}`;
-            global.io.to(room).emit('new-notification', notification);
-            console.log(`Notification emitted to room: ${room}`);
-        }
+        // Emit via Socket.io server (on Render)
+        const room = `${userRole.toLowerCase()}:${userId}`;
+        await emitViaSocketServer(room, 'new-notification', notification);
+        console.log(`Notification emitted to room: ${room}`);
 
         return notification;
     } catch (error) {
@@ -144,18 +170,9 @@ export async function createMeetingNotifications(meetingId: number, groupId: num
 }
 
 /**
- * Get Socket.io server instance
+ * Emit notification to specific user via Socket.io server
  */
-export function getIO() {
-    return global.io;
-}
-
-/**
- * Emit notification to specific user
- */
-export function emitToUser(userId: number, userRole: string, event: string, data: any) {
-    if (global.io) {
-        const room = `${userRole.toLowerCase()}:${userId}`;
-        global.io.to(room).emit(event, data);
-    }
+export async function emitToUser(userId: number, userRole: string, event: string, data: any) {
+    const room = `${userRole.toLowerCase()}:${userId}`;
+    await emitViaSocketServer(room, event, data);
 }

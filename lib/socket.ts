@@ -14,12 +14,19 @@ export interface Notification {
     created_at: string;
 }
 
+const getSocketUrl = (): string => {
+    if (typeof window !== 'undefined') {
+        return process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
+    }
+    return 'http://localhost:3001';
+};
+
 export const initSocket = (token: string): Socket => {
     if (socket && socket.connected) {
         return socket;
     }
 
-    socket = io('http://localhost:3000', {
+    socket = io(getSocketUrl(), {
         auth: {
             token
         },

@@ -1,0 +1,13 @@
+{
+  "name": "studentsync-socket-server",
+  "version": "1.0.0",
+  "description": "Socket.io server for StudentSync real-time features",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.3",
+    "socket.io": "^4.8.3"
+  }
+}

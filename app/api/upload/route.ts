@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
-import { v4 as uuidv4 } from 'uuid';
-import { mkdir } from 'fs/promises';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: NextRequest) {
     try {
@@ -19,28 +22,23 @@ export async function POST(request: NextRequest) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        // Create a unique filename to prevent overwrites
-        const uniqueSuffix = `${Date.now()}-${uuidv4()}`;
-        const extension = file.name.split('.').pop();
-        const originalName = file.name.split('.')[0].replace(/[^a-zA-Z0-9]/g, '-');
-        const fileName = `${originalName}-${uniqueSuffix}.${extension}`;
+        // Upload to Cloudinary
+        const result = await new Promise<any>((resolve, reject) => {
+            const uploadStream = cloudinary.uploader.upload_stream(
+                {
+                    folder: 'studentsync',
+                    resource_type: 'auto',
+                    public_id: `${file.name.split('.')[0].replace(/[^a-zA-Z0-9]/g, '-')}-${Date.now()}`,
+                },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            );
+            uploadStream.end(buffer);
+        });
 
-        // Ensure the uploads directory exists
-        const uploadDir = join(process.cwd(), 'public', 'uploads');
-        try {
-            await mkdir(uploadDir, { recursive: true });
-        } catch (error) {
-            // Ignore if directory already exists
-        }
-
-        // Save the file
-        const filePath = join(uploadDir, fileName);
-        await writeFile(filePath, buffer);
-
-        // Return the path relative to public directory for URL access
-        const fileUrl = `/uploads/${fileName}`;
-
-        return NextResponse.json({ url: fileUrl }, { status: 201 });
+        return NextResponse.json({ url: result.secure_url }, { status: 201 });
 
     } catch (error) {
         console.error('Error uploading file:', error);
