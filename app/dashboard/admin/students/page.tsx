@@ -231,7 +231,7 @@ export default function StudentsPage() {
                             </thead>
                             <tbody>
                                 {filteredStudents.map((student) => (
-                                    <tr key={student.id} className="border-b border-white/5 hover:bg-white dark:bg-white/[0.02] transition-colors">
+                                    <tr key={student.id} className="border-b border-white/5 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
                                         <td className="px-6 py-4">
                                             <span className="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-400 text-sm font-medium">
                                                 {student.enrollment_no || '-'}

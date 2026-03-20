@@ -138,8 +138,8 @@ export default function DepartmentsPage() {
             {/* Message */}
             {message && (
                 <div className={`mb-6 p-4 rounded-xl border flex items-center gap-3 ${message.type === 'success'
-                        ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
-                        : 'bg-red-500/10 border-red-500/20 text-red-400'
+                    ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                    : 'bg-red-500/10 border-red-500/20 text-red-400'
                     }`}>
                     <CheckCircle className="w-5 h-5" />
                     {message.text}
@@ -183,7 +183,8 @@ export default function DepartmentsPage() {
                         </thead>
                         <tbody>
                             {filteredDepartments.map((dept) => (
-                                <tr key={dept.id} className="border-b border-white/5 hover:bg-white dark:bg-white/[0.02] transition-colors">
+                                <tr key={dept.id}
+                                    className="border-b border-white/5 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
                                     <td className="px-6 py-4">
                                         <span className="px-3 py-1 rounded-lg bg-orange-500/10 text-orange-400 text-sm font-medium">
                                             {dept.code}

@@ -100,9 +100,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
 
             {/* Sidebar */}
-            <aside className={`${sidebarOpen ? 'w-72' : 'w-20'} fixed left-0 top-0 bottom-0 glass border-r border-gray-200/80 dark:border-white/[0.06] flex flex-col transition-all duration-300 z-50 overflow-hidden`}>
+            <aside className={`${sidebarOpen ? 'w-72' : 'w-24'} fixed left-0 top-0 bottom-0 glass border-r border-gray-200/80 dark:border-white/[0.06] flex flex-col transition-all duration-300 z-50 overflow-hidden`}>
                 {/* Logo */}
-                <div className="p-5 border-b border-gray-200/80 dark:border-white/[0.06]">
+                <div className={`border-b border-gray-200/80 dark:border-white/[0.06]
+                        ${sidebarOpen ? 'p-5' : 'p-3'}
+                    `}>
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-105 transition-all duration-300 shrink-0">
                             <img src="/admin_logo.png" alt="StudentSync" className="w-full h-full object-cover" />

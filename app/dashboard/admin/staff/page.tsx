@@ -210,7 +210,7 @@ export default function StaffPage() {
                         </thead>
                         <tbody>
                             {filteredStaff.map((staff) => (
-                                <tr key={staff.id} className="border-b border-white/5 hover:bg-white dark:bg-white/[0.02] transition-colors">
+                                <tr key={staff.id} className="border-b border-white/5 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
                                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center">
@@ -233,8 +233,8 @@ export default function StaffPage() {
                                     </td>
                                     <td className="px-6 py-4">
                                         <span className={`px-3 py-1 rounded-lg text-sm font-medium ${staff.role === 'ADMIN'
-                                                ? 'bg-red-500/10 text-red-400'
-                                                : 'bg-purple-500/10 text-purple-400'
+                                            ? 'bg-red-500/10 text-red-400'
+                                            : 'bg-purple-500/10 text-purple-400'
                                             }`}>
                                             {staff.role}
                                         </span>
